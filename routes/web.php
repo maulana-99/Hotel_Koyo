@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login_tamu', function () {
+    return view('login_tamu');
+});
+
+Route::get('/tes', function () {
+    return view('tes');
 });
