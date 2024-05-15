@@ -8,12 +8,12 @@ use Redirect;
 
 class SesiController extends Controller
 {
-    function index()
+    public function index()
     {
         return view("login");
     }
 
-    function login(Request $request)
+    public function login(Request $request)
     {
         $request->validate(
             [
@@ -26,11 +26,10 @@ class SesiController extends Controller
             ],
         );
 
-        $infologin =
-            [
-                'email' => request()->email,
-                'password' => request()->password,
-            ];
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
 
         if (Auth::attempt($infologin)) {
             if (Auth::user()->role == 'tamu') {
@@ -42,12 +41,14 @@ class SesiController extends Controller
             } else {
                 return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
             }
+        } else {
+            return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
         }
+    }
 
-        function logout()
-        {
-            Auth::logout();
-            return redirect('/home');
-        }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/home');
     }
 }
