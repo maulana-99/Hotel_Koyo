@@ -23,6 +23,10 @@ Route::get('/tes', function () {
     return view('tes');
 });
 
+Route::get('/peringatan', function () {
+    return view('peringatan');
+});
+
 // menjadi mode tamu dan hanya bisa melihat saja
 Route::middleware(['guest'])->group(function () {
 
