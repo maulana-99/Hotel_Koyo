@@ -1,24 +1,30 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
     <link rel="stylesheet" href="{{asset('css/login_tamu.css')}}">
+    <title>Login Dashboard</title>
+    
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            
-            <input type="password" id="password" name="password" placeholder="Password"  required>
-            
-            <button type="submit">Masuk</button>
-        </form>
-        <p>Apakah anda belum memiliki akun? <a href="#">Register</a></p>
-        <div id="error-message"></div>
+    <div class="center">
+        <div class="login_card">
+            <div class="login_picture">
+                <img src="{{asset('img/oke.jpg')}}">
+            </div>
+            <div class="login_form">
+                <form id="loginForm" method="post" action="proses_login.php">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter Username">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter Password">
+                    <input type="submit" value="Login">
+                    <br>
+                    <br>
+                    <a class="button-link" href="login_siswa.php">Apakah anda belum memiliki akun ? register</a>
+                </form>
+            </div>
+        </div>
     </div>
-    <script src="{{asset('js/login.js')}}"></script>
 </body>
 </html>
