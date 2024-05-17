@@ -10,7 +10,7 @@ use Redirect;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function loginPage()
     {
         return view("login");
     }
@@ -54,6 +54,11 @@ class AuthController extends Controller
         return redirect('/home');
     }
 
+    public function registerPage()
+    {
+        return view("register");
+    }
+
     public function register(Request $request)
     {
         $validatedData = $request->validate(
@@ -78,6 +83,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-        return response()->json(['message' => 'User successfully registered', 'user' => $user], 201);
+        return view('dashboard');
     }
 }
