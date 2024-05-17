@@ -663,7 +663,6 @@ class ComposerStaticInitf5ef17887662f132f15c3b78afc4c0aa
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
-        'Database\\Seeders\\DummyUserSeeder' => __DIR__ . '/../..' . '/database/seeders/DummyUserSeeder.php',
         'Database\\Seeders\\DummyUsersSeeder' => __DIR__ . '/../..' . '/database/seeders/DummyUsersSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
