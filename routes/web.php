@@ -22,6 +22,10 @@ Route::get('/login_tamu', function () {
 Route::get('/dasboard_guest', function () {
     return view('dasboard_guest');
 });
+
+Route::get('/deskripsi_kamar', function () {
+    return view('deskripsi_kamar');
+});
 Route::get('/tamu_login', function () {
     return view('tamu_login');
 });
