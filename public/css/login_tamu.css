@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mooli&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
     background-image: linear-gradient(#FF7676, #9E2929);
 }
 
@@ -37,9 +40,8 @@ body {
     flex: 1;
     max-width: 50%; /* Reduce the width of the form section */
     padding: 50px; /* Adjust padding for a smaller appearance */
-   
     flex-direction: column;
-    background-color: #e3342f; /* Background color of the form */
+    background-color: #C82C37; /* Background color of the form */
     color: #fff; /* Text color */
     text-align: center;
 }
@@ -52,10 +54,6 @@ form {
     margin: 0;
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
 
 .input-container {
     width: 150%;
@@ -66,6 +64,7 @@ h2 {
 .input-container  input {
     flex: 1;
     order: 1; /* Mengatur urutan input */
+
 }
 .input-container span {
     order: 2;
@@ -80,10 +79,12 @@ input {
     border: none;
     border-bottom: 2px solid #fff;
     color: #fff;
+    font-size: 24px;
 }
 
 input::placeholder {
     color: #fff;
+    font-size: 24px;
 }
 
 input:focus {
@@ -93,16 +94,14 @@ input:focus {
 
 button {
     width: 50%; /* Ensure the button is full width */
-    padding: 10px;
+    max-width: 180px;
+    padding: 15px;
     background-color: transparent;
     color: #fff;
     border: 3px solid #fff;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Center horizontally */
+    position: absolute;
 }
 
 button:hover {
@@ -112,11 +111,12 @@ button:hover {
 
 a.button-link {
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     color: #fff;
-    padding: 10px;
+    padding: 40px;
     text-align: center;
-    
+    position: absolute;
+    left: 800px;
 }
 
 a.button-link:hover {

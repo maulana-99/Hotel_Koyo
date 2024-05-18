@@ -19,8 +19,15 @@ Route::get('/login_tamu', function () {
     return view('login_tamu');
 });
 
-Route::get('/tes', function () {
-    return view('tes');
+Route::get('/dasboard_guest', function () {
+    return view('dasboard_guest');
+});
+Route::get('/tamu_login', function () {
+    return view('tamu_login');
+});
+
+Route::get('/tamu_reservasi', function () {
+    return view('tamu_reservasi');
 });
 
 Route::get('/peringatan', function () {
