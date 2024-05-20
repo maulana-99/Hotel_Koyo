@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="{{asset('img/logo.png')}}" alt="Logo" class="logo">
+            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
             <span>CompanyName</span>
         </div>
         <ul class="navbar-links">

@@ -9,12 +9,12 @@
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="{{asset('img/logo.png')}}" alt="Logo" class="logo">
-            <span>CompanyName</span>
+            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
+            <span>TopCinangkaHotel</span>
         </div>
         <ul class="navbar-links">
-            <li><a href="#home">Beranda</a></li>
-            <li><a href="#reservations">Reservasi</a></li>
+            <li><a href="{{url('/tamu_login')}}">Beranda</a></li>
+            <li><a href="{{url('/tamu_reservasi')}}">Reservasi</a></li>
             <li><a href="#facilities">Fasilitas</a></li>
         </ul>
         <div class="navbar-profile">

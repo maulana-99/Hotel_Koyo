@@ -24,6 +24,8 @@ body {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 50%; /* Menjadikan gambar bulat */
+    object-fit: cover; /* Agar gambar tetap proporsional */
 }
 
 .navbar-links {

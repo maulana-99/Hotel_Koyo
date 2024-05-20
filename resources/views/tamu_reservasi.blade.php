@@ -9,12 +9,12 @@
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="{{asset('img/logo.png')}}" alt="Logo" class="logo">
+            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
             <span>CompanyName</span>
         </div>
         <ul class="navbar-links">
-            <li><a href="#home">Beranda</a></li>
-            <li><a href="#reservations">Reservasi</a></li>
+            <li><a href="{{url('/tamu_login')}}">Beranda</a></li>
+            <li><a href="{{url('/tamu_reservasi')}}">Reservasi</a></li>
             <li><a href="#facilities">Fasilitas</a></li>
         </ul>
         <div class="navbar-profile">
@@ -36,10 +36,6 @@
     <div class="search-navbar">
         <form class="search-form">
             <div class="form-group">
-                <label for="check-in-date">Reservasi:</label>
-                <input type="date" id="check-in-date" name="check-in-date" required>
-            </div>
-            <div class="form-group">
                 <label for="room-type">Room Type:</label>
                 <select id="room-type" name="room-type" required>
                     <option value="">Cari Kamar</option>
@@ -51,14 +47,15 @@
             <button type="submit" class="btn-search">Cari</button>
         </form>
     </div>
-
     <div class="room-cards">
-        <div class="room-card" onclick="window.location.href='#single-room';">
-            <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
-            <div class="room-info">
-                <h3>Single Room</h3>
-                <p>Rp. 500,000 / night</p>
-            </div>
+        <div class="room-card">
+            <a href="{{url('/deskripsi_kamar')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                    <p>Rp. 500,000 / night</p>
+                </div>
+            </a>
         </div>
     </div>
 

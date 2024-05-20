@@ -59,12 +59,12 @@ form {
     width: 150%;
     margin-bottom: 20px;
     display: flex;
-    
 
 }
 .input-container  input {
     flex: 1;
     order: 1; /* Mengatur urutan input */
+
 }
 .input-container span {
     order: 2;
@@ -73,8 +73,7 @@ form {
 
 input {
     width: 120%;
-    padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #fff;
