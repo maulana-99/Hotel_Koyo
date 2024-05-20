@@ -16,6 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login_tamu', function () {
+    return view('login_tamu');
+});
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/dashboard_guest', function () {
+    return view('dashboard_guest');
+});
+
+Route::get('/deskripsi_kamar', function () {
+    return view('deskripsi_kamar');
+});
+Route::get('/tamu_login', function () {
+    return view('tamu_login');
+});
+
+Route::get('/tamu_reservasi', function () {
+    return view('tamu_reservasi');
+});
+
+Route::get('/peringatan', function () {
+    return view('peringatan');
+});
+
+Route::get('/backoffice', function () {
+    return view('backoffice');
+});
+
 // menjadi mode tamu dan hanya bisa melihat saja
 Route::middleware(['guest'])->group(function () {
 

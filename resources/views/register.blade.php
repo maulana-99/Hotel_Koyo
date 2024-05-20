@@ -1,64 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/register.css')}}">
+    <title>register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mooli&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Register</h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="">
-                            @csrf
-
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    value="{{ old('name') }}" required>
-                                @error('name')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ old('email') }}" required>
-                                @error('email')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                                @error('password')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirmation"
-                                    name="password_confirmation" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
-                    </div>
+    <div class="center">
+        <div class="login_card">
+            <div class="login_picture">
+                <img src="{{asset('img/tch.png')}}">
+            </div>
+            <div class="login_form">
+                <div class="text">
+            <h1> Register </h1>
                 </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                <form id="loginForm" method="post" action="">
+                    @csrf
+                    <div class="input-container">
+                        <input type="Username" value="{{ old('Username') }}" id="Username" name="Username" required placeholder="Username">
+                    </div>
+                    <div class="input-container">
+                        <input type="email" value="{{ old('email') }}" id="email" name="email" required placeholder="Email">
+                    </div>
+                    <div class="input-container">
+                        <span><i id="toggler"class="far fa-eye"></i></span>
+                        <input type="password" id="fakePassword" name="password" required placeholder="Password">
+                      </div>
+
+                    <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
+                    <br>
+                    <br>
+                    <a class="button-link" href=".php">Apakah anda belum memiliki akun ? register</a>
+                </form>
             </div>
         </div>
     </div>
 </body>
+<script src="{{ asset('js/togglePassword.js') }}"></script>
+
 
 </html>
