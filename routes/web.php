@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ManagementResepsionisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,26 @@ Route::middleware(['guest'])->group(function () {
 // });
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role
-Route::middleware(['auth'])->group(function () {
+Route::middleware('userAkses:admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/resepsionis', [AdminController::class, 'resepsionis'])->middleware('userAkses:resepsionis');
-    Route::get('/tamu', [AdminController::class, 'tamu'])->middleware('userAkses:tamu');
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'index']);
+
 });
+
+Route::middleware('userAkses:resepsionis')->group(function () {
+    Route::get('/resepsionis', [AdminController::class, 'resepsionis'])->middleware('userAkses:resepsionis');
+    Route::get('/logout', [AuthController::class, 'logout']);
+
+});
+
+Route::middleware('userAkses:tamu')->group(function () {
+    Route::get('/tamu', [AdminController::class, 'tamu']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+
+});
+
+Route::get('/profil', function () {
+    return view('profil');
+})->middleware('auth')->name('profil');
+Route::get('/profil', [AuthController::class, 'show'])->middleware('auth');
