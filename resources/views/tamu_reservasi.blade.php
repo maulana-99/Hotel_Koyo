@@ -7,32 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/tamu_reservasi.css')}}">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
-            <span>CompanyName</span>
-        </div>
-        <ul class="navbar-links">
-            <li><a href="{{url('/tamu_login')}}">Beranda</a></li>
-            <li><a href="{{url('/tamu_reservasi')}}">Reservasi</a></li>
-            <li><a href="#facilities">Fasilitas</a></li>
-        </ul>
-        <div class="navbar-profile">
-            <a href="#login.blade.php" class="profile-link">
-                <img src="{{asset('img/guest.png')}}" alt="Guest Profile" class="profile-pic"> Setelan
-            </a>
-            <div class="dropdown-menu">
-                <a href="#edit-profile">Edit Profile</a>
-                <a href="#logout">Logout</a>
-            </div>
-        </div>
-        <div class="navbar-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
-
+@include('component.navbar')
     <div class="search-navbar">
         <form class="search-form">
             <div class="form-group">
@@ -46,6 +21,39 @@
             </div>
             <button type="submit" class="btn-search">Cari</button>
         </form>
+    </div>
+    <div class="room-cards">
+        <div class="room-card">
+            <a href="{{url('/deskripsi_kamar')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                    <p>Rp. 500,000 / night</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="room-cards">
+        <div class="room-card">
+            <a href="{{url('/deskripsi_kamar')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                    <p>Rp. 500,000 / night</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="room-cards">
+        <div class="room-card">
+            <a href="{{url('/deskripsi_kamar')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                    <p>Rp. 500,000 / night</p>
+                </div>
+            </a>
+        </div>
     </div>
     <div class="room-cards">
         <div class="room-card">

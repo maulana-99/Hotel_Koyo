@@ -6,15 +6,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Support\Facades\Storage;
-use Redirect;
+use Laravolt\Avatar\Facade as Avatar;
 
 class AuthController extends Controller
 {
     public function loginPage()
     {
-        return view("login");
+        return view('login');
     }
 
     public function login(Request $request)
@@ -36,14 +35,15 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            if (Auth::user()->role == 'tamu') {
-                return redirect('tamu');
-            } elseif (Auth::user()->role == 'resepsionis') {
-                return redirect('resepsionis');
-            } elseif (Auth::user()->role == 'admin') {
-                return redirect('admin');
-            } else {
-                return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
+            switch (Auth::user()->role) {
+                case 'tamu':
+                    return redirect()->route('');
+                case 'resepsionis':
+                    return redirect()->route('resepsionis.page');
+                case 'admin':
+                    return redirect()->route('admin.page');
+                default:
+                    return redirect()->route('login')->withErrors('Email dan Password tidak sesuai')->withInput();
             }
         } else {
             return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
@@ -53,12 +53,13 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/dashboard');
+
+        return redirect('/');
     }
 
     public function registerPage()
     {
-        return view("register");
+        return view('register');
     }
 
     public function register(Request $request)
@@ -90,18 +91,16 @@ class AuthController extends Controller
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
 
         // Menyimpan avatar ke dalam storage
-        $avatarPath = 'avatars/' . $user->id . '.png';
+        $avatarPath = 'avatars/'.$user->id.'.png';
         Storage::put($avatarPath, (string) $avatar);
 
         // menyimpan path avatar ke dalam tabel users
         $user->avatar = $avatarPath;
         $user->save();
 
-
-
         Auth::login($user);
 
-        return view('profil');
+        return view('');
     }
 
     // menapilkan avatar di halaman tertentu
