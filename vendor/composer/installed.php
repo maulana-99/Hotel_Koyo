@@ -7,6 +7,8 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+        'reference' => '5aae37c74a90532f56e58d4ad9a84aef39efcb19',
+        'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
@@ -364,6 +366,15 @@
                 0 => 'v10.48.10',
             ),
         ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -386,6 +397,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'reference' => '5aae37c74a90532f56e58d4ad9a84aef39efcb19',
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(
@@ -440,6 +452,15 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'laravolt/avatar' => array(
+            'pretty_version' => '5.1.0',
+            'version' => '5.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravolt/avatar',
+            'aliases' => array(),
+            'reference' => 'e01beadcd0a98a08cce10cb71e7acaf4e52062cd',
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
