@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Kamar;
 use Illuminate\Http\Request;
 
 class KamarController extends Controller
@@ -11,7 +11,8 @@ class KamarController extends Controller
      */
     public function index()
     {
-        //
+        $kamar = Kamar::all();
+        return view('kamar.index', compact('kamar'));
     }
 
     /**
@@ -19,7 +20,7 @@ class KamarController extends Controller
      */
     public function create()
     {
-        //
+        return view('kamar.create');
     }
 
     /**
@@ -27,7 +28,22 @@ class KamarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([  
+        'nama_kamar' => 'required',
+        'tipe_kamar' => 'required',
+        'harga' => 'required',
+        'foto_kamar' => 'required|image|mimes:jpeg,png,jpg|max:255',
+      ]);
+      $imageName = time().'.'.$request->foto_kamar->extension();
+      $request->foto_kamar->move(public_path('images'), $imageName);
+
+      Kamar::create([
+        'nama_kamar' => $request->nama_kamar,
+        'tipe_kamar' => $request->tipe_kamar,
+        'harga' => $request->harga,
+        'foto_kamar' => $imageName,
+      ]);
+      return redirect()->route('kamar.index')->with('success', 'Kamar sukses ditambah.');
     }
 
     /**
