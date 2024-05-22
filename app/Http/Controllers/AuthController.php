@@ -37,7 +37,7 @@ class AuthController extends Controller
         if (Auth::attempt($infologin)) {
             switch (Auth::user()->role) {
                 case 'tamu':
-                    return redirect()->route('');
+                    return redirect()->route('dashboard_guest');
                 case 'resepsionis':
                     return redirect()->route('resepsionis.page');
                 case 'admin':
