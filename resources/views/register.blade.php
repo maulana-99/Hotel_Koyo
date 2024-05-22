@@ -30,7 +30,7 @@
                 <form id="loginForm" method="post" action="">
                     @csrf
                     <div class="input-container">
-                        <input type="Username" value="{{ old('Username') }}" id="Username" name="Username" required placeholder="Username">
+                        <input type="text" value="{{ old('Username') }}" id="name" name="name" required placeholder="Username">
                     </div>
                     <div class="input-container">
                         <input type="email" value="{{ old('email') }}" id="email" name="email" required placeholder="Email">
@@ -38,6 +38,10 @@
                     <div class="input-container">
                         <span><i id="toggler"class="far fa-eye"></i></span>
                         <input type="password" id="fakePassword" name="password" required placeholder="Password">
+                      </div>                    
+                      <div class="input-container">
+                        <span><i id="toggler"class="far fa-eye"></i></span>
+                        <input type="password" id="fakePassword" name="password_confirmation" required placeholder="Password Confrim">
                       </div>
 
                     <button name="submit" type="submit" class="btn btn-primary">Daftar</button>

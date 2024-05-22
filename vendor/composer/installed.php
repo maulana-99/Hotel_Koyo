@@ -3,12 +3,10 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '474dfa94504590996bde6e69bdcde102499fa201',
+        'reference' => '0c950f8c332685df29c164a5b06b0cd6aa810efa',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5aae37c74a90532f56e58d4ad9a84aef39efcb19',
-        'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
@@ -369,10 +367,10 @@
         'intervention/image' => array(
             'pretty_version' => '2.7.2',
             'version' => '2.7.2.0',
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
             'type' => 'library',
             'install_path' => __DIR__ . '/../intervention/image',
             'aliases' => array(),
-            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
             'dev_requirement' => false,
         ),
         'kodova/hamcrest-php' => array(
@@ -393,11 +391,10 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '474dfa94504590996bde6e69bdcde102499fa201',
+            'reference' => '0c950f8c332685df29c164a5b06b0cd6aa810efa',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5aae37c74a90532f56e58d4ad9a84aef39efcb19',
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(
@@ -457,10 +454,10 @@
         'laravolt/avatar' => array(
             'pretty_version' => '5.1.0',
             'version' => '5.1.0.0',
+            'reference' => 'e01beadcd0a98a08cce10cb71e7acaf4e52062cd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravolt/avatar',
             'aliases' => array(),
-            'reference' => 'e01beadcd0a98a08cce10cb71e7acaf4e52062cd',
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(

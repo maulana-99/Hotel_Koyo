@@ -1,129 +1,30 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #C30000;
-    padding: 30px;
+.background-container {
     position: relative;
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.navbar-brand .logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    border-radius: 50%; /* Menjadikan gambar bulat */
-    object-fit: cover; /* Agar gambar tetap proporsional */
-}
-
-.navbar-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-links li {
-    margin-left: 40px;
-    font-size: 24px;
-}
-
-.navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s;
-}
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  z-index: -2;
-}
-.navbar-links a:hover {
-    background-color: #ff0000;
-    border-radius: 4px;
-    border-radius: 7px;
-}
-
-.navbar-profile {
-    color: #fff;
-    font-size: 1rem;
-    font-size: 24px;
-}
-
-.profile-link {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s;
-}
-
-.profile-link:hover {
-    background-color: #ff0000;
-    border-radius: 7px;
-
-}
-
-.profile-pic {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.navbar-toggle {
-    display: none;
-    flex-direction: column;
     cursor: pointer;
+   
 }
-
-.navbar-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px 0;
+.background{
+    width: 100%;
+    height: auto;
 }
-
-@media (max-width: 768px) {
-    .navbar-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #ff0000;
-    }
-
-    .navbar-links li {
-        text-align: center;
-        margin: 0;
-    }
-
-    .navbar-profile {
-        display: none; /* Hide profile link on smaller screens */
-    }
-
-    .navbar-toggle {
-        display: flex;
-    }
-
-    .navbar-links.active {
-        display: flex;
-    }
+.hover-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 10;
+}
+.background-container:hover .hover-text {
+    display: block;
 }
