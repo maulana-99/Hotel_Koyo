@@ -22,7 +22,7 @@ Route::get('/register', function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/', [DashboardController::class, 'show'])->middleware('auth');
+Route::get('/logoutAkun', [DashboardController::class, 'logout']);
 
 Route::get('/deskripsi_kamar', function () {
     return view('deskripsi_kamar');

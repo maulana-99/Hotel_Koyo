@@ -11,13 +11,7 @@
 @include('component.sidebar')
 
     <div class="content">
-        <div class="navbar">
-            <h1>Selamat Datang, Admin</h1>
-            <div class="profile">
-                <img src="profile.jpg" alt="Profile Picture">
-                <span>User Name</span>
-            </div>
-        </div>
+@include('component.navbarAdmin')
         <form method="GET" action="">
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>

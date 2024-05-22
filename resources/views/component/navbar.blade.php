@@ -167,10 +167,7 @@
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="{{ url('/logout') }}">Logout</a>
-                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    <a href="{{ url('/logoutAkun') }}">Logout</a>
                 </div>
             @else
                 <a href="#" class="profile-link">

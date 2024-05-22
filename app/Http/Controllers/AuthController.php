@@ -41,7 +41,7 @@ class AuthController extends Controller
                 case 'resepsionis':
                     return redirect()->route('resepsionis.page');
                 case 'admin':
-                    return redirect()->route('admin.page');
+                    return redirect()->route('adminPage.backoffice');
                 default:
                     return redirect()->route('login')->withErrors('Email dan Password tidak sesuai')->withInput();
             }
@@ -101,14 +101,5 @@ class AuthController extends Controller
         Auth::login($user);
 
         return view('');
-    }
-
-    // menapilkan avatar di halaman tertentu
-    public function show()
-    {
-        $user = auth()->user();
-        $avatar = Avatar::create($user->name)->toBase64();
-
-        return view('profil', compact('user', 'avatar'));
     }
 }

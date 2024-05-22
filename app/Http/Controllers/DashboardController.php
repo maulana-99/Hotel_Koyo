@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravolt\Avatar\Facade as Avatar;
 
 class DashboardController extends Controller
 {
-    function index(){
+    public function index()
+    {
+        if ($user = auth()->user()) {
+            $avatar = Avatar::create($user->name)->toBase64();
+
+            return view('dashboard_guest', compact('user', 'avatar'));
+        }
+
         return view('dashboard_guest');
     }
 
-    public function show()
+    public function logout()
     {
-        $user = auth()->user();
-        $avatar = Avatar::create($user->name)->toBase64();
+        Auth::logout();
 
-        return view('dashboard_guest', compact('user', 'avatar'));
+        return redirect('/');
     }
 }
