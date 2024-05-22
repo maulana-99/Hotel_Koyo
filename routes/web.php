@@ -24,7 +24,6 @@ Route::get('/register', function () {
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/', [DashboardController::class, 'show'])->middleware('auth');
 
-
 Route::get('/deskripsi_kamar', function () {
     return view('deskripsi_kamar');
 });
@@ -38,10 +37,6 @@ Route::get('/tamu_reservasi', function () {
 
 Route::get('/peringatan', function () {
     return view('peringatan');
-});
-
-Route::get('/backoffice', function () {
-    return view('backoffice');
 });
 
 // menjadi mode tamu dan hanya bisa melihat saja
@@ -62,6 +57,8 @@ Route::middleware('userAkses:admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'index']);
+    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'show']);
+    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'showNav']);
 });
 
 Route::middleware('userAkses:resepsionis')->group(function () {
@@ -73,6 +70,3 @@ Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/tamu', [AdminController::class, 'tamu']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
-
-Route::get('/profil', function () {return view('profil'); })->middleware('auth')->name('profil');
-Route::get('/profil', [AuthController::class, 'show'])->middleware('auth');

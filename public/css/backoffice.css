@@ -1,150 +1,164 @@
+/* backoffice.css */
+
+/* General Styles */
 body {
-    display: flex;
     font-family: Arial, sans-serif;
     margin: 0;
-    height: 100vh;
+    padding: 0;
+    display: flex;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Sidebar Styles */
 .sidebar {
-    width: 250px;
+    width: 200px;
     background-color: #333;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    padding-top: 20px;
+    text-align: center;
 }
+
 .sidebar img {
-    width: 150px;
+    width: 80%;
     margin-bottom: 20px;
 }
-.navbar {
-    background-color: #444;
-    padding: 10px 20px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.navbar h1{
-font-size: 24px;
-}
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-.crud-table {
-    margin: 20px;
-    border-collapse: collapse;
-    width: calc(100% - 40px);
-}
-.crud-table th, .crud-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-.crud-table th {
-    background-color: #f2f2f2;
-}
-.profile {
-    display: flex;
-    align-items: center;
-}
-.profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.sidebar {
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-.sidebar img {
-    width: 150px;
-    margin-bottom: 20px;
-}
+
 .sidebar-menu {
-    width: 100%;
     list-style-type: none;
     padding: 0;
 }
+
 .sidebar-menu li {
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid #444;
+    padding: 10px 0;
 }
-.sidebar-menu li:first-child {
-    border-top: none;
-}
+
 .sidebar-menu li a {
     color: #fff;
     text-decoration: none;
     display: block;
-    width: 100%;
-    height: 100%;
 }
+
 .sidebar-menu li a:hover {
-    background-color: #555;
+    background-color: #575757;
+    border-radius: 4px;
 }
-.table-header {
+
+/* Content Styles */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 200px);
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #f2f2f2;
+    padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
 }
-.table-header h2 {
+
+.navbar h1 {
     margin: 0;
 }
-.crud-table {
-    margin: 20px;
-    border-collapse: collapse;
-    width: calc(100% - 40px);
-}
-.crud-table th, .crud-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-.crud-table th {
-    background-color: #f2f2f2;
-}
-.profile {
+
+.navbar .profile {
     display: flex;
     align-items: center;
 }
-.profile img {
+
+.navbar .profile img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
-.search-container {
+
+.navbar .profile span {
+    font-weight: bold;
+}
+
+form {
+    margin: 20px 0;
     display: flex;
     align-items: center;
 }
-.search-container input {
-    padding: 8px;
-    margin-right: 10px;
+
+form input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.search-container button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
+
+form button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 16px;
     border: none;
+    background-color: #007BFF;
+    color: #fff;
     border-radius: 4px;
     cursor: pointer;
 }
-.search-container button:hover {
+
+form button:hover {
     background-color: #0056b3;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Table Styles */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.crud-table th, .crud-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.crud-table th {
+    background-color: #f2f2f2;
+}
+
+.crud-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.crud-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.crud-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.crud-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }

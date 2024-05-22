@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Support\Facades\Storage;
-use Redirect;
+use Laravolt\Avatar\Facade as Avatar;
 
 class ManagementResepsionisController extends Controller
 {
@@ -25,8 +23,27 @@ class ManagementResepsionisController extends Controller
             })
             ->paginate(10);
 
-        return view('adminPage.mr', compact('users'));
+        return view('adminPage.backoffice', compact('users'));
     }
+
+    public function show()
+    {
+        $user = User::all();
+        foreach ($user as $user) {
+            $user->avatar = Avatar::create($user->name)->toBase64();
+        }
+
+        return view('adminPage.backoffice', compact('users'));
+    }
+
+    public function showNav()
+    {
+        $user = auth()->user();
+        $avatar = Avatar::create($user->name)->toBase64();
+
+        return view('adminPage.backoffice', compact('user', 'avatar'));
+    }
+
     // function create(Request $request)
     // {
     //     $validatedData = $request->validate(
@@ -65,5 +82,4 @@ class ManagementResepsionisController extends Controller
 
     //     return 'success: create.Resepsionis';
     // }
-
 }
