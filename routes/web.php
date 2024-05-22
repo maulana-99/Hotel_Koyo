@@ -22,6 +22,8 @@ Route::get('/register', function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'show'])->middleware('auth');
+
 
 Route::get('/deskripsi_kamar', function () {
     return view('deskripsi_kamar');
@@ -51,9 +53,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
 });
 
-// Route::get('/home', function () {
-//     return redirect('/admin');
-// });
+Route::get('/home', function () {
+    return redirect('/');
+});
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role
 Route::middleware('userAkses:admin')->group(function () {

@@ -164,6 +164,7 @@
             @if (Auth::check())
                 <a href="#" class="profile-link">
                     <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
+                    <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu">
                     <a href="{{ url('/logout') }}">Logout</a>
