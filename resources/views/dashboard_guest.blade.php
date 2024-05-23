@@ -14,9 +14,10 @@
     <div class="background-container">
         <img src="{{ asset('img/background.png') }}" alt="background" class="background">
         <div class="hover-text">
-            <p>Top Cinangka Hotel adalah sebuah hotel mewah yang terletak di Cinangka, sebuah tempat yang dikenal karena
-                keindahan alamnya di Indonesia. Dengan desain yang elegan dan modern, hotel ini menawarkan pengalaman
-                menginap yang nyaman dan mewah bagi para tamunya.</p>
+            <h1><b>Tentang Kami</b></h1>
+            <p>Top Cinangka Hotel adalah sebuah hotel mewah yang terletak di Cinangka,<p> sebuah tempat yang dikenal karena
+                keindahan alamnya di Indonesia. Dengan </p><p>desain yang elegan dan modern, hotel ini menawarkan pengalaman
+                menginap </p>yang nyaman dan mewah bagi para tamunya.</p>
         </div>
     </div>
 </body>

@@ -38,11 +38,11 @@
                     <div class="input-container">
                         <span><i id="toggler"class="far fa-eye"></i></span>
                         <input type="password" id="fakePassword" name="password" required placeholder="Password">
-                      </div>                    
-                      <div class="input-container">
+                    </div>                    
+                    <div class="input-container">
                         <span><i id="toggler"class="far fa-eye"></i></span>
                         <input type="password" id="fakePassword" name="password_confirmation" required placeholder="Password Confrim">
-                      </div>
+                    </div>
 
                     <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
                     <br>

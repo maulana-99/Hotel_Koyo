@@ -58,7 +58,7 @@
 .navbar-profile {
     position: relative;
     color: #fff;
-    font-size: 24px;
+    font-size: 16px; /* Reduced font size */
 }
 
 .profile-link {
@@ -66,10 +66,18 @@
     align-items: center;
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 4rem; /* Reduced padding */
     transition: background-color 0.3s;
+    font-size: 24px; /* Reduced font size */
 }
 
+.profile-link img {
+    width: 70px; /* Adjust the width as needed */
+    height: 70px; /* Ensure the height is proportionate */
+    border-radius: 50%; /* Keep the avatar circular */
+    margin-right: 0.5rem; /* Space between image and text */
+}
+ 
 .profile-link:hover {
     background-color: #ff0000;
     border-radius: 7px;
@@ -95,10 +103,11 @@
 
 .dropdown-menu a {
     color: #fff;
-    padding: 12px 16px;
+    padding: 30px 40px;
     text-decoration: none;
     display: block;
     transition: background-color 0.3s;
+    font-size: 20px;
 }
 
 .dropdown-menu a:hover {
@@ -107,19 +116,6 @@
 
 .navbar-profile:hover .dropdown-menu {
     display: block;
-}
-
-.navbar-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.navbar-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px 0;
 }
 
 @media (max-width: 768px) {
@@ -137,10 +133,6 @@
 
     .navbar-profile {
         display: none;
-    }
-
-    .navbar-toggle {
-        display: flex;
     }
 
     .navbar-links.active {
@@ -179,11 +171,7 @@
                 </div>
             @endif
         </div>
-        <div class="navbar-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+     
     </nav>
 </body>
 <script src="{{ asset('js/menu.js') }}"></script>

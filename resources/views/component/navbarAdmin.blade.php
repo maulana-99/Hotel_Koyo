@@ -12,6 +12,7 @@
     align-items: center;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
+    font-size: 24px;
 }
 
 .navbar h1 {
@@ -22,7 +23,6 @@
     display: flex;
     align-items: center;
 }
-
 .navbar .profile img {
     width: 40px;
     height: 40px;
@@ -33,10 +33,10 @@
 .navbar .profile span {
     font-weight: bold;
 }
+
+
 </style>
 <body>
-    <div class="navbar">
-        <h1>Selamat Datang, Admin</h1>
         <div class="profile">
             <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
             <span>{{ Auth::user()->name }}</span>
