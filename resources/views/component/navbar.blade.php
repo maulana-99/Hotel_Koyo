@@ -68,12 +68,12 @@
     text-decoration: none;
     padding: 0.3rem 4rem; /* Reduced padding */
     transition: background-color 0.3s;
-    font-size: 24px; /* Reduced font size */
+    font-size: 16px; /* Reduced font size */
 }
 
 .profile-link img {
-    width: 70px; /* Adjust the width as needed */
-    height: 70px; /* Ensure the height is proportionate */
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Ensure the height is proportionate */
     border-radius: 50%; /* Keep the avatar circular */
     margin-right: 0.5rem; /* Space between image and text */
 }
@@ -103,11 +103,11 @@
 
 .dropdown-menu a {
     color: #fff;
-    padding: 30px 40px;
+    padding: 20px 24px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.3s;
-    font-size: 20px;
+    transition: background-color 0.3 s;
+    font-size: 16px;
 }
 
 .dropdown-menu a:hover {
