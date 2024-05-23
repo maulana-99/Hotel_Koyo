@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($users->isEmpty())
+                {{-- @if ($users->isEmpty())
                 <tr>
                     <td>0</td>
                     <td>No Data</td>
@@ -55,7 +55,7 @@
                     <td>{{ $user->updated_at }}</td>
                 </tr>
                 @endforeach
-                @endif
+                @endif --}}
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
