@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementResepsionisController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,8 @@ Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/tamu', [AdminController::class, 'tamu']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+Route::get('/create', function () {
+    return view('kamar.create');
+});
+
+Route::resource('kamar', KamarController::class);
