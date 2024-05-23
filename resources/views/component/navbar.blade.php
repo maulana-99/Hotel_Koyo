@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #C30000;
-    padding: 30px 30px;
+    padding: 25px 30px;
     position: relative;
 }
 
