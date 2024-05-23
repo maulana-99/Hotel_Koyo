@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/fasilitas', function () {
+    return view('fasilitas');
+});
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/logoutAkun', [DashboardController::class, 'logout']);
