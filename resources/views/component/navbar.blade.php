@@ -23,7 +23,9 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
-
+.navbar-brand span {
+font-size: 20px;
+}
 .navbar-brand .logo {
     width: 40px;
     height: 40px;
@@ -40,7 +42,7 @@
 
 .navbar-links li {
     margin-left: 40px;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .navbar-links a {
