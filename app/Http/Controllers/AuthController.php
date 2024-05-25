@@ -37,16 +37,16 @@ class AuthController extends Controller
         if (Auth::attempt($infologin)) {
             switch (Auth::user()->role) {
                 case 'tamu':
-                    return redirect()->route('dashboard_guest');
+                    return redirect('/dashboard');
                 case 'resepsionis':
-                    return redirect()->route('resepsionis.page');
+                    return redirect('/resepsionis');
                 case 'admin':
-                    return redirect()->route('adminPage.backoffice');
+                    return redirect('/admin');
                 default:
                     return redirect()->route('login')->withErrors('Email dan Password tidak sesuai')->withInput();
             }
         } else {
-            return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
+            return redirect('/login')->withErrors('Email dan Password tidak sesuai')->withInput();
         }
     }
 
@@ -54,7 +54,7 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function registerPage()
@@ -91,7 +91,7 @@ class AuthController extends Controller
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
 
         // Menyimpan avatar ke dalam storage
-        $avatarPath = 'avatars/'.$user->id.'.png';
+        $avatarPath = 'avatars/' . $user->id . '.png';
         Storage::put($avatarPath, (string) $avatar);
 
         // menyimpan path avatar ke dalam tabel users
@@ -100,6 +100,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return view('');
+        return redirect('/dashboard');
     }
 }

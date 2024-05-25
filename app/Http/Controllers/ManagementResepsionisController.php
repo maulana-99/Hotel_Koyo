@@ -13,36 +13,32 @@ class ManagementResepsionisController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $users = User::query()
-            ->where('role', 'resepsionis')
-            ->when($search, function ($query, $search) {
-                return $query->where(function ($q) use ($search) {
-                    $q->where('name', 'like', "%{$search}%")
-                        ->orWhere('email', 'like', "%{$search}%");
-                });
-            })
-            ->paginate(10);
-
-        return view('adminPage.backoffice', compact('users'));
-    }
-
-    public function show()
-    {
-        $user = User::all();
-        foreach ($user as $user) {
-            $user->avatar = Avatar::create($user->name)->toBase64();
+        $query = User::query()->where('role', 'resepsionis');
+    
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
         }
-
-        return view('adminPage.backoffice', compact('users'));
-    }
-
-    public function showNav()
-    {
+    
+        $users = $query->paginate(10);
+    
+        // Get authenticated user's avatar if available
+        $avatar = null;
         $user = auth()->user();
-        $avatar = Avatar::create($user->name)->toBase64();
-
-        return view('adminPage.backoffice', compact('user', 'avatar'));
+        if ($user) {
+            $avatar = Avatar::create($user->name)->toBase64();
+        }
+    
+        return view('adminPage.backoffice', [
+            'users' => $users,
+            'user' => $user,
+            'avatar' => $avatar
+        ]);
     }
+    
+
 
     // function create(Request $request)
     // {
