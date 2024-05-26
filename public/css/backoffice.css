@@ -1,0 +1,99 @@
+/* backoffice.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Content Styles */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 200px);
+}
+
+form {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+form input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Table Styles */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.crud-table th, .crud-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.crud-table th {
+    background-color: #f2f2f2;
+}
+
+.crud-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.crud-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.crud-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.crud-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
