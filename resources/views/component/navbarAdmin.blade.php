@@ -42,7 +42,7 @@
         <h1>My Website</h1>
         <div class="profile">
             {{-- Uncomment the line below and replace with your dynamic avatar URL --}}
-            <img src="{{ $avatar }}">
+            {{-- <img src="{{ $avatar }}"> --}}
             <span>{{ Auth::user()->name }}</span>
         </div>
     </div>

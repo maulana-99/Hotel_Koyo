@@ -70,8 +70,13 @@ Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
 });
-Route::get('/create', function () {
-    return view('kamar.create');
-});
+// Route::get('/create', function () {
+//     return view('kamar.create');
+// });
 
+// Route::resource('kamar', KamarController::class,);
+
+Route::get('/kamar',[KamarController::class,'index']);
+Route::get('/kamar/create',[KamarController::class,'create']);
+Route::post('/kamar/create',[KamarController::class,'store']);
 Route::resource('kamar', KamarController::class);
