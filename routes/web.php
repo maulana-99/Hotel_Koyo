@@ -18,6 +18,8 @@ use App\Http\Controllers\KamarController;
 |
 */
 
+Route::get('/', [DashboardController::class, 'index']);
+
 Route::get('/fasilitas', function () {
     return view('fasilitas');
 });
@@ -44,8 +46,6 @@ Route::middleware(['guest'])->group(function () {
 
     Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
-    Route::get('/', [DashboardController::class, 'index']);
-
 });
 
 Route::get('/home', function () {
@@ -54,10 +54,11 @@ Route::get('/home', function () {
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role
 Route::middleware('userAkses:admin')->group(function () {
-    Route::get('/admin', [ManagementResepsionisController::class, 'index']);
+    Route::get('/admin', [ManagementResepsionisController::class, 'index'])->name('adminPage.backoffice');
+    Route::post('/admin', [ManagementResepsionisController::class, 'create'])->name('create');
+    Route::post('/admin/{id}', [ManagementResepsionisController::class, 'deactivate'])->name('users.deactivate');
     // Route::post('/admin', [ManagementResepsionisController::class, 'search']);
     // Route::get('/admin', [ManagementResepsionisController::class, 'avatar']);
-
 });
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role

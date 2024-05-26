@@ -10,6 +10,7 @@
     <title>backoffice</title>
 </head>
 
+
 <body>
     @include('component.sidebar')
 
@@ -20,10 +21,18 @@
             <button type="submit">Search</button>
         </form>
         <div>
-            <button>Edit Selected</button>
-            <button>Delete Selected</button>
-            <button>Create</button>
+            <button onclick="togglePopup()">Create</button>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <table class="crud-table" id="crud-table">
             <thead>
                 <tr>
@@ -33,6 +42,7 @@
                     <th>Password</th>
                     <th>Create</th>
                     <th>Update</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,22 +54,38 @@
                         <td>No Data</td>
                         <td>No Data</td>
                         <td>No Data</td>
+                        <td>No Action</td>
                     </tr>
                 @else
                     @foreach ($users as $user)
-                        <tr>
+                        <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
+                            data-email="{{ $user->email }}">
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->password }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
+                            <td>
+                                <button onclick="editPopup()">Edit Selected</button>
+                                <form method="POST" action="{{ route('users.deactivate', $user->id) }}"
+                                    class="d-inline" onsubmit="return confirmDeactivation()">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Non-aktifkan</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 @endif
             </tbody>
         </table>
     </div>
+    @include('component.createRes')
+    <script>
+        function confirmDeactivation() {
+            return confirm("Apakah Anda yakin ingin menonaktifkan user ini?");
+        }
+    </script>
 </body>
 
 </html>
