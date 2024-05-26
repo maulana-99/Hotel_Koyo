@@ -43,7 +43,7 @@ class KamarController extends Controller
         'harga' => $request->harga,
         'foto_kamar' => $imageName,
       ]);
-      return redirect()->route('kamar.index')->with('success', 'Kamar sukses ditambah.');
+      return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
     }
 
     /**
@@ -51,7 +51,7 @@ class KamarController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -59,7 +59,8 @@ class KamarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kamar = Kamar::Cari($id);
+        return view('kamar.edit', compact('kamar'));
     }
 
     /**
@@ -67,7 +68,24 @@ class KamarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama_kamar' => 'required',
+            'tipe_kamar' => 'required',
+            'harga' => 'required',
+            'foto_kamar' => 'required|image|mimes:jpeg,png,jpg|max:255',
+        ]);
+        $kamar = Kamar::Cari($id);
+        if($request->File('foto_kamar')){
+            $imageName = time().'.'.$request->foto_kamar->extension();
+            $request->foto_kamar->move(public_path('images'), $imageName);
+            $kamar->foto_kamar = $imageName;
+        }
+        $kamar->nama_kamar = $request->nama_kamar;
+        $kamar->tipe_kamar = $request->tipe_kamar;
+        $kamar->harga = $request->harga;
+        $kamar->save();
+
+        return redirect()->route('kamar.index')->with('sukses', 'kamar sukses diupdate');
     }
 
     /**
@@ -75,6 +93,8 @@ class KamarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $kamar = Kamar::Cari($id);
+        $kamar->delete();
+        return redirect()->route('kamar.index')->with('sukses', 'kamar sukses dihapus');
     }
 }
