@@ -17,11 +17,4 @@ class DashboardController extends Controller
 
         return view('dashboard_guest');
     }
-
-    public function logout()
-    {
-        Auth::logout();
-
-        return redirect('/');
-    }
 }

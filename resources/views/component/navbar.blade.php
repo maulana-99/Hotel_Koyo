@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,16 +142,23 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
+            <img src="{{ asset('img/image.png') }}" alt="Logo" class="logo">
             <span>TopCinangkaHotel</span>
         </div>
         <ul class="navbar-links">
-            <li><a href="{{url('/')}}">Beranda</a></li>
-            <li><a href="{{url('/tamu_reservasi')}}">Reservasi</a></li>
-            <li><a href="#facilities">Fasilitas</a></li>
+            <li>
+                @auth
+                    <a href="{{ url('/dashboard') }}">Beranda</a>
+                @else
+                    <a href="{{ url('/') }}">Beranda</a>
+                @endauth
+            </li>
+            <li><a href="{{ url('/tamu_reservasi') }}">Reservasi</a></li>
+            <li><a href="{{ url('/fasilitas') }}">Fasilitas</a></li>
         </ul>
         <div class="navbar-profile">
             @if (Auth::check())
@@ -159,7 +167,7 @@
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu">
-                    <a href="{{ url('/logoutAkun') }}">Logout</a>
+                    <a href="{{ url('/logout') }}">Logout</a>
                 </div>
             @else
                 <a href="#" class="profile-link" id="profileLink">

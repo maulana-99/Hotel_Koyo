@@ -18,28 +18,22 @@ use App\Http\Controllers\KamarController;
 |
 */
 
-Route::get('/register', function () {
-    return view('register');
-});
 Route::get('/fasilitas', function () {
     return view('fasilitas');
 });
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/logoutAkun', [DashboardController::class, 'logout']);
+Route::get('/logout', [AuthController::class, 'logout']);
+// ----------------------------------------------|
+// Route::get('/deskripsi_kamar', function () {  |
+//     return view('deskripsi_kamar');           |
+// });                                           |
+//                                               |--> BUKA AJA KALAU LAGI BUTUH
+// Route::get('/tamu_reservasi', function () {   |
+//     return view('tamu_reservasi');            |
+// });                                           |
+// ----------------------------------------------|
 
-Route::get('/deskripsi_kamar', function () {
-    return view('deskripsi_kamar');
-});
-Route::get('/tamu_login', function () {
-    return view('tamu_login');
-});
-
-Route::get('/tamu_reservasi', function () {
-    return view('tamu_reservasi');
-});
-
-Route::get('/peringatan', function () {
+Route::get('/404-not-found', function () {
     return view('peringatan');
 });
 
@@ -50,6 +44,8 @@ Route::middleware(['guest'])->group(function () {
 
     Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/', [DashboardController::class, 'index']);
+
 });
 
 Route::get('/home', function () {
@@ -58,21 +54,21 @@ Route::get('/home', function () {
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role
 Route::middleware('userAkses:admin')->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
-    Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'index']);
-    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'show']);
-    Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'showNav']);
+    Route::get('/admin', [ManagementResepsionisController::class, 'index']);
+    // Route::post('/admin', [ManagementResepsionisController::class, 'search']);
+    // Route::get('/admin', [ManagementResepsionisController::class, 'avatar']);
+
 });
 
+// user yang sudah login dan bisa meng akses halaman ini berdasarkan role
 Route::middleware('userAkses:resepsionis')->group(function () {
-    Route::get('/resepsionis', [AdminController::class, 'resepsionis'])->middleware('userAkses:resepsionis');
-    Route::get('/logout', [AuthController::class, 'logout']);
+    // Route::get('/resepsionis', [AdminController::class, 'resepsionis']); ---> UBAH MENJADI URL RESEPSIONIS
 });
 
+// user yang sudah login dan bisa meng akses halaman ini berdasarkan role
 Route::middleware('userAkses:tamu')->group(function () {
-    Route::get('/tamu', [AdminController::class, 'tamu']);
-    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+
 });
 Route::get('/create', function () {
     return view('kamar.create');

@@ -15,9 +15,10 @@ class UserAkses
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if (auth()->user()->role == $role) {
+        $user = auth()->user();
+        if ($user && $user->role == $role) {
             return $next($request);
         }
-        return redirect('/peringatan');
+        return redirect('/404-not-found');
     }
 }

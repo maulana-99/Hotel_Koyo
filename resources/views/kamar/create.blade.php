@@ -1,5 +1,18 @@
-    <h1>Create Kamar</h1>
-    <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data">
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+    <title>Document</title>
+   </head>
+   <body>
+    
+    @include('component.navbarAdmin')
+    @include('component.sidebar')
+       <h1>Create Kamar</h1>
+       <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="nama_kamar">Nama Kamar:</label>
@@ -19,3 +32,7 @@
         </div>
         <button type="submit">Submit</button>
     </form>
+
+       </body>
+       </html>
+       
