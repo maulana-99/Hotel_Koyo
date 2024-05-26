@@ -8,17 +8,21 @@
 </head>
 <style>
     /* Sidebar Styles */
+    *{
+        margin: 0;
+        padding: 0;
+    }
     .sidebar {
-        width: 200px;
+        width: 250px;
         background-color: #C22F2F;
         color: #fff;
         position: fixed;
         height: 100%;
-        overflow: auto;
     }
 
     .sidebar img {
-        width: 80%;
+        width: 100%;
+        height: 120%;
         margin-bottom: 20px;
     }
 
@@ -27,36 +31,51 @@
         padding: 0;
     }
 
-    .sidebar-menu li {
-        padding: 10px 0;
-    }
+    .sidebar-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
-    .sidebar-menu li a {
-        color: #fff;
-        text-decoration: none;
-        display: block;
-    }
 
-    .sidebar-menu li a:hover {
-        background-color: #ee3838;
-        border-radius: 4px;
-    }
+.sidebar-menu li {
+    padding: 0;
+}
 
-    .bg-logo {
-        background-color: #fff;
-        color: #C22F2F;
-    }
+.sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #ee3838;
+    border-radius: 4px;
+}
+
+.bg-logo {
+    background-color: #fff;
+    color: #c22f2f;
+}
+li a .text-dashboard{
+padding: 20px;
+}
 </style>
 
 <body>
     <div class="sidebar">
         <div class="bg-logo">
-            <img src="logo.png" alt="Company Logo">
+            <img src="{{ asset('img/logo_lanscap.png') }}" alt="Company Logo">
         </div>
-        <ul class="sidebar-menu">
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#settings">Settings</a></li>
+        <ul class="sidebar-menu">     
+            <li><a href="#profile" class="text-dashboard">Dashboard</a></li>
+            <li><a href="#profile">Kamar Hotel</a></li>
+            <li><a href="#settings">Fasilitas</a></li>
+            <li><a href="{{url('/admin/resepsionis')}}">Resepsionis</a></li>
             <li><a href="{{url('/logout')}}">Logout</a></li>
         </ul>
     </div>

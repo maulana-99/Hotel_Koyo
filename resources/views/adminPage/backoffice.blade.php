@@ -9,30 +9,43 @@
     <link rel="stylesheet" href="{{ asset('css/backoffice.css') }}">
     <title>backoffice</title>
 </head>
+<style>
+    .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            
+        }
+</style>
 
 <body>
     @include('component.sidebar')
 
+   
     <div class="content">
+        
         @include('component.navbarAdmin')
+        
+        <div class="page-title">
+            <h2>Resepsionis</h2>
+        </div>
         <form method="GET" action="">
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>
         </form>
         <div>
-            <button>Edit Selected</button>
-            <button>Delete Selected</button>
-            <button>Create</button>
+            <button class="button_create">Create</button>
         </div>
+        
         <table class="crud-table" id="crud-table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <th class="password-column">Password</th>
                     <th>Create</th>
                     <th>Update</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +54,7 @@
                         <td>0</td>
                         <td>No Data</td>
                         <td>No Data</td>
-                        <td>No Data</td>
+                        <td class="password-column">No Data</td>
                         <td>No Data</td>
                         <td>No Data</td>
                     </tr>
@@ -51,12 +64,18 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->password }}</td>
+                            <td class="password-column">{{ $user->password }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
+                            <td> 
+                                <div class="Button2">
+                                    <button>Edit Selected</button>
+                                    <button>Delete Selected</button>
+                                </div>                                
                         </tr>
                     @endforeach
                 @endif
+
             </tbody>
         </table>
     </div>

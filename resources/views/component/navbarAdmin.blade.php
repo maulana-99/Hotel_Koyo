@@ -10,15 +10,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
             border-bottom: 1px solid #ddd;
             font-size: 24px;
             background-color: #f9f9f9;
+            padding: 10px;
+            
         }
 
-        .navbar h1 {
-            margin: 0;
-        }
+
 
         .navbar .profile {
             display: flex;
@@ -35,17 +34,27 @@
         .navbar .profile span {
             font-weight: bold;
         }
+
+        .page-title {
+            font-size: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <h1>My Website</h1>
+        <h1>Selamat Datang, {{ Auth::user()->name }}</h1>
         <div class="profile">
             {{-- Uncomment the line below and replace with your dynamic avatar URL --}}
-            <img src="{{ $avatar }}">
+            {{-- <img src="{{ $avatar }}"> --}}
             <span>{{ Auth::user()->name }}</span>
         </div>
     </div>
+
+
 
     <!-- Rest of your HTML content -->
 
