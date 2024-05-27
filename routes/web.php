@@ -74,9 +74,5 @@ Route::middleware('userAkses:tamu')->group(function () {
 //     return view('kamar.create');
 // });
 
-// Route::resource('kamar', KamarController::class,);
-Route::resource('kamar', KamarController::class);
-Route::get('/kamar',[KamarController::class,'index'])->name('kamar.index');
-Route::get('/kamar/create', [KamarController::class, 'create'])->name('kamar.create');
-Route::post('/kamar', [KamarController::class, 'store'])->name('kamar.store');
-Route::delete('/kamar/{id}', [KamarController::class, 'destroy'])->name('kamar.destroy');
+Route::resource('kamar', KamarController::class,);
+

@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     <title>Document</title>
 </head>
-<style>
-</style>
 <body>
     <h1>Kamar List</h1>
     <a href="{{ route('kamar.create') }}">Create New Kamar</a>
@@ -35,8 +33,8 @@
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <a href="">Edit</a>
-                        <form action="" method="POST" style="display:inline;">
+                        <a href="{{ route('kamar.edit', $item->id_kamar) }}">Edit</a>
+                        <form action="{{ route('kamar.destroy', $item->id_kamar) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Delete</button>

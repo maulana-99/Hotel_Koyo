@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Kamar;
 use Illuminate\Http\Request;
 
@@ -36,7 +35,7 @@ class KamarController extends Controller
             'harga' => 'required|numeric',
             'foto_kamar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
+    
         // Handle the image upload
         if ($request->hasFile('foto_kamar')) {
             $imageName = time() . '.' . $request->foto_kamar->extension();
@@ -44,7 +43,7 @@ class KamarController extends Controller
         } else {
             return redirect()->route('kamar.index')->with('error', 'Image upload failed.');
         }
-
+    
         // Create the new Kamar record
         Kamar::create([
             'nama_kamar' => $validatedData['nama_kamar'],
@@ -52,56 +51,61 @@ class KamarController extends Controller
             'harga' => $validatedData['harga'],
             'foto_kamar' => $imageName,
         ]);
-
+    
         // Redirect with success message
-        return redirect()->route('kamar.index')->with('success', 'Kamar created successfully.');
+        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
+    }
+    
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        $kamar = Kamar::findOrFail($id);
+        $kamar = Kamar::Cari($id);
         return view('kamar.edit', compact('kamar'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
-            'nama_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'foto_kamar' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
+        $request->validate([
+            'nama_kamar' => 'required',
+            'tipe_kamar' => 'required',
+            'harga' => 'required',
+            'foto_kamar' => 'required|image|mimes:jpeg,png,jpg|max:255',
         ]);
-
-        $kamar = Kamar::findOrFail($id);
-
-        // Handle the image upload
-        if ($request->hasFile('foto_kamar')) {
-            $imageName = time() . '.' . $request->foto_kamar->extension();
+        $kamar = Kamar::Cari($id);
+        if($request->File('foto_kamar')){
+            $imageName = time().'.'.$request->foto_kamar->extension();
             $request->foto_kamar->move(public_path('images'), $imageName);
             $kamar->foto_kamar = $imageName;
         }
+        $kamar->nama_kamar = $request->nama_kamar;
+        $kamar->tipe_kamar = $request->tipe_kamar;
+        $kamar->harga = $request->harga;
+        $kamar->save();
 
-        // Update the Kamar record
-        $kamar->update($validatedData);
-
-        // Redirect with success message
-        return redirect()->route('kamar.index')->with('success', 'Kamar updated successfully.');
+        return redirect()->route('kamar.index')->with('sukses', 'kamar sukses diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        $kamar = Kamar::findOrFail($id);
+        $kamar = Kamar::Cari($id);
         $kamar->delete();
-
-        return redirect()->route('kamar.index')->with('success', 'Kamar deleted successfully.');
+        return redirect()->route('kamar.index')->with('sukses', 'kamar sukses dihapus');
     }
 }
