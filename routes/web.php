@@ -38,6 +38,7 @@ Route::get('/tamu_reservasi', function () {
 Route::get('/404-not-found', function () {
     return view('peringatan');
 });
+
 Route::get('/admin', function () {
     return view('adminPage.admin.admin');
 });

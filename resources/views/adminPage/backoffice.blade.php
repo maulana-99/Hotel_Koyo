@@ -79,11 +79,11 @@
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
                             <td>
-                                <button onclick="editPopup()">Edit Selected</button>
+                                <button class="edit_button" onclick="editPopup()">Edit Selected</button>
                                 <form method="POST" action="{{ route('users.deactivate', $user->id) }}"
                                     class="d-inline" onsubmit="return confirmDeactivation()">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger">Non-aktifkan</button>
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
                                 </form>
                             </td>
                         </tr>

@@ -52,14 +52,26 @@ form button {
     border-radius: 4px;
     cursor: pointer;
 }
+.edit_button {
+    padding: 10px;
+    background-color: #d4d137; /* Warna biru yang sering digunakan pada tombol edit */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+}
+
 .button_create {
     padding: 10px;
-    background-color: #28a745;
+    align-items: center;
+    background-color: #2844a7;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    width: 60px;
+    width: 70px;
     border: none; /* Menghilangkan border */
+    float: right; /* Menambahkan properti float */
 }
 
 .Button2 {
