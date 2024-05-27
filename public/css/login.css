@@ -39,14 +39,14 @@ body {
 .login_form {
     flex: 1;
     max-width: 50%; /* Reduce the width of the form section */
-    padding: 50px; /* Adjust padding for a smaller appearance */
+    padding: 40px; /* Adjust padding for a smaller appearance */
     flex-direction: column;
     background-color: #C82C37; /* Background color of the form */
     color: #fff; /* Text color */
     text-align: center;
 }
 .text{
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
 form {
     max-width: 300px;
@@ -113,7 +113,7 @@ button:hover {
 a.button-link {
 justify-content: center;
 display: flex;
-padding: 60px;
+padding: 65px;
 color: white;
 text-decoration: none;
 }

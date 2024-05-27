@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="icon" type="image/x-icon" href="img/tch_lingkaran.png">
-    <title>register</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,7 +23,7 @@
             </div>
             <div class="login_form">
                 <div class="text">
-                    <h1> Register </h1>
+                    <h1>Register</h1>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -34,7 +34,7 @@
                         </ul>
                     </div>
                 @endif
-                <form id="loginForm" method="post" action="">
+                <form id="registerForm" method="post" action="">
                     @csrf
                     <div class="input-container">
                         <input type="text" value="{{ old('Username') }}" id="name" name="name" required
@@ -50,19 +50,17 @@
                     </div>
                     <div class="input-container">
                         <span><i id="toggler2" class="far fa-eye"></i></span>
-                        <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Password Confirm">
+                        <input type="password" id="password_confirmation" name="password_confirmation" required
+                            placeholder="Password Confirm">
                     </div>
-                    
                     <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
-                    
                 </form>
                 <br>
-                <a class="button-link" href="{{url('/login')}}">Apakah anda sudah memiliki akun ? Login</a>
+                <a class="button-link" href="{{ url('/login') }}">Apakah anda sudah memiliki akun? Login</a>
             </div>
         </div>
     </div>
 </body>
 <script src="{{ asset('js/togglePassword.js') }}"></script>
-
 
 </html>

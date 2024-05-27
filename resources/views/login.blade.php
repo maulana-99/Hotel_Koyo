@@ -23,7 +23,7 @@
             </div>
             <div class="login_form">
                 <div class="text">
-                    <h1> Login </h1>
+                    <h1>Login</h1>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -41,19 +41,17 @@
                             placeholder="Email">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler"class="far fa-eye"></i></span>
-                        <input type="password" id="fakePassword" name="password" required placeholder="Password">
+                        <span><i id="toggler" class="far fa-eye"></i></span>
+                        <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
-
                     <button name="submit" type="submit" class="btn btn-primary">Masuk</button>
                 </form>
                 <br>
-
-                <a style="padding-left: 0;" class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun ? register</a>
+                <a class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun? Register</a>
             </div>
         </div>
     </div>
 </body>
-<script src="{{ asset('js/togglePassword_2.js') }}"></script>
+<script src="{{ asset('js/togglePassword.js') }}"></script>
 
 </html>

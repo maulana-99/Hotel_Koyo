@@ -119,3 +119,27 @@ a.button-link {
 a.button-link:hover {
     color: #ffcccb;
 }
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.alert ul li {
+    margin: 0;
+    padding: 5px 0;
+}
