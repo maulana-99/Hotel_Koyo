@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fasilitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ManagementFasilitasController extends Controller
 {
@@ -41,5 +42,22 @@ class ManagementFasilitasController extends Controller
 
         return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil ditambahkan');
     }
+
+
+    public function delete($id)
+    {
+        $fasilitas = Fasilitas::findOrFail($id);
+
+        // Delete the image from storage if it exists
+        if ($fasilitas->foto_fasilitas) {
+            Storage::disk('public')->delete($fasilitas->foto_fasilitas);
+        }
+
+        // Delete the fasilitas
+        $fasilitas->delete();
+
+        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus');
+    }
+
 
 }

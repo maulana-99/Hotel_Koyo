@@ -92,7 +92,7 @@
             <div id="alertContainer" class="alert alert-danger" style="display: none;">
                 <ul id="errorList"></ul>
             </div>
-            <form id="createForm" method="post" action="{{ route('create') }}">
+            <form id="createForm" method="post" action="{{ route('createResepsionis') }}">
                 @csrf
                 <input type="text" placeholder="Your Name" id="name" name="name" required>
                 <input type="email" placeholder="Your Email" id="email" name="email" required>

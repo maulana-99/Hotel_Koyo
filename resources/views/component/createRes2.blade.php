@@ -82,22 +82,31 @@
 <body>
     <div class="popup" id="popupFormCreate" style="{{ $errors->any() ? 'display:flex;' : '' }}">
         <div class="popup-content">
-            <h1>Tambah Fasilitas</h1>
+            <h2>Create Resepsionis</h2>
             @include('component.error')
-            <form action="{{ route('createFasilitas') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('createResepsionis') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label>Nama Fasilitas</label>
-                    <input type="text" name="nama_fasilitas" required>
+                    <label>Nama Resepsionis</label>
+                    <input type="text" placeholder="Your Name" id="name" name="name" required>
                 </div>
+
                 <div>
-                    <label>Deskripsi Fasilitas</label>
-                    <textarea name="deskripsi_fasilitas" required></textarea>
+                    <label>Email Resepsionis</label>
+                    <input type="email" placeholder="Your Email" id="email" name="email" required>
                 </div>
+
                 <div>
-                    <label>Foto Fasilitas</label>
-                    <input type="file" name="foto_fasilitas" required>
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Password">
                 </div>
+
+                <div>
+                    <label>Konfirmasi Password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required
+                        placeholder="Password Confirm">
+                </div>
+
                 <div class="button-container">
                     <button type="button" class="cancel-button" id="closePopupCreate">Cancel</button>
                     <button type="submit" class="submit-button">Simpan</button>
@@ -123,5 +132,6 @@
         });
     </script>
 </body>
+
 
 </html>

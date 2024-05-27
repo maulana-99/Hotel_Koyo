@@ -25,22 +25,6 @@
             padding: 20px;
         }
 
-        .alert {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
         ul {
             list-style: none;
             padding: 0;
@@ -52,6 +36,8 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
         }
 
         li img {
@@ -62,38 +48,43 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Daftar Fasilitas</h1>
+        <a href="#" id="openPopupCreate">Create</a>
+        @include('component.alert')
+        <ul>
+            @foreach ($fasilitas as $item)
+                <li>
+                    <div class="text-fas">
+                        <h2>{{ $item->nama_fasilitas }}</h2>
+                        <p>{{ $item->deskripsi_fasilitas }}</p>
+                    </div>
 
-    <body>
-        <div class="container">
-            <h1>Daftar Fasilitas</h1>
-            <a href="#" id="openPopup">Tambah Fasilitas</a>
+                    @if ($item->foto_fasilitas)
+                        <img class="mb-3" src="asset/storage/{{ $item->foto_fasilitas }}" style="width: 150px;">
+                    @else
+                        Tidak ada foto
+                    @endif
 
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+                    <div class="btn-action">
+                        <a href="#" class="edit-button" data-id="{{ $item->id }}"
+                            data-nama="{{ $item->nama_fasilitas }}" data-deskripsi="{{ $item->deskripsi_fasilitas }}"
+                            data-foto="{{ $item->foto_fasilitas }}">Edit
+                        </a>
+                        <form action="{{ route('deleteFasilitas', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    @include('component.createFas')
+    @include('component.updateFas')
 
-            <ul>
-                @foreach ($fasilitas as $fasilita)
-                    <li>
-                        <h2>{{ $fasilita->nama_fasilitas }}</h2>
-                        <p>{{ $fasilita->deskripsi_fasilitas }}</p>
-                        @if ($fasilita->foto_fasilitas)
-                            <img src="{{ asset('storage/' . $fasilita->foto_fasilitas) }}"
-                                alt="{{ $fasilita->nama_fasilitas }}" width="100">
-                        @endif
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-        @include('component.createFas')
-
-    </body>
+</body>
 
 </html>

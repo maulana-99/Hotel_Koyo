@@ -61,14 +61,15 @@ Route::get('/home', function () {
 Route::middleware('userAkses:admin')->group(function () {
     /////////////////////////// --> CRUD AKUN RESEPSIONIS
     Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'index'])->name('adminPage.backoffice');
-    Route::post('/admin/resepsionis', [ManagementResepsionisController::class, 'create'])->name('create');
-    Route::post('/admin/resepsionis{id}', [ManagementResepsionisController::class, 'deactivate'])->name('users.deactivate');
+    Route::post('/admin/resepsionis', [ManagementResepsionisController::class, 'create'])->name('createResepsionis');
+    Route::post('/admin/resepsionis{id}', [ManagementResepsionisController::class, 'deactivate'])->name('deactivateResepsionis');
     // Route::get('/admin', [ManagementResepsionisController::class, 'avatar']);
     /////////////////////////// --> END CRUD AKUN RESEPSIONIS
 
     /////////////////////////// --> CRUD FASILITAS
     Route::get('/admin/fasilitas', [ManagementFasilitasController::class, 'index'])->name('adminPage.crudFasilitas');
     Route::post('/admin/fasilitas', [ManagementFasilitasController::class, 'create'])->name('createFasilitas');
+    Route::delete('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'delete'])->name('deleteFasilitas');
     /////////////////////////// --> END CRUD FASILITAS
 
 });

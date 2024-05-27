@@ -33,18 +33,8 @@
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>
         </form>
-
+        <a href="#" id="openPopupCreate">Create</a>
         <button class="button_create" onclick="togglePopup()">Create</button>
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
         <table class="crud-table" id="crud-table">
             <thead>
                 <tr>
@@ -80,8 +70,9 @@
                             <td>{{ $user->updated_at }}</td>
                             <td>
                                 <button onclick="editPopup()">Edit Selected</button>
-                                <form method="POST" action="{{ route('users.deactivate', $user->id) }}"
-                                    class="d-inline" onsubmit="return confirmDeactivation()">
+                                <form method="POST" action="{{ route('deactivateResepsionis', $user->id) }}"
+                                    class="d-inline"
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menon aktifkan resepsionis ini?');">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Non-aktifkan</button>
                                 </form>
@@ -89,16 +80,12 @@
                         </tr>
                     @endforeach
                 @endif
-
             </tbody>
         </table>
     </div>
-    @include('component.createRes')
-    <script>
-        function confirmDeactivation() {
-            return confirm("Apakah Anda yakin ingin menonaktifkan user ini?");
-        }
-    </script>
+    @include('component.alert')
+    {{-- @include('component.createRes') --}}
+    @include('component.createRes2')
 </body>
 
 </html>
