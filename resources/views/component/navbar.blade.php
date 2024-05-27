@@ -11,7 +11,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #C30000;
+            background-color: #C39D7A;
             padding: 25px 30px;
             position: relative;
         }
@@ -55,7 +55,7 @@
         }
 
         .navbar-links a:hover {
-            background-color: #ff0000;
+            background-color: #c6a98d;
             border-radius: 7px;
         }
 

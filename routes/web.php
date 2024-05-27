@@ -39,7 +39,7 @@ Route::get('/404-not-found', function () {
     return view('peringatan');
 });
 Route::get('/admin', function () {
-    return view('adminPage.admin');
+    return view('adminPage.admin.admin');
 });
 
 // menjadi mode tamu dan hanya bisa melihat saja
