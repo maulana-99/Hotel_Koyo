@@ -9,7 +9,6 @@
 </head>
 <body>
     
-    @include('component.navbarAdmin')
     @include('component.sidebar')
     
     <h1>Create Kamar</h1>

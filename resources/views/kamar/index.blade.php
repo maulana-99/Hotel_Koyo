@@ -1,16 +1,15 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/create.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     <title>Document</title>
- </head>
- <style>
-    
- </style>
- <body>
+</head>
+<style>
+</style>
+<body>
     <h1>Kamar List</h1>
     <a href="{{ route('kamar.create') }}">Create New Kamar</a>
     @if ($message = Session::get('success'))
@@ -28,17 +27,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($kamar as $kamar)
+            @foreach ($kamar as $item)
                 <tr>
-                    <td>{{ $kamar->id_kamar }}</td>
-                    <td>{{ $kamar->nama_kamar }}</td>
-                    <td>{{ $kamar->tipe_kamar }}</td>
-                    <td>{{ $kamar->harga }}</td>
-                    <td><img src="/images/{{ $kamar->foto_kamar }}" width="100"></td>
+                    <td>{{ $item->id_kamar }}</td>
+                    <td>{{ $item->nama_kamar }}</td>
+                    <td>{{ $item->tipe_kamar }}</td>
+                    <td>{{ $item->harga }}</td>
+                    <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <a href="{{ route('kamar.show', $kamar->id_kamar) }}">Show</a>
-                        <a href="{{ route('kamar.edit', $kamar->id_kamar) }}">Edit</a>
-                        <form action="{{ route('kamar.destroy', $kamar->id_kamar) }}" method="POST" style="display:inline;">
+                        <a href="">Edit</a>
+                        <form action="" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Delete</button>
@@ -48,5 +46,5 @@
             @endforeach
         </tbody>
     </table>
- </body>
- </html>
+</body>
+</html>
