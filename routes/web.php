@@ -24,13 +24,13 @@ Route::get('/fasilitas', function () {
 
 Route::get('/logout', [AuthController::class, 'logout']);
 // ----------------------------------------------|
-// Route::get('/deskripsi_kamar', function () {  |
-//     return view('deskripsi_kamar');           |
-// });                                           |
-//                                               |--> BUKA AJA KALAU LAGI BUTUH
-// Route::get('/tamu_reservasi', function () {   |
-//     return view('tamu_reservasi');            |
-// });                                           |
+Route::get('/deskripsi_kamar', function () {
+    return view('deskripsi_kamar');
+});
+
+Route::get('/tamu_reservasi', function () {
+    return view('tamu_reservasi');
+});
 // ----------------------------------------------|
 
 Route::get('/404-not-found', function () {
