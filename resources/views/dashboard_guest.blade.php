@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="{{ asset('css/guest.css') }}">
 
 </head>
+
 <body>
     @include('component.navbar')
     <div class="background-container">
         <img src="{{ asset('img/background.png') }}" alt="background" class="background">
         <div class="hover-text">
             <h1><b>Tentang Kami</b></h1>
-            <p>Top Cinangka Hotel adalah sebuah hotel mewah yang terletak di Cinangka,<p> sebuah tempat yang dikenal karena
-                keindahan alamnya di Indonesia. Dengan </p><p>desain yang elegan dan modern, hotel ini menawarkan pengalaman
+            <p>Top Cinangka Hotel adalah sebuah hotel mewah yang terletak di Cinangka,
+            <p> sebuah tempat yang dikenal karena
+                keindahan alamnya di Indonesia. Dengan </p>
+            <p>desain yang elegan dan modern, hotel ini menawarkan pengalaman
                 menginap </p>yang nyaman dan mewah bagi para tamunya.</p>
         </div>
     </div>

@@ -26,7 +26,7 @@ class AuthController extends Controller
             [
                 'email.required' => 'Email wajib di isi',
                 'password.required' => 'Password wajib di isi',
-            ],
+            ]
         );
 
         $infologin = [
@@ -35,6 +35,11 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
+            if (Auth::user()->status == 0) {
+                Auth::logout();
+                return redirect('/login')->withErrors('Akun ini sudah di non aktifkan silakan membuat akun baru lagi!')->withInput();
+            }
+
             switch (Auth::user()->role) {
                 case 'tamu':
                     return redirect('/dashboard');
@@ -49,6 +54,7 @@ class AuthController extends Controller
             return redirect('/login')->withErrors('Email dan Password tidak sesuai')->withInput();
         }
     }
+
 
     public function logout()
     {

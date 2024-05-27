@@ -57,7 +57,7 @@
                     <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
                     <br>
                     <br>
-                    <a class="button-link" href="{{url('/login')}}">Apakah anda belum memiliki akun ? register</a>
+                    <a class="button-link" href="{{url('/login')}}">Apakah anda sudah memiliki akun ? Login</a>
                 </form>
             </div>
         </div>
