@@ -11,21 +11,21 @@
 </head>
 <style>
     .navbar h1 {
-            margin: 0;
-            font-size: 24px;
-            
-        }
+        margin: 0;
+        font-size: 24px;
+
+    }
 </style>
 
 
 <body>
     @include('component.sidebar')
 
-   
+
     <div class="content">
-        
+
         @include('component.navbarAdmin')
-        
+
         <div class="page-title">
             <h2>Resepsionis</h2>
         </div>
@@ -33,8 +33,8 @@
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>
         </form>
-        
-            <button class="button_create" onclick="togglePopup()">Create</button>
+
+        <button class="button_create" onclick="togglePopup()">Create</button>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
