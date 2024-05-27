@@ -14,7 +14,7 @@
     }
     .sidebar {
         width: 250px;
-        background-color: #C22F2F;
+        background-color: #C39D7A;
         color: #fff;
         position: fixed;
         height: 100%;
@@ -53,7 +53,7 @@
 }
 
 .sidebar-menu li a:hover {
-    background-color: #ee3838;
+    background-color: #c4ad97;
     border-radius: 4px;
 }
 

@@ -33,8 +33,6 @@
                 </div>
             </a>
         </div>
-    </div>
-    <div class="room-cards">
         <div class="room-card">
             <a href="{{url('/deskripsi_kamar')}}" class="room-link">
                 <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
@@ -44,8 +42,6 @@
                 </div>
             </a>
         </div>
-    </div>
-    <div class="room-cards">
         <div class="room-card">
             <a href="{{url('/deskripsi_kamar')}}" class="room-link">
                 <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
@@ -55,8 +51,6 @@
                 </div>
             </a>
         </div>
-    </div>
-    <div class="room-cards">
         <div class="room-card">
             <a href="{{url('/deskripsi_kamar')}}" class="room-link">
                 <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">

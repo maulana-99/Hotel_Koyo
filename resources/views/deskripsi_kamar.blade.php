@@ -33,6 +33,20 @@
             <span class="bar"></span>
         </div>
     </nav>
+    <div class="search-navbar">
+        <form class="search-form">
+            <div class="form-group">
+                <label for="room-type">Room Type:</label>
+                <select id="room-type" name="room-type" required>
+                    <option value="">Cari Kamar</option>
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                    <option value="suite">Suite</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-search">Cari</button>
+        </form>
+    </div>
     <div class="kamar">
         <img src="{{asset('img/kamar.png')}}" alt="kamar" class="kamar">
     </div>

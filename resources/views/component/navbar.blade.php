@@ -162,11 +162,11 @@
         </ul>
         <div class="navbar-profile">
             @if (Auth::check())
-                <a href="#" class="profile-link">
+                <a href="#" class="profile-link" id="profileLink">
                     <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <a href="{{ url('/logout') }}">Logout</a>
                 </div>
             @else

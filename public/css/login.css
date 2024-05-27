@@ -41,7 +41,7 @@ body {
     max-width: 50%; /* Reduce the width of the form section */
     padding: 40px; /* Adjust padding for a smaller appearance */
     flex-direction: column;
-    background-color: #C82C37; /* Background color of the form */
+    background-color: #C39D7A; /* Background color of the form */
     color: #fff; /* Text color */
     text-align: center;
 }
@@ -113,7 +113,7 @@ button:hover {
 a.button-link {
 justify-content: center;
 display: flex;
-padding: 65px;
+padding: 70px;
 color: white;
 text-decoration: none;
 }
