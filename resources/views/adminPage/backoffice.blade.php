@@ -33,8 +33,8 @@
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>
         </form>
-        <a href="#" id="openPopupCreate">Create</a>
-        <button class="button_create" onclick="togglePopup()">Create</button>
+        <a href="#" id="openPopupCreate" class="button_create">Create</a>
+        @include('component.alert')
         <table class="crud-table" id="crud-table">
             <thead>
                 <tr>
@@ -83,9 +83,7 @@
             </tbody>
         </table>
     </div>
-    @include('component.alert')
-    {{-- @include('component.createRes') --}}
-    @include('component.createRes2')
+    @include('component.createRes')
 </body>
 
 </html>

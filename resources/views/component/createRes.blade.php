@@ -7,159 +7,128 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <style>
-    /* Style for the overlay background */
-    .overlay {
+    .popup {
+        display: none;
         position: fixed;
-        top: 0;
         left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
+        background-color: rgba(0, 0, 0, 0.5);
         justify-content: center;
         align-items: center;
-        visibility: hidden;
     }
 
-    /* Style for the pop-up form */
-    .popup {
-        background: white;
+    .popup-content {
+        background-color: #fff;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
+        border-radius: 5px;
+        width: 90%;
+        max-width: 500px;
+        text-align: left;
+    }
+
+    .popup-content h1 {
+        text-align: left;
+    }
+
+    .popup-content label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .popup-content input,
+    .popup-content textarea {
         width: 100%;
-        text-align: center;
-        position: relative;
-    }
-
-    /* Style for the form elements */
-    .popup form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .popup input,
-    .popup textarea {
-        margin: 10px 0;
         padding: 10px;
-        font-size: 16px;
+        margin-bottom: 20px;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 5px;
     }
 
-    .popup button {
-        padding: 10px;
-        font-size: 16px;
-        background: #28a745;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .popup button:hover {
-        background: #218838;
-    }
-
-    .form-btn {
+    .popup-content .button-container {
         display: flex;
+        justify-content: space-between;
     }
 
-    .close-btn {
-        background: red;
-        color: white;
+    .popup-content .button-container button {
+        width: 48%;
+        padding: 10px;
         border: none;
-        padding: 5px 10px;
+        border-radius: 5px;
         cursor: pointer;
-        border-radius: 4px;
     }
 
-    .close-btn:hover {
-        background: darkred;
+    .popup-content .button-container .submit-button {
+        background-color: #007bff;
+        color: #fff;
     }
 
-    /* Show the overlay when active */
-    .overlay.active {
-        visibility: visible;
+    .popup-content .button-container .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .popup-content .button-container .cancel-button {
+        background-color: #ccc;
+        color: #333;
+    }
+
+    .popup-content .button-container .cancel-button:hover {
+        background-color: #aaa;
     }
 </style>
 
 <body>
-    <div class="overlay" id="popupOverlay">
-        <div class="popup">
-            <h2>Create</h2>
-            <div id="alertContainer" class="alert alert-danger" style="display: none;">
-                <ul id="errorList"></ul>
-            </div>
-            <form id="createForm" method="post" action="{{ route('createResepsionis') }}">
+    <div class="popup" id="popupFormCreate" style="{{ $errors->any() ? 'display:flex;' : '' }}">
+        <div class="popup-content">
+            <h2>Create Resepsionis</h2>
+            @include('component.error')
+            <form action="{{ route('createResepsionis') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="text" placeholder="Your Name" id="name" name="name" required>
-                <input type="email" placeholder="Your Email" id="email" name="email" required>
-                <input type="password" id="password" name="password" required placeholder="Password">
-                <input type="password" id="password_confirmation" name="password_confirmation" required
-                    placeholder="Password Confirm">
-                <div class="form-btn">
-                    <button type="submit" id="submitBtn">Submit</button>
-                    <button type="button" class="close-btn" onclick="togglePopup()">Cancel</button>
+                <div>
+                    <label>Nama Resepsionis</label>
+                    <input type="text" placeholder="Your Name" id="name" name="name" required>
+                </div>
+
+                <div>
+                    <label>Email Resepsionis</label>
+                    <input type="email" placeholder="Your Email" id="email" name="email" required>
+                </div>
+
+                <div>
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                </div>
+
+                <div>
+                    <label>Konfirmasi Password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required
+                        placeholder="Password Confirm">
+                </div>
+
+                <div class="button-container">
+                    <button type="button" class="cancel-button" id="closePopupCreate">Cancel</button>
+                    <button type="submit" class="submit-button">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        function togglePopup() {
-            var overlay = document.getElementById('popupOverlay');
-            overlay.classList.toggle('active');
-        }
+        document.getElementById('openPopupCreate').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('popupFormCreate').style.display = 'flex';
+        });
 
-        document.getElementById('createForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent automatic form submission
+        document.getElementById('closePopupCreate').addEventListener('click', function() {
+            document.getElementById('popupFormCreate').style.display = 'none';
+        });
 
-            // Clear previous errors
-            var alertContainer = document.getElementById('alertContainer');
-            var errorList = document.getElementById('errorList');
-            errorList.innerHTML = '';
-            alertContainer.style.display = 'none';
-
-            var formData = new FormData(this);
-            fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.errors) {
-                        // Show validation errors
-                        for (var key in data.errors) {
-                            if (data.errors.hasOwnProperty(key)) {
-                                var errors = data.errors[key];
-                                errors.forEach(function(error) {
-                                    var h5 = document.createElement('h5');
-                                    h5.textContent = error;
-                                    errorList.appendChild(h5);
-                                });
-                            }
-                        }
-                        alertContainer.style.display = 'block';
-                    } else if (data.success) {
-                        togglePopup();
-                        alert('Receptionist created successfully.');
-
-                        // Show the success alert and then refresh the page after a short delay
-                        setTimeout(function() {
-                            location.reload(); // Refresh the page
-                        }, 2000); // Delay for 2 seconds
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred while creating the receptionist.');
-                });
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('popupFormCreate')) {
+                document.getElementById('popupFormCreate').style.display = 'none';
+            }
         });
     </script>
 </body>

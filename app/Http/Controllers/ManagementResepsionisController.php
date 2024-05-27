@@ -58,8 +58,8 @@ class ManagementResepsionisController extends Controller
         );
 
         $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request->input('password')),
             'role' => 'resepsionis',
         ]);
@@ -75,7 +75,8 @@ class ManagementResepsionisController extends Controller
         $user->avatar = $avatarPath;
         $user->save();
 
-        return redirect()->route('adminPage.backoffice')->with(['success', 'Resepsionis berhasil dibuat.']);
+        return redirect()->route('adminPage.backoffice')->with('success', 'Resepsionis berhasil dibuat.');
+    
     }
 
     public function update(Request $request)

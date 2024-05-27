@@ -60,6 +60,7 @@ form button {
     cursor: pointer;
     width: 60px;
     border: none; /* Menghilangkan border */
+    text-decoration: none;
 }
 
 .Button2 {
