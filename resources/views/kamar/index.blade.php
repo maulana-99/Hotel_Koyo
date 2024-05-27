@@ -33,8 +33,8 @@
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <a href="{{ route('kamar.edit', $item->id_kamar) }}">Edit</a>
-                        <form action="{{ route('kamar.destroy', $item->id_kamar) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('kamar.edit', $item->id) }}">Edit</a>
+                        <form action="{{ route('kamar.destroy', $item->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Delete</button>

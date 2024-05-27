@@ -74,5 +74,5 @@ Route::middleware('userAkses:tamu')->group(function () {
 //     return view('kamar.create');
 // });
 
-Route::resource('kamar', KamarController::class,);
+Route::resource('kamar', KamarController::class);
 
