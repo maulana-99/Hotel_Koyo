@@ -60,7 +60,7 @@ Route::get('/home', function () {
 Route::middleware('userAkses:admin')->group(function () {
     Route::get('/admin/resepsionis', [ManagementResepsionisController::class, 'index'])->name('adminPage.backoffice');
     Route::post('/admin/resepsionis', [ManagementResepsionisController::class, 'create'])->name('create');
-    // Route::post('/admin/{id}', [ManagementResepsionisController::class, 'deactivate'])->name('users.deactivate');
+    Route::post('/admin/{id}', [ManagementResepsionisController::class, 'deactivate'])->name('users.deactivate');
     // Route::get('/admin', [ManagementResepsionisController::class, 'avatar']);
 });
 

@@ -29,7 +29,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $item)
-                                <h3>{{ $item }}</h3>
+                                <li>{{ $item }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -45,20 +45,19 @@
                             placeholder="Email">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler"class="far fa-eye"></i></span>
-                        <input type="password" id="fakePassword" name="password" required placeholder="Password">
+                        <span><i id="toggler1" class="far fa-eye"></i></span>
+                        <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler"class="far fa-eye"></i></span>
-                        <input type="password" id="fakePassword" name="password_confirmation" required
-                            placeholder="Password Confrim">
+                        <span><i id="toggler2" class="far fa-eye"></i></span>
+                        <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Password Confirm">
                     </div>
-
+                    
                     <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
-                    <br>
-                    <br>
-                    <a class="button-link" href="{{url('/login')}}">Apakah anda sudah memiliki akun ? Login</a>
+                    
                 </form>
+                <br>
+                <a class="button-link" href="{{url('/login')}}">Apakah anda sudah memiliki akun ? Login</a>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $item)
-                                <h3>{{ $item }}</h3>
+                                <li>{{ $item }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -46,14 +46,14 @@
                     </div>
 
                     <button name="submit" type="submit" class="btn btn-primary">Masuk</button>
-                    <br>
-                    <br>
-                    <a class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun ? register</a>
                 </form>
+                <br>
+
+                <a style="padding-left: 0;" class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun ? register</a>
             </div>
         </div>
     </div>
 </body>
-<script src="{{ asset('js/togglePassword.js') }}"></script>
+<script src="{{ asset('js/togglePassword_2.js') }}"></script>
 
 </html>

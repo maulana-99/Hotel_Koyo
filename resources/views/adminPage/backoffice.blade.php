@@ -33,14 +33,8 @@
             <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
             <button type="submit">Search</button>
         </form>
-        <div>
-
-            <button class="button_create">Create</button>
-        </div>
         
-
-            <button onclick="togglePopup()">Create</button>
-        </div>
+            <button class="button_create" onclick="togglePopup()">Create</button>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}

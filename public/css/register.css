@@ -39,7 +39,7 @@ body {
 .login_form {
     flex: 1;
     max-width: 50%; /* Reduce the width of the form section */
-    padding: 50px; /* Adjust padding for a smaller appearance */
+    padding: 40px; /* Adjust padding for a smaller appearance */
     flex-direction: column;
     background-color: #C82C37; /* Background color of the form */
     color: #fff; /* Text color */
@@ -78,7 +78,7 @@ input {
     border: none;
     border-bottom: 2px solid #fff;
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 input::placeholder {
@@ -109,15 +109,13 @@ button:hover {
 }
 
 a.button-link {
+    justify-content: center;
+    display: flex;
+    color: white;
     text-decoration: none;
-    font-size: 20px;
-    color: #fff;
-    padding: 40px;
-    text-align: center;
-    position: absolute;
-    left: 800px;
-}
-
+    padding: 50px;
+    }
+    
 a.button-link:hover {
     color: #ffcccb;
 }
