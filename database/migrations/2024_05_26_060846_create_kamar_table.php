@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama_kamar');
             $table->string('tipe_kamar');
             $table->string('harga');
+            $table->string('fasilitas');
+            $table->string('deskripsi');
             $table->string('foto_kamar')->nullable();
         });
     }
