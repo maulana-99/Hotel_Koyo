@@ -17,71 +17,72 @@
     }
 </style>
 
-
+@include('component.navbarAdmin')
+@include('component.sidebar')
 <body>
-    @include('component.sidebar')
-
-
     <div class="content">
-
-        @include('component.navbarAdmin')
-
         <div class="page-title">
             <h2>Resepsionis</h2>
         </div>
-        <form method="GET" action="">
-            <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
-            <button type="submit">Search</button>
+        <form method="GET" action="" style="display: flex; justify-content: space-between;">
+            <div>
+                <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
+                <button type="submit">Search</button>
+            </div>
+            <a href="#" id="openPopupCreate" class="button_create">Create</a>
         </form>
-        <a href="#" id="openPopupCreate" class="button_create">Create</a>
+        
+        
         @include('component.alert')
-        <table class="crud-table" id="crud-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th class="password-column">Password</th>
-                    <th>Create</th>
-                    <th>Update</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if ($users->isEmpty())
+        <div class="table-container">
+            <table class="crud-table" id="crud-table">
+                <thead>
                     <tr>
-                        <td>0</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td class="password-column">No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Action</td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th class="password-column">Password</th>
+                        <th>Create</th>
+                        <th>Update</th>
+                        <th>Action</th>
                     </tr>
-                @else
-                    @foreach ($users as $user)
-                        <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
-                            data-email="{{ $user->email }}">
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td class="password-column">{{ $user->password }}</td>
-                            <td>{{ $user->created_at }}</td>
-                            <td>{{ $user->updated_at }}</td>
-                            <td>
-                                <button onclick="editPopup()">Edit Selected</button>
-                                <form method="POST" action="{{ route('deactivateResepsionis', $user->id) }}"
-                                    class="d-inline"
-                                    onsubmit="return confirm('Apakah Anda yakin ingin menon aktifkan resepsionis ini?');">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                </form>
-                            </td>
+                </thead>
+                <tbody>
+                    @if ($users->isEmpty())
+                        <tr>
+                            <td>0</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td class="password-column">No Data</td>
+                            <td>No Data</td>
+                            <td>No Data</td>
+                            <td>No Action</td>
                         </tr>
-                    @endforeach
-                @endif
-            </tbody>
-        </table>
+                    @else
+                        @foreach ($users as $user)
+                            <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
+                                data-email="{{ $user->email }}">
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td class="password-column">{{ $user->password }}</td>
+                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->updated_at }}</td>
+                                <td>
+                                    <button class="edit-btn" onclick="editPopup()">Edit Selected</button>
+                                    <form method="POST" action="{{ route('deactivateResepsionis', $user->id) }}"
+                                        class="d-inline"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menon aktifkan resepsionis ini?');">
+                                        @csrf
+                                        <button type="submit" class="delete-btn">Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
     </div>
     @include('component.createRes')
 </body>

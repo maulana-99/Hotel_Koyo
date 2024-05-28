@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(#FF7676, #9E2929);
+    background-image: linear-gradient(#E6C3A9, #AB8465);
 }
 
 .center {
@@ -41,7 +41,7 @@ body {
     max-width: 50%; /* Reduce the width of the form section */
     padding: 40px; /* Adjust padding for a smaller appearance */
     flex-direction: column;
-    background-color: #C82C37; /* Background color of the form */
+    background-color: #C39D7A; /* Background color of the form */
     color: #fff; /* Text color */
     text-align: center;
 }

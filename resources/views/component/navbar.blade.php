@@ -12,7 +12,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: #C39D7A;
-            padding: 25px 30px;
+            padding: 14px 30px;
             position: relative;
         }
 
@@ -70,9 +70,9 @@
             align-items: center;
             color: #fff;
             text-decoration: none;
-            padding: 0.3rem 4rem;
+            padding: 0rem 2rem;
             transition: background-color 0.3s;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .profile-link img {
@@ -84,7 +84,7 @@
 
         .profile-link:hover {
             background-color: #c6a98d;
-            border-radius: 7px;
+            border-radius: 4px;
         }
 
         .profile-pic {
@@ -163,7 +163,7 @@
         <div class="navbar-profile">
             @auth
                 <a href="#" class="profile-link" id="profileLink">
-                    <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
+                    {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu" id="dropdownMenu">

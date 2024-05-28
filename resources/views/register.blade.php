@@ -45,11 +45,9 @@
                             placeholder="Email">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler1" class="far fa-eye"></i></span>
                         <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler2" class="far fa-eye"></i></span>
                         <input type="password" id="password_confirmation" name="password_confirmation" required
                             placeholder="Password Confirm">
                     </div>

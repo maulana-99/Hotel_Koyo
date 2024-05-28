@@ -41,7 +41,6 @@
                             placeholder="Email">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler" class="far fa-eye"></i></span>
                         <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary">Masuk</button>
