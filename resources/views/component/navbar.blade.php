@@ -161,7 +161,7 @@
             <li><a href="{{ url('/fasilitas') }}">Fasilitas</a></li>
         </ul>
         <div class="navbar-profile">
-            @if (Auth::check())
+            @auth
                 <a href="#" class="profile-link" id="profileLink">
                     <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
                     <h2>{{ Auth::user()->name }}</h2>
@@ -171,13 +171,13 @@
                 </div>
             @else
                 <a href="#" class="profile-link" id="profileLink">
-                    <img src="{{asset('img/guest.png')}}" alt="Guest Profile" class="profile-pic"> Masuk/Daftar
+                    <img src="{{ asset('img/guest.png') }}" alt="Guest Profile" class="profile-pic"> Masuk/Daftar
                 </a>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="{{url('/login')}}">Login</a>
-                    <a href="{{url('/register')}}">Register</a>
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
                 </div>
-            @endif
+            @endauth
         </div>
     </nav>
 
@@ -199,4 +199,5 @@
         });
     </script>
 </body>
+
 </html>

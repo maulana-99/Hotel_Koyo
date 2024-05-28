@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="img/tch_lingkaran.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservasi</title>
     <link rel="stylesheet" href="{{asset('css/fasilitas.css')}}">
+
 </head>
+
 <body>
 @include('component.navbar')
 <div class="text">
@@ -86,4 +89,5 @@
 
     <script src="{{ asset('js/menu.js') }}"></script>
 </body>
+
 </html>

@@ -72,6 +72,7 @@ form button {
     width: 70px;
     border: none; /* Menghilangkan border */
     float: right; /* Menambahkan properti float */
+    text-decoration: none;
 }
 
 .Button2 {
