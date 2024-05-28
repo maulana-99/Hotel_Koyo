@@ -8,45 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/deskripsi_kamar.css')}}">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="{{asset('img/image.png')}}" alt="Logo" class="logo">
-            <span>CompanyName</span>
-        </div>
-        <ul class="navbar-links">
-            <li><a href="#home">Beranda</a></li>
-            <li><a href="#reservations">Reservasi</a></li>
-            <li><a href="#facilities">Fasilitas</a></li>
-        </ul>
-        <div class="navbar-profile">
-            <a href="#login.blade.php" class="profile-link">
-                <img src="{{asset('img/guest.png')}}" alt="Guest Profile" class="profile-pic"> Setelan
-            </a>
-            <div class="dropdown-menu">
-                <a href="#edit-profile">Edit Profile</a>
-                <a href="#logout">Logout</a>
-            </div>
-        </div>
-        <div class="navbar-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
-    <div class="search-navbar">
-        <form class="search-form">
-            <div class="form-group">
-                <label for="room-type">Room Type:</label>
-                <select id="room-type" name="room-type" required>
-                    <option value="">Cari Kamar</option>
-                    <option value="single">Single</option>
-                    <option value="double">Double</option>
-                    <option value="suite">Suite</option>
-                </select>
-            </div>
-            <button type="submit" class="btn-search">Cari</button>
-        </form>
-    </div>
+    @include('component.navbar')
     <div class="kamar">
         <img src="{{asset('img/kamar.png')}}" alt="kamar" class="kamar">
     </div>

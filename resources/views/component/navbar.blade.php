@@ -83,7 +83,7 @@
         }
 
         .profile-link:hover {
-            background-color: #ff0000;
+            background-color: #c6a98d;
             border-radius: 7px;
         }
 
@@ -99,7 +99,7 @@
             position: absolute;
             right: 0;
             top: 100%;
-            background-color: #C30000;
+            background-color: #C39D7A;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border-radius: 7px;
@@ -116,7 +116,7 @@
         }
 
         .dropdown-menu a:hover {
-            background-color: #ff0000;
+            background-color: #c6a98d;
         }
 
         @media (max-width: 768px) {
@@ -124,7 +124,7 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background-color: #ff0000;
+                background-color: #C39D7A;
             }
 
             .navbar-links li {

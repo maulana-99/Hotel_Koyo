@@ -43,6 +43,42 @@
                 <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
                 <div class="room-info">
                     <h3>Single Room</h3>
+                
+                </div>
+            </a>
+        </div>
+        <div class="room-card">
+            <a href="{{url('/')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                
+                </div>
+            </a>
+        </div>
+        <div class="room-card">
+            <a href="{{url('/')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                
+                </div>
+            </a>
+        </div>
+        <div class="room-card">
+            <a href="{{url('/')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
+                
+                </div>
+            </a>
+        </div>
+        <div class="room-card">
+            <a href="{{url('/')}}" class="room-link">
+                <img src="{{asset('img/kamar.png')}}" alt="Single Room" class="room-image">
+                <div class="room-info">
+                    <h3>Single Room</h3>
                 </div>
             </a>
         </div>
