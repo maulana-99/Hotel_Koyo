@@ -84,64 +84,48 @@ class ManagementKamarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'nama_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|in:regular,delux',
-            'harga' => 'required|numeric',
-            'deskripsi' => 'required|string|max:255',
-            'jenis_kasur' => 'required|in:twin,king',
-            'kapasitas' => 'required|in:1,2',
-            'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
         $kamar = Kamar::findOrFail($id);
-
-        // Check if a new image file is uploaded
+        $kamar->nama_kamar = $request->input('nama_kamar');
+        $kamar->tipe_kamar = $request->input('tipe_kamar');
+        $kamar->kapasitas = $request->input('kapasitas');
+        $kamar->jenis_kasur = $request->input('jenis_kasur');
+        $kamar->harga = $request->input('harga');
+    
         if ($request->hasFile('foto_kamar')) {
-            // Delete the old image if exists
-            if ($kamar->foto_kamar) {
-                $oldImagePath = public_path('images/' . $kamar->foto_kamar);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
+            $file = $request->file('foto_kamar');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            if ($kamar->foto_kamar !== $filename) {
+                $imagePath = public_path('images/' . $kamar->foto_kamar);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
                 }
             }
-            // Upload the new image
-            $imageName = time() . '.' . $request->foto_kamar->extension();
-            $request->foto_kamar->move(public_path('images'), $imageName);
-            $kamar->foto_kamar = $imageName;
-        }
-
-        // Update the Kamar fields
-        $kamar->nama_kamar = $validatedData['nama_kamar'];
-        $kamar->harga = $validatedData['harga'];
-        $kamar->tipe_kamar = $validatedData['tipe_kamar'];
-        $kamar->deskripsi = $validatedData['deskripsi'];
-        $kamar->jenis_kasur = $validatedData['jenis_kasur'];
-        $kamar->kapasitas = $validatedData['kapasitas'];
+            $kamar->foto_kamar = $filename;
         
-        // Save the updated Kamar data
+        }
+        
+
         $kamar->save();
-
-        // Redirect with success message
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses diupdate');
+    
+        return redirect()->route('kamar.index')->with('success', 'Kamar updated successfully');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-    
+
         if ($kamar->foto_kamar) {
             $imagePath = public_path('images/' . $kamar->foto_kamar);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
         }
-    
-        $kamar->delete();    
+
+        $kamar->delete();
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }

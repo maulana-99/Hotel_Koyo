@@ -129,7 +129,6 @@
 
 <body>
     <h1>Kamar List</h1>
-    <a class="create-button" href="{{ route('kamar.create') }}">Create New Kamar</a>
     <a href="#" id="openPopupCreate">Create</a>
     @include('component.alert')
     <table>
@@ -156,7 +155,10 @@
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <a class="edit-button" href="{{ route('kamar.edit', $item->id) }}">Edit</a>
+                        <button type="button" class="edit-button" data-id="{{ $item->id }}"
+                            data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
+                            data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
+                            data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
                         <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
                             @csrf
@@ -169,6 +171,7 @@
         </tbody>
     </table>
     @include('kamar.createKam')
+    @include('kamar.editKam')
 </body>
 
 </html>
