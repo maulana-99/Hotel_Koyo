@@ -7,112 +7,155 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daftar Fasilitas</title>
     <style>
-/* Gaya untuk container tabel */
-.table-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        /* Gaya untuk container tabel */
+        .table-container {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            overflow-y: scroll;
+        }
 
-/* Gaya untuk judul */
-h1 {
-    text-align: center;
-}
+        .table-container {
 
-/* Gaya untuk tautan create */
-.create-link {
-    text-decoration: none;
-    color: blue;
-    display: inline-block;
-    margin-bottom: 10px;
-}
+            margin-left: 250px;
+            width: calc(100% - 255px);
+            position: fixed;
+        }
 
-.create-link:hover {
-    text-decoration: underline;
-}
+        /* Gaya untuk judul */
+        .table-container h1 {
+            text-align: center;
+            padding: 70px;
+        }
 
-/* Gaya untuk alert */
-.alert {
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
+        .button-container {
+            text-align: right;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
 
-/* Gaya untuk tabel */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        #openPopupCreate {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            background-color: #36b300;
+            padding: 10px 20px;
+            border-radius: 3px;
+            float: right;
+            margin-left: 15px;
+            /* Menyesuaikan tombol ke kanan */
+        }
 
-/* Gaya untuk header tabel */
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+        #openPopupCreate:hover {
+            text-decoration: none;
+            background-color: #1cd616;
+        }
 
-th {
-    background-color: #f2f2f2;
-}
+        /* Gaya untuk tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-/* Gaya untuk tombol edit dan hapus */
-.edit-button, .delete-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-right: 5px;
-}
+        /* Gaya untuk header tabel */
+        th,
+        td {
+            background-color: #f5f5f5;
+            border: 1px solid #D9D9D9;
+            padding: 8px;
+            text-align: center;
+            /* Default alignment */
+        }
 
-.edit-button:hover, .delete-button:hover {
-    background-color: #0056b3;
-}
-/* Gaya untuk gambar fasilitas */
-.fasilitas-image {
-    max-width: 10px; /* Sesuaikan dengan ukuran yang diinginkan */
-}
+        th {
+            background-color: #979797;
+            font-size: 16px;
+        }
 
+        /* Gaya untuk tombol edit dan hapus */
+        .edit-button {
+            background-color: #f8b626;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 14px;
+            cursor: pointer;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+
+        .delete-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 6px 10px;
+            cursor: pointer;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+
+        .edit-button:hover {
+            background-color: #fdbf39;
+        }
+
+        .delete-button:hover {
+            background-color: #f63030;
+        }
+
+        /* Table Image Max Width */
+        .table_max_width {
+            max-width: 15rem;
+        }
     </style>
 </head>
 @include('component.navbarAdmin')
 @include('component.sidebar')
+
 <body>
     <div class="table-container">
         <h1>Daftar Fasilitas</h1>
-        <a href="#" id="openPopupCreate">Create</a>
-        <div class="alert"> <!-- Contoh menggunakan komponen alert -->
-            Pesan alert di sini.
+        <div class="button-container">
+            <a href="#" id="openPopupCreate">Create</a>
         </div>
+        @include('component.alert')
         <table>
             <thead>
                 <tr>
+                    <th>No</th>
+                    <th>Foto</th>
                     <th>Nama Fasilitas</th>
                     <th>Deskripsi Fasilitas</th>
-                    <th>Foto</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($fasilitas as $item)
+                @foreach ($fasilitas as $index => $item)
                     <tr>
-                        <td>{{ $item->nama_fasilitas }}</td>
-                        <td>{{ $item->deskripsi_fasilitas }}</td>
+                        <td>{{ $index + 1 }}</td>
                         <td>
                             @if ($item->foto_fasilitas)
-                                <img src="/storage/{{ $item->foto_fasilitas }}" alt="Foto Fasilitas">
+                                <div class="table_max_width">
+                                    <img style="max-width: 100%" src="/storage/{{ $item->foto_fasilitas }}"
+                                        alt="Foto Fasilitas">
+                                </div>
                             @else
                                 Tidak ada foto
                             @endif
                         </td>
+                        <td>{{ $item->nama_fasilitas }}</td>
+                        <td>{{ $item->deskripsi_fasilitas }}</td>
                         <td>
-                            <a href="#" class="edit-button" data-id="{{ $item->id }}" data-nama="{{ $item->nama_fasilitas }}" data-deskripsi="{{ $item->deskripsi_fasilitas }}" data-foto="{{ $item->foto_fasilitas }}">Edit</a>
-                            <form action="{{ route('deleteFasilitas', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');">
+                            <a href="#" class="edit-button" data-id="{{ $item->id }}"
+                                data-nama="{{ $item->nama_fasilitas }}"
+                                data-deskripsi="{{ $item->deskripsi_fasilitas }}"
+                                data-foto="{{ $item->foto_fasilitas }}">Edit</a>
+                            <form action="{{ route('deleteFasilitas', $item->id) }}" method="POST"
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-button">Delete</button>
@@ -123,7 +166,7 @@ th {
             </tbody>
         </table>
     </div>
-    
+
     @include('component.createFas')
     @include('component.updateFas')
 

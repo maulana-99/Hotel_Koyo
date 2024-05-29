@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mooli&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,6 +43,7 @@
                     </div>
                     <div class="input-container">
                         <input type="password" id="password" name="password" required placeholder="Password">
+                        <i class="fas fa-eye eye-icon" id="togglePassword"></i>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary">Masuk</button>
                 </form>
@@ -50,7 +52,15 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/togglePassword.js') }}"></script>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            var passwordInput = document.getElementById('password');
+            var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
-<script src="{{ asset('js/togglePassword.js') }}"></script>
 
 </html>

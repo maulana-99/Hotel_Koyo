@@ -43,60 +43,52 @@ form input[type="text"] {
     border-radius: 4px;
 }
 
-form button {
-    padding: 5px 10px;
-    margin-left: 10px;
-    font-size: 16px;
-    border: none;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.edit_button {
-    padding: 10px;
-    background-color: #d4d137; /* Warna biru yang sering digunakan pada tombol edit */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    align-items: center;
-}
-
+/* Styling for the create button */
 .button_create {
     padding: 10px;
     align-items: center;
-    background-color: #2844a7;
+    background-color: #3dd229;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    width: 50px;
+    width: auto; /* Adjust width as needed */
     border: none; /* Menghilangkan border */
     text-decoration: none;
     display: inline-block; /* Pastikan tombol ditampilkan sebagai elemen inline-block */
+    margin-right: 20px;
+}
+.button_create:hover{
+    background-color:#3fe02a ;
 }
 
-.Button2 {
+/* Ensure the form elements are aligned */
+form {
     display: flex;
-    justify-content: center; /* Centers the buttons horizontally */
-    align-items: center; /* Centers the buttons vertically */
+    justify-content: space-between;
+    align-items: center;
 }
 
-.Button2 button {
+form div {
+    display: flex;
+    align-items: center;
+}
+
+form input[type="text"] {
+    margin-right: 10px;
+}
+
+/* Additional styles for the search button */
+form button {
     padding: 10px;
-    background-color: #28a745; /* Sesuaikan warna latar belakang sesuai keinginan */
+    background-color: #5d91cd;
     color: #fff;
     border-radius: 4px;
+    border: none;
     cursor: pointer;
-    width: auto; /* Sesuaikan lebar sesuai kebutuhan */
-    border: none; /* Menghilangkan border */
-    margin: 0 5px; /* Optional: Adds space between buttons */
 }
+
 form button:hover {
     background-color: #0056b3;
-}
-button:hover {
-    background-color: #218838;
 }
 
 /* Table Styles */
@@ -107,14 +99,20 @@ button:hover {
 }
 
 .crud-table th, .crud-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #D9D9D9;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+}
+
+.crud-table td .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between buttons */
 }
 
 
 .crud-table th {
-    background-color: #f2f2f2;
+    background-color: #D9D9D9;
 }
 
 .crud-table tr:nth-child(even) {
@@ -141,13 +139,14 @@ button:hover {
     word-break: break-all; /* Optional: Break long words */
 }
 .crud-table button.edit-btn {
-    background-color: #c6cd41;
+    background-color: #f8b626;
     color: #fff;
     border: none;
-    padding: 8px;
+    border-radius: 3px;
+    padding: 5px 14px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    margin-right: 5px;
+    text-decoration: none;
 }
 
 .crud-table button.edit-btn:hover {
@@ -156,16 +155,21 @@ button:hover {
 
 /* Style for Hapus button */
 .crud-table button.delete-btn {
-    background-color: #dc3545;
+    background-color: #ff0000;
     color: #fff;
     border: none;
-    padding: 8px 30px;
+    border-radius: 3px;
+    padding: 6px 10px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    margin-right: 5px;
+    text-decoration: none;
     
 }
 
 .crud-table button.delete-btn:hover {
     background-color: #bd2130;
+}
+input{
+    width: 300px;
+    margin-left: 20px;
 }

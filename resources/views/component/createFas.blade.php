@@ -29,53 +29,60 @@
     }
 
     .popup-content h1 {
-        text-align: left;
+        padding: 20px;
+        text-align: center;
     }
 
-    .popup-content label {
-        display: block;
-        margin-bottom: 10px;
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        width: 30%;
+        margin-right: 10px;
         color: #333;
     }
 
-    .popup-content input,
-    .popup-content textarea {
-        width: 100%;
+    .form-group input,
+    .form-group textarea {
+        width: 70%;
         padding: 10px;
-        margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
     }
 
     .popup-content .button-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 10px;
     }
 
     .popup-content .button-container button {
-        width: 48%;
         padding: 10px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        width: 150px;
     }
 
     .popup-content .button-container .submit-button {
-        background-color: #007bff;
+        background-color: #44ff00;
         color: #fff;
     }
 
     .popup-content .button-container .submit-button:hover {
-        background-color: #0056b3;
+        background-color: #15b300;
     }
 
     .popup-content .button-container .cancel-button {
-        background-color: #ccc;
-        color: #333;
+        background-color: #ff0000;
+        color: #ffffff;
     }
 
     .popup-content .button-container .cancel-button:hover {
-        background-color: #aaa;
+        background-color: #fb3d3d;
     }
 </style>
 
@@ -86,15 +93,15 @@
             @include('component.error')
             <form action="{{ route('createFasilitas') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div>
+                <div class="form-group">
                     <label>Nama Fasilitas</label>
                     <input type="text" name="nama_fasilitas" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label>Deskripsi Fasilitas</label>
                     <textarea name="deskripsi_fasilitas" required></textarea>
                 </div>
-                <div>
+                <div class="form-group">
                     <label>Foto Fasilitas</label>
                     <input type="file" name="foto_fasilitas" required>
                 </div>

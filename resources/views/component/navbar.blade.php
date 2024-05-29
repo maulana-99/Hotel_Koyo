@@ -70,28 +70,25 @@
             align-items: center;
             color: #fff;
             text-decoration: none;
-            padding: 0rem 2rem;
             transition: background-color 0.3s;
-            font-size: 14px;
+            font-size: 18px;
+            margin-right: 20px; 
         }
 
         .profile-link img {
             width: 30px;
             height: 30px;
-            border-radius: 50%;
-            margin-right: 0.5rem;
+            border-radius: 0%;
         }
 
         .profile-link:hover {
             background-color: #c6a98d;
-            border-radius: 4px;
         }
 
         .profile-pic {
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            margin-right: 10px;
         }
 
         .dropdown-menu {
@@ -101,7 +98,6 @@
             top: 100%;
             background-color: #C39D7A;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
             border-radius: 7px;
             z-index: 100;
         }
@@ -163,7 +159,7 @@
         <div class="navbar-profile">
             @auth
                 <a href="#" class="profile-link" id="profileLink">
-                    {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
+                    <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu" id="dropdownMenu">

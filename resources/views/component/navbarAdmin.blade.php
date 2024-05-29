@@ -40,6 +40,7 @@
             display: flex;
             align-items: center;
             position: relative; /* Tambahkan posisi relatif */
+            color: white;
         }
 
         .navbar .profile img {
@@ -65,7 +66,7 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            right: 0;
+            left: 20px;
             top: 100%;
             background-color: #C39D7A;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -95,7 +96,7 @@
         .profile{
             background-color: #C39D7A;
             padding: 15px;
-            width: 130px;
+            width: 160px;
         }
     </style>
 </head>
@@ -105,8 +106,8 @@
         <div class="navbar">
             <h1>Selamat Datang, Admin</h1>
             <div class="profile">
-                {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
-                <span>{{ Auth::user()->name }}</span>
+                <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
+                <span>{{ $user->name }}</span>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="{{ url('/logout') }}">Logout</a>
                 </div>

@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Fasilitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Laravolt\Avatar\Facade as Avatar;
 
 class ManagementFasilitasController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $avatar = Avatar::create($user->name)->toBase64();
         $fasilitas = Fasilitas::all();
-        return view('adminPage.crudFasilitas', ['fasilitas' => $fasilitas]);
-    }
 
+        return view('adminPage.crudFasilitas', [
+            'fasilitas' => $fasilitas,
+            'user' => $user,
+            'avatar' => $avatar,
+        ]);
+    }
 
     public function create(Request $request)
     {
@@ -43,7 +51,6 @@ class ManagementFasilitasController extends Controller
         return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil ditambahkan');
     }
 
-
     public function delete($id)
     {
         $fasilitas = Fasilitas::findOrFail($id);
@@ -58,6 +65,4 @@ class ManagementFasilitasController extends Controller
 
         return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus');
     }
-
-
 }

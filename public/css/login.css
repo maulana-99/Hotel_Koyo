@@ -81,7 +81,17 @@ input {
     color: #fff;
     font-size: 24px;
 }
+.input-container {
+    position: relative;
+}
 
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 input::placeholder {
     color: #fff;
     font-size: 24px;
