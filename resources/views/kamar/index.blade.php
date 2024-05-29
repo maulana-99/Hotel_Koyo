@@ -105,14 +105,33 @@
         background-color: #c82333;
     }
 
+    .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        width: 90%;
+        max-width: 500px;
+        text-align: left;
+    }
 </style>
 
 <body>
     <h1>Kamar List</h1>
     <a class="create-button" href="{{ route('kamar.create') }}">Create New Kamar</a>
-    @if ($message = Session::get('success'))
-        <p>{{ $message }}</p>
-    @endif
+    <a href="#" id="openPopupCreate">Create</a>
+    @include('component.alert')
     <table>
         <thead>
             <tr>
@@ -149,6 +168,7 @@
             @endforeach
         </tbody>
     </table>
+    @include('kamar.createKam')
 </body>
 
 </html>

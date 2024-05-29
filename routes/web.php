@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KamarController;
+use App\Http\Controllers\ManagementKamarController;
 use App\Http\Controllers\ManagementFasilitasController;
 use App\Http\Controllers\ManagementResepsionisController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +73,9 @@ Route::middleware('userAkses:admin')->group(function () {
     Route::delete('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'delete'])->name('deleteFasilitas');
     /////////////////////////// --> END CRUD FASILITAS
 
+    /////////////////////////// --> CRUD KAMAR
+    // Route::resource('/admin/kamar', KamarController::class);
+    /////////////////////////// --> END CRUD KAMAR
 });
 
 // user yang sudah login dan bisa meng akses halaman ini berdasarkan role
@@ -84,9 +87,7 @@ Route::middleware('userAkses:resepsionis')->group(function () {
 Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
-// Route::get('/create', function () {
-//     return view('kamar.create');
-// });
 
-Route::resource('kamar', KamarController::class);
+
+Route::resource('kamar', ManagementKamarController::class);
 

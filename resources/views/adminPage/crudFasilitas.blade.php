@@ -86,8 +86,7 @@ th {
     <div class="table-container">
         <h1>Daftar Fasilitas</h1>
         <a href="#" id="openPopupCreate">Create</a>
-        <div class="alert"> <!-- Contoh menggunakan komponen alert -->
-            Pesan alert di sini.
+        <div class="alert"> 
         </div>
         <table>
             <thead>
