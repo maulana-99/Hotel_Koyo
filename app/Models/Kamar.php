@@ -12,10 +12,10 @@ class Kamar extends Model
     protected $fillable = [
         'id',
         'nama_kamar',
+        'harga',
         'tipe_kamar',
         'deskripsi',
         'jenis_kasur',
-        'kamar_mandi',
         'kapasitas',
         'foto_kamar',
     ];

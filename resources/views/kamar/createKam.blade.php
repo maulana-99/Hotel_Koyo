@@ -27,6 +27,14 @@
         </div>
 
         <div>
+            <label for="harga">Harga Kamar:</label>
+            <input type="number" id="harga" name="harga" value="{{ old('harga') }}" required>
+            @error('harga')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div>
             <label for="tipe_kamar">Tipe Kamar:</label>
             <select id="tipe_kamar" name="tipe_kamar" required>
                 <option value="" disabled selected>Pilih Tipe Kamar</option>
@@ -41,7 +49,7 @@
         <div>
             <label for="jenis_kasur">Jenis Kasur:</label>
             <select id="jenis_kasur" name="jenis_kasur" required>
-                <option value="" disabled selected>Pilih Tipe Kamar</option>
+                <option value="" disabled selected>Pilih Tipe Kasur</option>
                 <option value="king" {{ old('jenis_kasur') == 'kign' ? 'selected' : '' }}>King Bed</option>
                 <option value="twin" {{ old('jenis_kasur') == 'twin' ? 'selected' : '' }}>Twin Bed</option>
             </select> 

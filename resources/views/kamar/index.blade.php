@@ -1,15 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     <title>Document</title>
 </head>
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007BFF;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    p {
+        color: green;
+        font-weight: bold;
+    }
+
+    /* Table Styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #fff;
+    }
+
+    table thead {
+        background-color: #007BFF;
+        color: #fff;
+    }
+
+    table th,
+    table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Image Styles */
+    img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 5px;
+        width: 300px;
+    }
+
+    /* Button Styles */
+    .create-button,
+    .edit-button {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 5px 0;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .create-button:hover,
+    .edit-button:hover {
+        background-color: #218838;
+    }
+
+    /* Delete Button Styles */
+    .delete-button {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .delete-button:hover {
+        background-color: #c82333;
+    }
+
+</style>
+
 <body>
     <h1>Kamar List</h1>
-    <a href="{{ route('kamar.create') }}">Create New Kamar</a>
+    <a class="create-button" href="{{ route('kamar.create') }}">Create New Kamar</a>
     @if ($message = Session::get('success'))
         <p>{{ $message }}</p>
     @endif
@@ -19,6 +119,8 @@
                 <th>ID</th>
                 <th>Nama Kamar</th>
                 <th>Tipe Kamar</th>
+                <th>Kapasitas Kamar</th>
+                <th>Jenis Kasur</th>
                 <th>Harga</th>
                 <th>Foto Kamar</th>
                 <th>Actions</th>
@@ -27,17 +129,20 @@
         <tbody>
             @foreach ($kamar as $item)
                 <tr>
-                    <td>{{ $item->id_kamar }}</td>
+                    <td>{{ $item->id }}</td>
                     <td>{{ $item->nama_kamar }}</td>
                     <td>{{ $item->tipe_kamar }}</td>
+                    <td>{{ $item->jenis_kasur }}</td>
+                    <td>{{ $item->kapasitas }}</td>
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <a href="{{ route('kamar.edit', $item->id) }}">Edit</a>
-                        <form action="{{ route('kamar.destroy', $item->id) }}" method="POST" style="display:inline;">
+                        <a class="edit-button" href="{{ route('kamar.edit', $item->id) }}">Edit</a>
+                        <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="delete-button">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -45,4 +150,5 @@
         </tbody>
     </table>
 </body>
+
 </html>
