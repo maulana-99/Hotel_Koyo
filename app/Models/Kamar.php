@@ -12,10 +12,13 @@ class Kamar extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_kamar',
+        'id',
         'nama_kamar',
-        'tipe_kamar',
         'harga',
+        'tipe_kamar',
+        'deskripsi',
+        'jenis_kasur',
+        'kapasitas',
         'foto_kamar',
     ];
 }
