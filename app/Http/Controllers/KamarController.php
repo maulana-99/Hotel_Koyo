@@ -20,7 +20,7 @@ class KamarController extends Controller
      */
     public function create()
     {
-        return view('kamar.create');
+        return view('kamar.createKam');
     }
 
     /**
@@ -31,38 +31,43 @@ class KamarController extends Controller
         // Validate the request data
         $validatedData = $request->validate([
             'nama_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'foto_kamar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'tipe_kamar' => 'required|in:regular,delux',
+            'deskripsi' => 'required|string|max:255',
+            'jenis_kasur' => 'required|in:twin,king',
+            'kapasitas' => 'required|in:1,2',
+            'harga' => 'required|integer',
+            'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-    
+
         // Handle the image upload
         if ($request->hasFile('foto_kamar')) {
             $imageName = time() . '.' . $request->foto_kamar->extension();
             $request->foto_kamar->move(public_path('images'), $imageName);
         } else {
-            return redirect()->route('kamar.index')->with('error', 'Image upload failed.');
+            $imageName = null; // Set to null if no image is uploaded
         }
-    
+
         // Create the new Kamar record
         Kamar::create([
             'nama_kamar' => $validatedData['nama_kamar'],
             'tipe_kamar' => $validatedData['tipe_kamar'],
+            'deskripsi' => $validatedData['deskripsi'],
+            'jenis_kasur' => $validatedData['jenis_kasur'],
+            'kapasitas' => $validatedData['kapasitas'],
             'harga' => $validatedData['harga'],
             'foto_kamar' => $imageName,
         ]);
-    
+
         // Redirect with success message
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
     }
-    
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $kamar = Kamar::findOrFail($id);
-        return view('kamar.show', compact('kamar'));
+        // Show details for a specific Kamar - implement as needed
     }
 
     /**
@@ -71,34 +76,54 @@ class KamarController extends Controller
     public function edit(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-        return view('kamar.edit', compact('kamar'));
+        return view('kamar.editKam', compact('kamar'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
+        // Validate the request data
         $validatedData = $request->validate([
             'nama_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|string|max:255',
+            'tipe_kamar' => 'required|in:regular,delux',
             'harga' => 'required|numeric',
+            'deskripsi' => 'required|string|max:255',
+            'jenis_kasur' => 'required|in:twin,king',
+            'kapasitas' => 'required|in:1,2',
             'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $kamar = Kamar::findOrFail($id);
-        
+
+        // Check if a new image file is uploaded
         if ($request->hasFile('foto_kamar')) {
+            // Delete the old image if exists
+            if ($kamar->foto_kamar) {
+                $oldImagePath = public_path('images/' . $kamar->foto_kamar);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            // Upload the new image
             $imageName = time() . '.' . $request->foto_kamar->extension();
             $request->foto_kamar->move(public_path('images'), $imageName);
             $kamar->foto_kamar = $imageName;
         }
 
+        // Update the Kamar fields
         $kamar->nama_kamar = $validatedData['nama_kamar'];
-        $kamar->tipe_kamar = $validatedData['tipe_kamar'];
         $kamar->harga = $validatedData['harga'];
+        $kamar->tipe_kamar = $validatedData['tipe_kamar'];
+        $kamar->deskripsi = $validatedData['deskripsi'];
+        $kamar->jenis_kasur = $validatedData['jenis_kasur'];
+        $kamar->kapasitas = $validatedData['kapasitas'];
+        
+        // Save the updated Kamar data
         $kamar->save();
 
+        // Redirect with success message
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses diupdate');
     }
 
@@ -108,7 +133,15 @@ class KamarController extends Controller
     public function destroy(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-        $kamar->delete();
+    
+        if ($kamar->foto_kamar) {
+            $imagePath = public_path('images/' . $kamar->foto_kamar);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+    
+        $kamar->delete();    
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }
