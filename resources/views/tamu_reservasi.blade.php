@@ -25,13 +25,31 @@
             padding: 20px;
             border-radius: 5px;
             width: 90%;
-            max-width: 500px;
-            text-align: left;
+            max-width: 800px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .popup-content .left {
+            width: 60%;
+            padding-right: 20px;
+        }
+
+        .popup-content .right {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .popup-content img {
+            width: 100%;
+            border-radius: 5px;
         }
 
         .popup-content h1 {
             text-align: center;
-            padding: 20px;
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -56,8 +74,7 @@
 
         .button-container {
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
         }
 
         .button-container button {
@@ -65,7 +82,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 150px;
+            width: 48%;
         }
 
         .submit-button {
@@ -105,7 +122,7 @@
         </form>
     </div>
     <div class="room-cards">
-        <div class="room-card" onclick="openModal('Single Room', 'Rp. 500,000 / night')">
+        <div class="room-card" onclick="openModal('Single Room', 'Rp. 500,000 / night', '{{ asset('img/kamar.png') }}', 'Deskripsi untuk Single Room')">
             <a href="#" class="room-link">
                 <img src="{{ asset('img/kamar.png') }}" alt="Single Room" class="room-image">
                 <div class="room-info">
@@ -120,22 +137,28 @@
     <!-- Modal Popup -->
     <div class="popup" id="room-modal">
         <div class="popup-content">
-            <h1 id="modal-room-type">Room Type</h1>
-            <p id="modal-room-price">Room Price</p>
-            <form>
-                <div class="form-group">
-                    <label for="check-in">Check-In:</label>
-                    <input type="date" id="check-in" name="check-in" required>
-                </div>
-                <div class="form-group">
-                    <label for="check-out">Check-Out:</label>
-                    <input type="date" id="check-out" name="check-out" required>
-                </div>
-                <div class="button-container">
-                    <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
-                    <button type="submit" class="submit-button">Reservasi</button>
-                </div>
-            </form>
+            <div class="left">
+                <img id="modal-room-image" src="" alt="Room Image">
+                <h1 id="modal-room-type">Room Type</h1>
+                <p id="modal-room-description">Room Description</p>
+            </div>
+            <div class="right">
+                <h1 id="modal-room-price">Room Price</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="check-in">Check-In:</label>
+                        <input type="date" id="check-in" name="check-in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check-Out:</label>
+                        <input type="date" id="check-out" name="check-out" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="submit-button">Reservasi</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -144,9 +167,11 @@
     <script>
         var modal = document.getElementById("room-modal");
 
-        function openModal(roomType, roomPrice) {
+        function openModal(roomType, roomPrice, roomImage, roomDescription) {
             document.getElementById('modal-room-type').textContent = roomType;
             document.getElementById('modal-room-price').textContent = roomPrice;
+            document.getElementById('modal-room-image').src = roomImage;
+            document.getElementById('modal-room-description').textContent = roomDescription;
             modal.style.display = "flex";
         }
 
