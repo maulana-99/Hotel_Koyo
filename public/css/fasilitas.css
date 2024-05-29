@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.text {
+    font-size: 14px;
+    text-align: center;
+    background-color: #ffffff; /* Light gray background color */
+    box-shadow: 0px 0px 5px 2px rgb(0, 0, 0); /* Red shadow with specified parameters */
+    padding: 5px; /* Optional padding for better visual spacing */
+}
+
+.room-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Adjust gap as needed */
+    justify-content: center;
+    padding: 2rem;
+}
+
+.room-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    width: calc(33.333% - 2rem); /* Ensure three cards fit in one row */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.room-link {
+    text-decoration: none;
+}
+
+.room-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.room-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.room-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.room-info p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    color: #666;
+}

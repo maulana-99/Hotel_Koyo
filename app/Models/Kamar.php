@@ -9,6 +9,8 @@ class Kamar extends Model
 {
     use HasFactory;
     protected $table = 'kamar';
+
+    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'nama_kamar',

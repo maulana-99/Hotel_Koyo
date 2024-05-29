@@ -23,13 +23,13 @@
             </div>
             <div class="login_form">
                 <div class="text">
-                    <h1> Login </h1>
+                    <h1>Login</h1>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $item)
-                                <h3>{{ $item }}</h3>
+                                <li>{{ $item }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -41,15 +41,12 @@
                             placeholder="Email">
                     </div>
                     <div class="input-container">
-                        <span><i id="toggler"class="far fa-eye"></i></span>
-                        <input type="password" id="fakePassword" name="password" required placeholder="Password">
+                        <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
-
                     <button name="submit" type="submit" class="btn btn-primary">Masuk</button>
-                    <br>
-                    <br>
-                    <a class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun ? register</a>
                 </form>
+                <br>
+                <a class="button-link" href="{{ url('/register') }}">Apakah anda belum memiliki akun? Register</a>
             </div>
         </div>
     </div>
