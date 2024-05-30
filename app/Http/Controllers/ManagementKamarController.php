@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Kamar;
@@ -12,6 +13,7 @@ class ManagementKamarController extends Controller
     public function index()
     {
         $kamar = Kamar::all();
+
         return view('kamar.index', compact('kamar'));
     }
 
@@ -41,7 +43,7 @@ class ManagementKamarController extends Controller
 
         // Handle the image upload
         if ($request->hasFile('foto_kamar')) {
-            $imageName = time() . '.' . $request->foto_kamar->extension();
+            $imageName = time().'.'.$request->foto_kamar->extension();
             $request->foto_kamar->move(public_path('images'), $imageName);
         } else {
             $imageName = null; // Set to null if no image is uploaded
@@ -76,6 +78,7 @@ class ManagementKamarController extends Controller
     public function edit(string $id)
     {
         $kamar = Kamar::findOrFail($id);
+
         return view('kamar.editKam', compact('kamar'));
     }
 
@@ -90,27 +93,25 @@ class ManagementKamarController extends Controller
         $kamar->kapasitas = $request->input('kapasitas');
         $kamar->jenis_kasur = $request->input('jenis_kasur');
         $kamar->harga = $request->input('harga');
-    
+
         if ($request->hasFile('foto_kamar')) {
             $file = $request->file('foto_kamar');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $file->move(public_path('images'), $filename);
             if ($kamar->foto_kamar !== $filename) {
-                $imagePath = public_path('images/' . $kamar->foto_kamar);
+                $imagePath = public_path('images/'.$kamar->foto_kamar);
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
             }
             $kamar->foto_kamar = $filename;
-        
         }
-        
 
         $kamar->save();
-    
+
         return redirect()->route('kamar.index')->with('success', 'Kamar updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -119,13 +120,14 @@ class ManagementKamarController extends Controller
         $kamar = Kamar::findOrFail($id);
 
         if ($kamar->foto_kamar) {
-            $imagePath = public_path('images/' . $kamar->foto_kamar);
+            $imagePath = public_path('images/'.$kamar->foto_kamar);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
         }
 
         $kamar->delete();
+
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }

@@ -106,8 +106,8 @@
         <div class="navbar">
             <h1>Selamat Datang, Admin</h1>
             <div class="profile">
-                <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
-                <span>{{ $user->name }}</span>
+                {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
+                {{-- <span>{{ $user->name }}</span> --}}
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="{{ url('/logout') }}">Logout</a>
                 </div>

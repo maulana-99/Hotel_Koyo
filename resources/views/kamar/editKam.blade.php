@@ -13,7 +13,7 @@
     <div class="popup" id="editPopup">
         <div class="popup-content">
             <h2>Edit Kamar</h2>
-            <form id="editForm" action="{{ route('kamar.update', ['kamar' => $item->id]) }}" method="POST"
+            {{-- <form id="editForm" action="{{ route('kamar.update', ['kamar' => $item->id]) }}" method="POST" --}}
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
