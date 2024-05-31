@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Kamar List</title>
     <style>
         /* General Styles */
         body {
@@ -34,26 +34,28 @@
             padding: 20px;
             position: fixed;
         }
-        .content h1{
+
+        .content h1 {
             padding: 40px;
         }
-        .button_create {
-    padding: 10px;
-    background-color: #3dd229;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 20px;
-    float: right;
-    margin-right:30px; 
-}
 
-.button_create:hover {
-    background-color: #3fe02a;
-}
+        .button_create {
+            padding: 10px;
+            background-color: #3dd229;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            float: right;
+            margin-right: 30px;
+        }
+
+        .button_create:hover {
+            background-color: #3fe02a;
+        }
 
         /* Table Styles */
         .crud-table {
@@ -62,7 +64,8 @@
             margin-top: 20px;
         }
 
-        .crud-table th, .crud-table td {
+        .crud-table th,
+        .crud-table td {
             border: 1px solid #D9D9D9;
             padding: 8px;
             text-align: center;
@@ -169,6 +172,19 @@
         <table class="crud-table">
             <thead>
                 <tr>
+                    <th>ID</th>
+                    <th>Nama Kamar</th>
+                    <th>Tipe Kamar</th>
+                    <th>Jenis Kasur</th>
+                    <th>Kapasitas</th>
+                    <th>Harga</th>
+                    <th>Foto Kamar</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($kamar as $item)
+                <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nama_kamar }}</td>
                     <td>{{ $item->tipe_kamar }}</td>
@@ -177,7 +193,7 @@
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <button type="button" class="edit-button" data-id="{{ $item->id }}"
+                        <button type="button" class="edit-btn" data-id="{{ $item->id }}"
                             data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
                             data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
                             data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
@@ -186,19 +202,20 @@
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="delete-button">Delete</button>
+                            <button type="submit" class="delete-btn">Delete</button>
                         </form>
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    @include('adminPage.kamar.createKam')
-    @if ($kamar->isEmpty()) 
-        {{-- @include('kamar.editKam') --}}
-    @else
-        @include('adminPage.kamar.editKam')
-    @endif
+                @endforeach
+            </tbody>
+        </table>
+        @include('adminPage.kamar.createKam')
+        @if ($kamar->isEmpty())
+            {{-- @include('kamar.editKam') --}}
+        @else
+            @include('adminPage.kamar.editKam')
+        @endif
+    </div>
 </body>
 
 </html>
