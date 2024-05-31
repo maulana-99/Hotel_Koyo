@@ -133,27 +133,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($fasilitas as $index => $item)
+                @foreach ($fasilitas as $item)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>
-                            @if ($item->foto_fasilitas)
-                                <div class="table_max_width">
-                                    <img style="max-width: 100%" src="/storage/{{ $item->foto_fasilitas }}"
-                                        alt="Foto Fasilitas">
-                                </div>
-                            @else
-                                Tidak ada foto
-                            @endif
+                            <div class="table_max_width">
+                                <img style="max-width: 100%" src="/images/{{ $item->foto_fasilitas }}"
+                                    alt="Foto Fasilitas">
+                            </div>
                         </td>
                         <td>{{ $item->nama_fasilitas }}</td>
                         <td>{{ $item->deskripsi_fasilitas }}</td>
                         <td>
-                            <a href="#" class="edit-button" data-id="{{ $item->id }}"
+                            <button type="button" class="edit-button" data-id="{{ $item->id }}"
                                 data-nama="{{ $item->nama_fasilitas }}"
                                 data-deskripsi="{{ $item->deskripsi_fasilitas }}"
-                                data-foto="{{ $item->foto_fasilitas }}">Edit</a>
-                            <form action="{{ route('deleteFasilitas', $item->id) }}" method="POST"
+                                data-foto="/images/{{ $item->foto_fasilitas }}">Edit</button>
+
+                            <form action="{{ route('fasilitas.destroy', $item->id) }}" method="POST"
                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');"
                                 style="display:inline;">
                                 @csrf
@@ -167,8 +164,13 @@
         </table>
     </div>
 
-    @include('component.createFas')
-    @include('component.updateFas')
+    @include('adminPage.fasilitas.createFas')
+    
+    @if ($fasilitas->isEmpty())
+        {{-- @include('adminPage.fasilitas.updateFas') --}}
+    @else
+        @include('adminPage.fasilitas.updateFas')
+    @endif
 
 </body>
 

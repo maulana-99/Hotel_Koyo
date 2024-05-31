@@ -159,6 +159,7 @@
                             data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
                             data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
                             data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
+
                         <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
                             @csrf
@@ -170,8 +171,12 @@
             @endforeach
         </tbody>
     </table>
-    @include('kamar.createKam')
-    @include('kamar.editKam')
+    @include('adminPage.kamar.createKam')
+    @if ($kamar->isEmpty()) 
+        {{-- @include('kamar.editKam') --}}
+    @else
+        @include('adminPage.kamar.editKam')
+    @endif
 </body>
 
 </html>

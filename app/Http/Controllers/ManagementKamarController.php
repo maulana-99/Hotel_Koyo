@@ -12,7 +12,7 @@ class ManagementKamarController extends Controller
     public function index()
     {
         $kamar = Kamar::all();
-        return view('kamar.index', compact('kamar'));
+        return view('adminPage.kamar.index', compact('kamar'));
     }
 
     /**
@@ -20,7 +20,7 @@ class ManagementKamarController extends Controller
      */
     public function create()
     {
-        return view('kamar.createKam');
+        return view('adminPage.kamar.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class ManagementKamarController extends Controller
         ]);
 
         // Redirect with success message
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
+        return redirect()->route('adminPage.kamar.index')->with('sukses', 'Kamar sukses ditambah.');
     }
 
     /**
@@ -76,7 +76,7 @@ class ManagementKamarController extends Controller
     public function edit(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-        return view('kamar.editKam', compact('kamar'));
+        return view('adminPage.kamar.index', compact('kamar'));
     }
 
     /**
@@ -108,7 +108,7 @@ class ManagementKamarController extends Controller
 
         $kamar->save();
     
-        return redirect()->route('kamar.index')->with('success', 'Kamar updated successfully');
+        return redirect()->route('adminPage.kamar.index')->with('success', 'Kamar updated successfully');
     }
     
     /**
@@ -126,6 +126,6 @@ class ManagementKamarController extends Controller
         }
 
         $kamar->delete();
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
+        return redirect()->route('adminPage.kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }

@@ -16,14 +16,15 @@ class ManagementFasilitasController extends Controller
         $avatar = Avatar::create($user->name)->toBase64();
         $fasilitas = Fasilitas::all();
 
-        return view('adminPage.crudFasilitas', [
+        return view('adminPage.fasilitas.index', [
             'fasilitas' => $fasilitas,
             'user' => $user,
             'avatar' => $avatar,
         ]);
     }
 
-    public function create(Request $request)
+
+    public function store(Request $request)
     {
         $request->validate([
             'nama_fasilitas' => 'required',
@@ -48,10 +49,34 @@ class ManagementFasilitasController extends Controller
             'foto_fasilitas' => $path,
         ]);
 
-        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil ditambahkan');
+        return redirect()->route('fasilitas.store')->with('success', 'Fasilitas berhasil ditambahkan');
     }
 
-    public function delete($id)
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_fasilitas' => 'required|string|max:255',
+            'deskripsi_fasilitas' => 'required|string',
+            'foto_fasilitas' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $fasilitas = Fasilitas::findOrFail($id);
+        $fasilitas->nama_fasilitas = $request->nama_fasilitas;
+        $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+
+        if ($request->hasFile('foto_fasilitas')) {
+            $image = $request->file('foto_fasilitas');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('images'), $imageName);
+            $fasilitas->foto_fasilitas = $imageName;
+        }
+
+        $fasilitas->save();
+
+        return redirect()->route('')->with('success', 'Fasilitas updated successfully');
+    }
+
+    public function destroy($id)
     {
         $fasilitas = Fasilitas::findOrFail($id);
 
@@ -63,6 +88,6 @@ class ManagementFasilitasController extends Controller
         // Delete the fasilitas
         $fasilitas->delete();
 
-        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus');
+        return redirect()->route('fasilitas.destroy')->with('success', 'Fasilitas berhasil dihapus');
     }
 }
