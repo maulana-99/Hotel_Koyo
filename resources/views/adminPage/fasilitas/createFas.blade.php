@@ -92,7 +92,7 @@
         <div class="popup-content">
             <h1>Tambah Fasilitas</h1>
             @include('component.error')
-            <form action="{{ route('createFasilitas') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('fasilitas.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Nama Fasilitas</label>

@@ -64,8 +64,11 @@ Route::middleware('userAkses:admin')->group(function () {
 
     // ///////////////////////// --> CRUD FASILITAS
     Route::get('/admin/fasilitas', [ManagementFasilitasController::class, 'index'])->name('adminPage.crudFasilitas');
-    Route::post('/admin/fasilitas', [ManagementFasilitasController::class, 'create'])->name('createFasilitas');
-    Route::delete('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'delete'])->name('deleteFasilitas');
+    Route::post('/admin/fasilitas', [ManagementFasilitasController::class, 'store'])->name('fasilitas.store');
+    Route::delete('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'destroy'])->name('fasilitas.destroy');
+    Route::put('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'update'])->name('fasilitas.update');
+    // Route::resource('/admin/fasilitas', ManagementFasilitasController::class);
+
     // ///////////////////////// --> END CRUD FASILITAS
 
     // ///////////////////////// --> CRUD KAMAR

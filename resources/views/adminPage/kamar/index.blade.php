@@ -169,45 +169,36 @@
         <table class="crud-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nama Kamar</th>
-                    <th>Tipe Kamar</th>
-                    <th>Kapasitas Kamar</th>
-                    <th>Jenis Kasur</th>
-                    <th>Harga</th>
-                    <th>Foto Kamar</th>
-                    <th>Actions</th>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->nama_kamar }}</td>
+                    <td>{{ $item->tipe_kamar }}</td>
+                    <td>{{ $item->jenis_kasur }}</td>
+                    <td>{{ $item->kapasitas }}</td>
+                    <td>{{ $item->harga }}</td>
+                    <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
+                    <td>
+                        <button type="button" class="edit-button" data-id="{{ $item->id }}"
+                            data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
+                            data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
+                            data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
+
+                        <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach ($kamar as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->nama_kamar }}</td>
-                        <td>{{ $item->tipe_kamar }}</td>
-                        <td>{{ $item->jenis_kasur }}</td>
-                        <td>{{ $item->kapasitas }}</td>
-                        <td>{{ $item->harga }}</td>
-                        <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
-                        <td class="action-buttons">
-                            <button type="button" class="edit-btn" data-id="{{ $item->id }}"
-                                data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
-                                data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
-                                data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
-                            <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
-                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="delete-btn">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @include('kamar.createKam')
-        @include('kamar.editKam')
-    </div>
+            @endforeach
+        </tbody>
+    </table>
+    @include('adminPage.kamar.createKam')
+    @if ($kamar->isEmpty()) 
+        {{-- @include('kamar.editKam') --}}
+    @else
+        @include('adminPage.kamar.editKam')
+    @endif
 </body>
 
 </html>
