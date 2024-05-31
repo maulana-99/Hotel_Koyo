@@ -97,7 +97,7 @@
             right: 0;
             top: 100%;
             background-color: #C39D7A;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
             border-radius: 7px;
             z-index: 100;
         }

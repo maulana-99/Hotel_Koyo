@@ -95,7 +95,7 @@
         }
         .profile{
             background-color: #C39D7A;
-            padding: 15px;
+            padding: 30px;
             width: 160px;
         }
     </style>

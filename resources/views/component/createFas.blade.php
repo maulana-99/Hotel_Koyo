@@ -65,6 +65,7 @@
         border-radius: 5px;
         cursor: pointer;
         width: 150px;
+        margin-right:30px; 
     }
 
     .popup-content .button-container .submit-button {

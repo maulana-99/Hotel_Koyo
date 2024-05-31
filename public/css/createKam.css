@@ -72,7 +72,9 @@ button {
     padding: 10px 20px; /* Padding for better appearance */
     cursor: pointer; /* Cursor style */
 }
-
+.cancel-button:hover{
+background-color: #f75c51;
+}
 /* CSS for styling the Submit button */
 #submitButton {
     background-color: #4CAF50; /* Green background color */
@@ -82,7 +84,9 @@ button {
     padding: 10px 20px; /* Padding for better appearance */
     cursor: pointer; /* Cursor style */
 }
-
+#submitButton:hover{
+    background-color: #5fba62;
+}
 .container-form-group {
     display: flex;
     flex-direction: column;

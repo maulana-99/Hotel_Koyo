@@ -86,7 +86,7 @@
         </div>
         <ul class="sidebar-menu">
             <h1>Dashboard</h1>
-            <li><a href="{{ url('/admin/fasilitas') }}">Kamar Hotel</a></li>
+            <li><a href="{{ url('/admin/kamar') }}">Kamar Hotel</a></li>
             <li><a href="{{ url('/admin/fasilitas') }}">Fasilitas</a></li>
             <li><a href="{{ url('/admin/resepsionis') }}">Resepsionis</a></li>
         </ul>

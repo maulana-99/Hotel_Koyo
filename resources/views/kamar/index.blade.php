@@ -26,37 +26,34 @@
             background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: calc(100% - 255px);
+            width: calc(100% - 240px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             height: 100%;
             overflow-y: auto;
-            margin-left: 250px;
+            margin-left: 230px;
             padding: 20px;
             position: fixed;
         }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+        .content h1{
+            padding: 40px;
         }
-
-        /* Button Styles */
         .button_create {
-            padding: 10px;
-            background-color: #3dd229;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+    padding: 10px;
+    background-color: #3dd229;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+    float: right;
+    margin-right:30px; 
+}
 
-        .button_create:hover {
-            background-color: #3fe02a;
-        }
+.button_create:hover {
+    background-color: #3fe02a;
+}
 
         /* Table Styles */
         .crud-table {

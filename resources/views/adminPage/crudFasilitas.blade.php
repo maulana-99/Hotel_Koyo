@@ -12,16 +12,11 @@
             background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: calc(33.333% - 20px);
+            width: calc(100% - 255px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             height: 100%;
             overflow-y: scroll;
-        }
-
-        .table-container {
-
             margin-left: 250px;
-            width: calc(100% - 255px);
             position: fixed;
         }
 
@@ -32,10 +27,17 @@
         }
 
         .button-container {
-            text-align: right;
+            padding: 10px;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
             margin-bottom: 20px;
-            display: flex;
-            justify-content: flex-end;
+            float: right;
+            margin-right: 20px;
+            /* Tambahkan ini */
         }
 
         #openPopupCreate {
@@ -44,8 +46,6 @@
             background-color: #36b300;
             padding: 10px 20px;
             border-radius: 3px;
-            float: right;
-            margin-left: 15px;
             /* Menyesuaikan tombol ke kanan */
         }
 
@@ -112,10 +112,9 @@
         }
     </style>
 </head>
-@include('component.navbarAdmin')
-@include('component.sidebar')
-
 <body>
+    @include('component.navbarAdmin')
+    @include('component.sidebar')
     <div class="table-container">
         <h1>Daftar Fasilitas</h1>
         <div class="button-container">
@@ -166,10 +165,7 @@
             </tbody>
         </table>
     </div>
-
     @include('component.createFas')
     @include('component.updateFas')
-
 </body>
-
 </html>
