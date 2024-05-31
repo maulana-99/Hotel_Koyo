@@ -38,42 +38,46 @@ class ManagementFasilitasController extends Controller
             'foto_fasilitas.max' => 'Ukuran foto fasilitas tidak boleh lebih dari 2MB.',
         ]);
 
-        $path = null;
         if ($request->hasFile('foto_fasilitas')) {
-            $path = $request->file('foto_fasilitas')->store('fasilitas_images', 'public');
+            $imageName = time() . '.' . $request->foto_fasilitas->extension();
+            $request->foto_fasilitas->move(public_path('images'), $imageName);
+        } else {
+            $imageName = null;
         }
 
         Fasilitas::create([
             'nama_fasilitas' => $request->nama_fasilitas,
             'deskripsi_fasilitas' => $request->deskripsi_fasilitas,
-            'foto_fasilitas' => $path,
+            'foto_fasilitas' => $imageName
         ]);
 
-        return redirect()->route('fasilitas.store')->with('success', 'Fasilitas berhasil ditambahkan');
+        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_fasilitas' => 'required|string|max:255',
-            'deskripsi_fasilitas' => 'required|string',
-            'foto_fasilitas' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
         $fasilitas = Fasilitas::findOrFail($id);
-        $fasilitas->nama_fasilitas = $request->nama_fasilitas;
-        $fasilitas->deskripsi_fasilitas = $request->deskripsi_fasilitas;
+        $fasilitas->nama_fasilitas = $request->input('nama_fasilitas');
+        $fasilitas->deskripsi_fasilitas = $request->input('deskripsi_fasilitas');
+
 
         if ($request->hasFile('foto_fasilitas')) {
-            $image = $request->file('foto_fasilitas');
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('images'), $imageName);
-            $fasilitas->foto_fasilitas = $imageName;
+            $file = $request->file('foto_fasilitas');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            if ($fasilitas->foto_fasilitas !== $filename) {
+                $imagePath = public_path('images/' . $fasilitas->foto_fasilitas);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            $fasilitas->foto_fasilitas = $filename;
+
         }
 
         $fasilitas->save();
 
-        return redirect()->route('')->with('success', 'Fasilitas updated successfully');
+        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas updated successfully');
     }
 
     public function destroy($id)
@@ -88,6 +92,6 @@ class ManagementFasilitasController extends Controller
         // Delete the fasilitas
         $fasilitas->delete();
 
-        return redirect()->route('fasilitas.destroy')->with('success', 'Fasilitas berhasil dihapus');
+        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus');
     }
 }
