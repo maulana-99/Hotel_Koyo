@@ -60,4 +60,15 @@ class DashboardController extends Controller
 
         return view('tamu_reservasi');
     }
+
+    public function indexResepsionis()
+    {
+        if ($user = auth()->user()) {
+            $avatar = Avatar::create($user->name)->toBase64();
+
+            return view('resepsionis.index', compact('user', 'avatar'));
+        }
+
+        return view('resepsionis.index');
+    }
 }

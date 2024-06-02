@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FasilitasDashboard;
 use App\Http\Controllers\ManagementFasilitasController;
 use App\Http\Controllers\ManagementKamarController;
 use App\Http\Controllers\ManagementResepsionisController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/fasilitas', [DashboardController::class, 'indexFasilitas']);
+Route::get('/fasilitas', [FasilitasDashboard::class, 'index']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 // ----------------------------------------------|
@@ -39,6 +40,10 @@ Route::get('/admin', function () {
     return view('adminPage.admin.admin');
 });
 
+Route::get('/resepsionis', function () {
+    return view('resepsionis.index');
+});
+Route::get('/resepsionis', [DashboardController::class, 'indexResepsionis']);
 // menjadi mode tamu dan hanya bisa melihat saja
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');

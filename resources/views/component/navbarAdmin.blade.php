@@ -95,8 +95,8 @@
         }
         .profile{
             background-color: #C39D7A;
-            padding: 30px;
-            width: 160px;
+            padding: 15px;
+            width: 190px;
         }
     </style>
 </head>
@@ -107,7 +107,7 @@
             <h1>Selamat Datang, Admin</h1>
             <div class="profile">
                 {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
-                {{-- <span>{{ $user->name }}</span> --}}
+                <span>{{ $user->name }}</span>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="{{ url('/logout') }}">Logout</a>
                 </div>

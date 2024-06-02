@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kamar;
 use Illuminate\Http\Request;
+use Laravolt\Avatar\Facade as Avatar;
 
 class ManagementKamarController extends Controller
 {
@@ -14,7 +15,13 @@ class ManagementKamarController extends Controller
     {
         $kamar = Kamar::all();
 
-        return view('adminPage.kamar.index', compact('kamar'));
+        if ($user = auth()->user()) {
+            $avatar = Avatar::create($user->name)->toBase64();
+
+            return view('adminPage.kamar.index', compact('kamar', 'user', 'avatar'));
+        }
+
+        return view('adminPage.kamar.index');
     }
 
     /**

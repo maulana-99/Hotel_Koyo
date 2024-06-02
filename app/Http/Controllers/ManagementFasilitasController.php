@@ -17,12 +17,11 @@ class ManagementFasilitasController extends Controller
         $fasilitas = Fasilitas::all();
 
         return view('adminPage.fasilitas.index', [
-            'fasilitas' => $fasilitas,
+            'fasilitas' => $fasilitas, // Pass $fasilitas variable to the view
             'user' => $user,
             'avatar' => $avatar,
         ]);
     }
-
 
     public function store(Request $request)
     {
@@ -39,7 +38,7 @@ class ManagementFasilitasController extends Controller
         ]);
 
         if ($request->hasFile('foto_fasilitas')) {
-            $imageName = time() . '.' . $request->foto_fasilitas->extension();
+            $imageName = time().'.'.$request->foto_fasilitas->extension();
             $request->foto_fasilitas->move(public_path('images'), $imageName);
         } else {
             $imageName = null;
@@ -48,7 +47,7 @@ class ManagementFasilitasController extends Controller
         Fasilitas::create([
             'nama_fasilitas' => $request->nama_fasilitas,
             'deskripsi_fasilitas' => $request->deskripsi_fasilitas,
-            'foto_fasilitas' => $imageName
+            'foto_fasilitas' => $imageName,
         ]);
 
         return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil ditambahkan');
@@ -60,19 +59,17 @@ class ManagementFasilitasController extends Controller
         $fasilitas->nama_fasilitas = $request->input('nama_fasilitas');
         $fasilitas->deskripsi_fasilitas = $request->input('deskripsi_fasilitas');
 
-
         if ($request->hasFile('foto_fasilitas')) {
             $file = $request->file('foto_fasilitas');
-            $filename = time() . '_' . $file->getClientOriginalName();
+            $filename = time().'_'.$file->getClientOriginalName();
             $file->move(public_path('images'), $filename);
             if ($fasilitas->foto_fasilitas !== $filename) {
-                $imagePath = public_path('images/' . $fasilitas->foto_fasilitas);
+                $imagePath = public_path('images/'.$fasilitas->foto_fasilitas);
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
             }
             $fasilitas->foto_fasilitas = $filename;
-
         }
 
         $fasilitas->save();

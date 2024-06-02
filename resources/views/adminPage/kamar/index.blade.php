@@ -36,7 +36,8 @@
         }
 
         .content h1 {
-            padding: 40px;
+            padding: 50px;
+            text-align: center;
         }
 
         .button_create {
@@ -92,8 +93,9 @@
 
         .crud-table td .action-buttons {
             display: flex;
-            justify-content: center;
-            gap: 5px;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 20px;
         }
 
         /* Edit Button Styles */
@@ -193,17 +195,19 @@
                     <td>{{ $item->harga }}</td>
                     <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
                     <td>
-                        <button type="button" class="edit-btn" data-id="{{ $item->id }}"
-                            data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
-                            data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
-                            data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
+                        <div class="action-buttons">
+                            <button type="button" class="edit-btn" data-id="{{ $item->id }}"
+                                data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
+                                data-kapasitas="{{ $item->kapasitas }}" data-jenis="{{ $item->jenis_kasur }}"
+                                data-harga="{{ $item->harga }}" data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
 
-                        <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
-                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="delete-btn">Delete</button>
-                        </form>
+                            <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

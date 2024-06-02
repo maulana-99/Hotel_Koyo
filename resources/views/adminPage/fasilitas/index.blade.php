@@ -12,7 +12,7 @@
             background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: calc(100% - 255px);
+            width: calc(100% - 240px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             height: 100%;
             overflow-y: scroll;

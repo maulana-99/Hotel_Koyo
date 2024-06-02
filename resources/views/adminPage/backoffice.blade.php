@@ -41,7 +41,6 @@
                         <th>Email</th>
                         <th class="password-column">Password</th>
                         <th>Create</th>
-                        <th>Update</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -58,11 +57,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td class="password-column">{{ $user->password }}</td>
                                 <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->updated_at }}</td>
                                 <td>
                                     <div class="action-buttons">
-                                        <button class="edit-btn" onclick="editPopup()">Edit</button>
-                                        <form method="POST" action="{{ route('deactivateResepsionis', $user->id) }}" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menon aktifkan resepsionis ini?');">
                                             @csrf
                                             <button type="submit" class="delete-btn">Hapus</button>
                                         </form>
