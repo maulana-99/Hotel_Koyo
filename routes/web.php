@@ -7,6 +7,7 @@ use App\Http\Controllers\FasilitasDashboard;
 use App\Http\Controllers\ManagementFasilitasController;
 use App\Http\Controllers\ManagementKamarController;
 use App\Http\Controllers\ManagementResepsionisController;
+use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,8 +73,6 @@ Route::middleware('userAkses:admin')->group(function () {
     Route::post('/admin/fasilitas', [ManagementFasilitasController::class, 'store'])->name('fasilitas.store');
     Route::delete('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'destroy'])->name('fasilitas.destroy');
     Route::put('/admin/fasilitas/{id}', [ManagementFasilitasController::class, 'update'])->name('fasilitas.update');
-    // Route::resource('/admin/fasilitas', ManagementFasilitasController::class);
-
     // ///////////////////////// --> END CRUD FASILITAS
 
     // ///////////////////////// --> CRUD KAMAR
@@ -90,3 +89,7 @@ Route::middleware('userAkses:resepsionis')->group(function () {
 Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
+
+// Route::resource('/reservasi', ReservasiController::class);
+
+Route::resource('/reservasi', ReservasiController::class);

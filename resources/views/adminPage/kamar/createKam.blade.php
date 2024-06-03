@@ -18,16 +18,23 @@
                 <div class="container-form-group">
                     <div class="form-group">
                         <label for="nama_kamar">Nama Kamar:</label>
-                        <input type="text" id="nama_kamar" name="nama_kamar" value="{{ old('nama_kamar') }}" required>
+                        <input type="text" id="nama_kamar" name="nama_kamar" value="{{ old('nama_kamar') }}"
+                            required>
                         @error('nama_kamar')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="form-group">
                         <label for="harga">Harga Kamar:</label>
                         <input type="number" id="harga" name="harga" value="{{ old('harga') }}" required>
                         @error('harga')
+                            <div class="error">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required>
+                        @error('quantity')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>

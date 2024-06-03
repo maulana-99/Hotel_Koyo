@@ -29,7 +29,7 @@ class ManagementKamarController extends Controller
      */
     public function create()
     {
-        return view('adminPage.kamar.index');
+        return view('kamar.index');
     }
 
     /**
@@ -45,6 +45,7 @@ class ManagementKamarController extends Controller
             'jenis_kasur' => 'required|in:twin,king',
             'kapasitas' => 'required|in:1,2',
             'harga' => 'required|integer',
+            'quantity' => 'required|integer',
             'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -64,6 +65,7 @@ class ManagementKamarController extends Controller
             'jenis_kasur' => $validatedData['jenis_kasur'],
             'kapasitas' => $validatedData['kapasitas'],
             'harga' => $validatedData['harga'],
+            'quantity' => $validatedData['quantity'],
             'foto_kamar' => $imageName,
         ]);
 
@@ -85,8 +87,7 @@ class ManagementKamarController extends Controller
     public function edit(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-
-        return view('adminPage.kamar.index', compact('kamar'));
+        return view('kamar.index', compact('kamar'));
     }
 
     /**
@@ -134,7 +135,6 @@ class ManagementKamarController extends Controller
         }
 
         $kamar->delete();
-
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }
