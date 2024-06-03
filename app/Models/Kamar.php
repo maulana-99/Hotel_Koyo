@@ -20,5 +20,6 @@ class Kamar extends Model
         'jenis_kasur',
         'kapasitas',
         'foto_kamar',
+        'quantity',
     ];
 }

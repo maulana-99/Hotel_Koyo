@@ -20,7 +20,7 @@ class ManagementKamarController extends Controller
      */
     public function create()
     {
-        return view('adminPage.kamar.index');
+        return view('kamar.index');
     }
 
     /**
@@ -36,6 +36,7 @@ class ManagementKamarController extends Controller
             'jenis_kasur' => 'required|in:twin,king',
             'kapasitas' => 'required|in:1,2',
             'harga' => 'required|integer',
+            'quantity' => 'required|integer',
             'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -55,11 +56,12 @@ class ManagementKamarController extends Controller
             'jenis_kasur' => $validatedData['jenis_kasur'],
             'kapasitas' => $validatedData['kapasitas'],
             'harga' => $validatedData['harga'],
+            'quantity' => $validatedData['quantity'],
             'foto_kamar' => $imageName,
         ]);
 
         // Redirect with success message
-        return redirect()->route('adminPage.kamar.index')->with('sukses', 'Kamar sukses ditambah.');
+        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
     }
 
     /**
@@ -76,7 +78,7 @@ class ManagementKamarController extends Controller
     public function edit(string $id)
     {
         $kamar = Kamar::findOrFail($id);
-        return view('adminPage.kamar.index', compact('kamar'));
+        return view('kamar.index', compact('kamar'));
     }
 
     /**
@@ -90,7 +92,7 @@ class ManagementKamarController extends Controller
         $kamar->kapasitas = $request->input('kapasitas');
         $kamar->jenis_kasur = $request->input('jenis_kasur');
         $kamar->harga = $request->input('harga');
-    
+
         if ($request->hasFile('foto_kamar')) {
             $file = $request->file('foto_kamar');
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -102,15 +104,15 @@ class ManagementKamarController extends Controller
                 }
             }
             $kamar->foto_kamar = $filename;
-        
+
         }
-        
+
 
         $kamar->save();
-    
-        return redirect()->route('adminPage.kamar.index')->with('success', 'Kamar updated successfully');
+
+        return redirect()->route('kamar.index')->with('success', 'Kamar updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -126,6 +128,6 @@ class ManagementKamarController extends Controller
         }
 
         $kamar->delete();
-        return redirect()->route('adminPage.kamar.index')->with('sukses', 'Kamar sukses dihapus');
+        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
     }
 }

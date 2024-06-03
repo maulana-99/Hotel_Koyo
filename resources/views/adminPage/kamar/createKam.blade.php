@@ -30,7 +30,14 @@
                         <div class="error">{{ $message }}</div>
                     @enderror
                 </div>
-
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required>
+                    @error('quantity')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
+                </div>
+                
                 <div>
                     <label for="tipe_kamar">Tipe Kamar:</label>
                     <select id="tipe_kamar" name="tipe_kamar" required>
