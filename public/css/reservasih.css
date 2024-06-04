@@ -17,14 +17,12 @@ padding: 0;
     padding: 20px;
     width: 300px;
     height: 234px;
-    margin: 20px;
+    margin: 24px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .room-card img{
     width: 300px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    height: 140px;
 }
 .room-info h2{
     font-size: 20px;
@@ -64,10 +62,7 @@ border: none;
     color: #888;
     margin-bottom: 10px;
 }
-.img {
-  height: 200px;
-  width: 200px
-}
+
 .room-description {
     font-size: 12px;
     margin-bottom: 20px;
