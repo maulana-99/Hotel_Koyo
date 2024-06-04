@@ -9,7 +9,17 @@ class Reservasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'kamar_id', 'quantity', 'check_in', 'check_out'];
+    protected $fillable = [
+        'user_id',
+        'kamar_id',
+        'quantity',
+        'nama_depan',
+        'nama_delapan',
+        'tlp',
+        'alamat',
+        'check_in',
+        'check_out',
+    ];
 
     public function user()
     {

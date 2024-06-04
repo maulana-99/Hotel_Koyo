@@ -32,6 +32,7 @@
             transition: transform 0.2s;
             flex: 1;
             min-width: 250px;
+            cursor: pointer;
         }
 
         .card-reservasi:hover {
@@ -75,27 +76,44 @@
                 max-width: 100%;
             }
         }
+        .alrt-p{
+            background: #555
+        }
     </style>
 </head>
 
 <body>
 
     @if ($reservasi->isEmpty())
-        <p>Anda belum memesan/mereservasi kamar.</p>
+        <div class="alrt-p">
+            <p>Anda belum memesan/mereservasi kamar.</p>
+        </div>
     @else
-        @foreach ($reservasi as $item)
-            <div class="container-card-reservasi">
-                <div class="card-reservasi">
-                    <p class="nama_kamar">{{ $item->nama_kamar }}</p>
-                    <p class="check_in">{{ $item->check_in }}</p>
-                    <p class="check_out">{{ $item->check_out }}</p>
-                    <p class="tipe_kamar">{{ $item->tipe_kamar }}</p>
+        <div class="container-card-reservasi">
+            @foreach ($reservasi as $item)
+                <div class="card-reservasi" onclick="showDetails({{ json_encode($item) }})">
+                    <p class="nama_kamar">Nama kamar: {{ $item->nama_kamar }}</p>
+                    <p class="check_in">Check in: {{ $item->check_in }}</p>
+                    <p class="check_out">Check out: {{ $item->check_out }}</p>
+                    <p class="tipe_kamar">Tipe: {{ $item->tipe_kamar }}</p>
+                    <p class="quantity">Banyak kamar: {{ $item->quantity }}</p>
                     <p class="harga_kamar">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     @endif
-
+    <script>
+        function showDetails(item) {
+            alert(
+                `Nama kamar: ${item.nama_kamar}\n` +
+                `Check in: ${item.check_in}\n` +
+                `Check out: ${item.check_out}\n` +
+                `Tipe: ${item.tipe_kamar}\n` +
+                `Banyak kamar: ${item.quantity}\n` +
+                `Harga: Rp ${item.harga}`
+            );
+        }
+    </script>
 </body>
 
 </html>

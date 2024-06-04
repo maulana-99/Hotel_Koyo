@@ -54,11 +54,34 @@
                         <form action="{{ route('reservasi.store') }}" method="POST" class="reservation-form">
                             @csrf
                             <input type="hidden" name="kamar_id" value="{{ $item->id }}">
+                            <div class="form-group flex">
+                                <div class="form-group-inner">
+                                    <label for="nama_depan">Nama depan:</label>
+                                    <input type="text" id="nama_depan" name="nama_depan"
+                                        value="{{ old('nama_depan') }}" required>
+                                </div>
+                                <div class="form-group-inner">
+                                    <label for="nama_belakang">Nama Belakang:</label>
+                                    <input type="text" id="nama_belakang" name="nama_belakang"
+                                        value="{{ old('nama_belakang') }}" required>
+                                </div>
+                            </div>
                             <div class="form-group">
-                                <label for="quantity">Kamar:</label>
-                                <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}"
-                                    required max="{{ $item->quantity }}"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                <label for="alamat">Alamat:</label>
+                                <input type="number" id="alamat" name="alamat" value="{{ old('alamat') }}"
+                                    r
+                            <div class="form-group flex">
+                                <div class="form-group-inner">
+                                    <label for="quantity">Jumlah Kamar:</label>
+                                    <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}"
+                                        required max="{{ $item->quantity }}"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label for="tlp">Nomor Telpon:</label>
+                                    <input type="number" id="tlp" name="tlp" value="{{ old('tlp') }}"
+                                        required>
+                                </div>
                             </div>
                             <div class="form-group flex">
                                 <div class="form-group-inner">

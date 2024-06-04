@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreignId('kamar_id')->constrained('kamar')->onDelete('cascade');
             $table->integer('quantity');
             $table->enum('status', ['1', '0'])->default('1');
+            $table->string('nama_depan');
+            $table->string('nama_belakang');
+            $table->string('alamat');
+            $table->string('tlp');
             $table->date('check_in');
             $table->date('check_out');
             $table->timestamps();

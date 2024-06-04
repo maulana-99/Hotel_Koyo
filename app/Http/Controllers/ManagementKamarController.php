@@ -41,7 +41,7 @@ class ManagementKamarController extends Controller
         $validatedData = $request->validate([
             'nama_kamar' => 'required|string|max:255',
             'tipe_kamar' => 'required|in:regular,delux',
-            'deskripsi' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
             'jenis_kasur' => 'required|in:twin,king',
             'kapasitas' => 'required|in:1,2',
             'harga' => 'required|integer',
