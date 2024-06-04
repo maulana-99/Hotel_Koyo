@@ -153,7 +153,7 @@
                     <a href="{{ url('/') }}">Beranda</a>
                 @endauth
             </li>
-            <li><a href="{{ url('/tamu_reservasi') }}">Reservasi</a></li>
+            <li><a href="{{ url('/reservasi') }}">Reservasi</a></li>
             <li><a href="{{ url('/fasilitas') }}">Fasilitas</a></li>
         </ul>
         <div class="navbar-profile">
@@ -163,6 +163,7 @@
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="{{ url('/reservasi/show') }}">Invoice</a>
                     <a href="{{ url('/logout') }}">Logout</a>
                 </div>
             @else

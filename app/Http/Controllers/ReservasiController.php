@@ -13,15 +13,13 @@ class ReservasiController extends Controller
     public function index()
     {
         $kamar = Kamar::all();
+
         return view('reservasi.index', compact('kamar'));
     }
 
-
     public function create()
     {
-
     }
-
 
     public function store(Request $request)
     {
@@ -81,20 +79,15 @@ class ReservasiController extends Controller
         return view('reservasi.pesananReservasi', ['reservasi' => $reservasi]);
     }
 
-
     public function edit()
     {
-
     }
-
 
     public function update()
     {
-
     }
 
     public function destroy()
     {
-
     }
 }

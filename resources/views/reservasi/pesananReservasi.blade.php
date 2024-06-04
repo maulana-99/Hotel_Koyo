@@ -83,6 +83,7 @@
 </head>
 
 <body>
+    @include('component.navbar')
 
     @if ($reservasi->isEmpty())
         <div class="alrt-p">

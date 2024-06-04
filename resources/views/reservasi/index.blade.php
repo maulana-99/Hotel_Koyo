@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Create Reservation</h1>
+    @include('component.navbar')
     @if (session('success'))
         <p>{{ session('success') }}</p>
     @endif
