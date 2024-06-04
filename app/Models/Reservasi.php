@@ -14,11 +14,11 @@ class Reservasi extends Model
         'kamar_id',
         'quantity',
         'nama_depan',
-        'nama_delapan',
+        'nama_belakang',
         'tlp',
         'alamat',
         'check_in',
-        'check_out',
+        'check_out'
     ];
 
     public function user()

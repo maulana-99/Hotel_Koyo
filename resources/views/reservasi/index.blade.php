@@ -30,16 +30,21 @@
                     <p class="room-type">{{ $item->tipe_kamar }}</p>
                     <p class="room-price">Rp {{ number_format($item->harga, 0, ',', '.') }}/malam</p>
                     <p class="room-availability">Tersisa {{ $item->quantity }} kamar</p>
-                    <button class="btn btn-primary" onclick="openModal('modal{{ $item->id }}')">Book</button>
+                    @if ($item->quantity > 0)
+                        <button class="btn btn-primary" onclick="openModal('modal{{ $item->id }}')">Book</button>
+                    @else
+                        <button class="btn btn-primary" disabled>Out of Stock</button>
+                    @endif
                 </div>
             </div>
             <!-- Modal -->
+            @if ($item->quantity > 0)
             <div id="modal{{ $item->id }}" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('modal{{ $item->id }}')">&times;</span>
 
                     <div class="modal-content-lft">
-                        <img src="/images/{{ $item->foto_kamar }}" alt="Ro  om Image" class="room-image">
+                        <img src="/images/{{ $item->foto_kamar }}" alt="Room Image" class="room-image">
                         <h1>Deskripsi</h1>
                         <p class="room-description">{{ $item->deskripsi }}</p>
                     </div>
@@ -68,8 +73,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="alamat">Alamat:</label>
-                                <input type="number" id="alamat" name="alamat" value="{{ old('alamat') }}"
-                                    r
+                                <input type="text" id="alamat" name="alamat" value="{{ old('alamat') }}" required>
+                            </div>
                             <div class="form-group flex">
                                 <div class="form-group-inner">
                                     <label for="quantity">Jumlah Kamar:</label>
@@ -104,9 +109,9 @@
                     </div>
                 </div>
             </div>
+            @endif
         @endforeach
     </div>
-
 
     <script>
         function openModal(modalId) {
@@ -126,8 +131,6 @@
             });
         }
     </script>
-
 </body>
-
 
 </html>
