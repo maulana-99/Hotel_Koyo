@@ -15,7 +15,6 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             justify-content: center;
-            align-items: center;
         }
 
         .popup-content {
@@ -23,55 +22,60 @@
             padding: 20px;
             border-radius: 5px;
             width: 90%;
-            max-width: 500px;
-            text-align: left;
+            max-width:400px;
+            text-align: center;
         }
 
         .popup-content h2 {
-            text-align: left;
+            text-align: center;
         }
 
-        .popup-content label {
-            display: block;
-            margin-bottom: 10px;
-            color: #333;
-        }
+.popup-content .input-container {
+    display: flex;
+    align-items: center; /* Mengatur input agar berada di tengah vertikal */
+    margin-bottom: 20px;
+}
 
-        .popup-content input,
-        .popup-content textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+.popup-content label {
+    flex: 1; /* Menyebarkan label agar mengambil sebagian ruang yang tersedia */
+margin-right: 10px; /* Jarak antara label dan input */
+}
 
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-        }
 
-        .button-container button {
-            width: 48%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.popup-content input,
+.popup-content textarea {
+    flex: 2; /* Menyebarkan input agar mengambil sebagian ruang yang tersedia */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar total input */
+    margin: 20px 0; /* Jarak atas dan bawah setiap input */
+    max-width: 300px; /* Lebar maksimum untuk input */
+}
 
-        .button-container .submit-button {
-            background-color: #007bff;
-            color: #fff;
-        }
+.button-container {
+    display: flex;
+    justify-content: center; /* Mengatur tombol agar berada di tengah secara horizontal */
+    margin-top: 20px; /* Menambahkan jarak antara input dan tombol */
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 10px; /* Menambahkan jarak antara tombol */
+}
+
+.submit-button, .cancel-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+}
 
         .button-container .submit-button:hover {
             background-color: #0056b3;
         }
 
-        .button-container .cancel-button {
-            background-color: #ccc;
-            color: #333;
-        }
 
         .button-container .cancel-button:hover {
             background-color: #aaa;
