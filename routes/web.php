@@ -8,6 +8,7 @@ use App\Http\Controllers\ManagementFasilitasController;
 use App\Http\Controllers\ManagementKamarController;
 use App\Http\Controllers\ManagementResepsionisController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\ResepsionisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -93,3 +94,4 @@ Route::middleware('userAkses:tamu')->group(function () {
 // Route::resource('/reservasi', ReservasiController::class);
 
 Route::resource('/reservasi', ReservasiController::class);
+Route::resource('/resepsionis', ResepsionisController::class);

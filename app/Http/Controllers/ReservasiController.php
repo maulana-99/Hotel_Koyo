@@ -16,13 +16,6 @@ class ReservasiController extends Controller
         return view('reservasi.index', compact('kamar'));
     }
 
-
-    public function create()
-    {
-
-    }
-
-
     public function store(Request $request)
     {
         $request->validate([
@@ -81,20 +74,4 @@ class ReservasiController extends Controller
         return view('reservasi.pesananReservasi', ['reservasi' => $reservasi]);
     }
 
-
-    public function edit()
-    {
-
-    }
-
-
-    public function update()
-    {
-
-    }
-
-    public function destroy()
-    {
-
-    }
 }
