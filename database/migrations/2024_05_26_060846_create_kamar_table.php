@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->enum('tipe_kamar', ['regular', 'delux'])->default('regular');
             $table->string('deskripsi');
             $table->enum('jenis_kasur', ['twin', 'king'])->default('king');
-            $table->enum('kapasitas',['1','2','3','4'])->default('1');
+            $table->enum('kapasitas', ['1', '2', '3', '4'])->default('1');
             $table->decimal('harga', 8, 2);
             $table->integer('quantity');
             $table->string('foto_kamar')->nullable();

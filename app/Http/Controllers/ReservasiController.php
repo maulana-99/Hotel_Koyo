@@ -6,6 +6,7 @@ use App\Models\Kamar;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReservasiController extends Controller
 {
@@ -52,14 +53,14 @@ class ReservasiController extends Controller
         $kamar->quantity -= $request->quantity;
         $kamar->save();
     
-        return redirect()->route('reservasi.create')->with('success', 'Reservation created successfully.');
+        return redirect()->route('reservasi.index')->with('success', 'Reservation created successfully.');
     }
 
     public function show()
     {
-        $reservasi = Reservasi::table('reservasi')
-            ->join('kamar', 'reservasi.kamar_id', '=', 'kamar.id')
-            ->select('reservasi.*', 'kamar.tipe_kamar', 'kamar.harga')
+        $reservasi = DB::table('reservasis')
+            ->join('kamar', 'reservasis.kamar_id', '=', 'kamar.id')
+            ->select('reservasis.*', 'kamar.tipe_kamar', 'kamar.harga','kamar.nama_kamar')
             ->get();
 
         return view('reservasi.pesananReservasi', ['reservasi' => $reservasi]);
