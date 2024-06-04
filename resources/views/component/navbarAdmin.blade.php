@@ -96,7 +96,7 @@
         .profile{
             background-color: #C39D7A;
             padding: 15px;
-            width: 190px;
+            width: 180px;
         }
     </style>
 </head>

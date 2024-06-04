@@ -1,14 +1,17 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-}
 
-.text {
-    font-size: 24px;
+}
+.text h1 {
+    font-size: 30px;
     text-align: center;
-    margin-bottom: 20px;
+    background-color: #f0f0f0; /* Ubah warna latar belakang */
+    box-shadow: 0 6px 12px rgba(134, 134, 134, 0.7); /* Modifikasi efek bayangan */
 }
 
+    
 .room-cards {
     display: flex;
     flex-wrap: wrap;
