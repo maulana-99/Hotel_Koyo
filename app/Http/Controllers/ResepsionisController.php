@@ -13,11 +13,40 @@ class ResepsionisController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $avatar = Avatar::create($user->name)->toBase64();
-        $reservasi = Reservasi::all();
+
+        $query = Reservasi::query()
+            ->join('kamar', 'reservasis.kamar_id', '=', 'kamar.id')
+            ->select('reservasis.*', 'kamar.harga', 'kamar.tipe_kamar', 'kamar.jenis_kasur', 'kamar.kapasitas', 'kamar.nama_kamar');
+
+        if ($request->has('src-date')) {
+            $date = $request->input('src-date');
+            $query->whereDate('check_in', $date)
+                ->orWhereDate('check_out', $date);
+        }
+
+        if ($request->has('nama_depan')) {
+            $namaDepan = $request->input('nama_depan');
+            if (!empty($namaDepan)) {
+                $query->where('nama_depan', 'like', '%' . $namaDepan . '%');
+            }
+        }
+
+        if ($request->has('nama_belakang')) {
+            $namaBelakang = $request->input('nama_belakang');
+            if (!empty($namaBelakang)) {
+                $query->where('nama_belakang', 'like', '%' . $namaBelakang . '%');
+            }
+        }
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $reservasi = $query->get();
 
         return view('resepsionis.index', [
             'reservasi' => $reservasi,
@@ -25,6 +54,8 @@ class ResepsionisController extends Controller
             'avatar' => $avatar,
         ]);
     }
+
+
 
     public function checkIn($id)
     {
@@ -62,6 +93,8 @@ class ResepsionisController extends Controller
         // Redirect ke halaman yang diinginkan dengan pesan sukses
         return redirect()->back()->with('success', 'Check out berhasil!');
     }
+
+
     /**
      * Show the form for creating a new resource.
      */

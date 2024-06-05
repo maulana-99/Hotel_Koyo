@@ -11,18 +11,19 @@
 <body>
     @include('component.navbarAdmin')
     @include('component.sidebar')
+    @include('component.alert')
     <div class="container-table">
         <div class="table-src">
-            <form action="" method="get">
-                <label for="src-date">Serch by date</label>
-                <input type="date" name="" id="">
+            <form action="{{ route('resepsionis.index') }}" method="get">
+                <label for="src-date">Search by date</label>
+                <input type="date" name="src-date" id="src-date">
                 <button class="src" type="submit">cari</button>
             </form>
             <div class="table-src-name">
-                <form action="" method="get">
-                    <label for="nama_depan">Serch by name</label>
-                    <input type="text" placeholder="Masukan nama depan">
-                    <input type="text" placeholder="Masukan nama belakang">
+                <form action="{{ route('resepsionis.index') }}" method="get">
+                    <label for="nama_depan">Search by name</label>
+                    <input type="text" name="nama_depan" placeholder="Masukan nama depan">
+                    <input type="text" name="nama_belakang" placeholder="Masukan nama belakang">
                     <button class="src" type="submit">cari</button>
                 </form>
             </div>
@@ -42,8 +43,8 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($reservasi as $item)
+            @foreach ($reservasi as $item)
+                <tbody>
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->nama_depan }}</td>
@@ -64,7 +65,7 @@
                         </td>
                         <td>
                             <div class="btn-tbl-res">
-                                <button class="check detail">Detail</button>
+                                <button class="check detail" onclick="showModal({{ $item->id }})">Detail</button>
                                 @if ($item->status == 1)
                                     <form action="{{ route('resepsionis.checkin', $item->id) }}" method="POST"
                                         style="display:inline;">
@@ -83,81 +84,62 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+            @endforeach
             </tbody>
         </table>
     </div>
 
-    <!-- Modal HTML -->
     <div id="detailModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Detail Reservasi</h2>
-            <p id="detailNamaDepan"></p>
-            <p id="detailNamaBelakang"></p>
-            <p id="detailTlp"></p>
-            <p id="detailAlamat"></p>
-            <p id="detailQuantity"></p>
-            <p id="detailCheckIn"></p>
-            <p id="detailCheckOut"></p>
-            <p id="detailHarga"></p>
-            <p id="detailStatus"></p>
+            <h2>Detail Pemesan</h2>
+            <p class="nama_depan"></p>
+            <p class="nama_belakang"></p>
+            <p class="alamat"></p>
+            <p class="tlp"></p>
+            <h2>Detail Kamar</h2>
+            <p class="nama_kamar"></p>
+            <p class="tipe_kamar"></p>
+            <p class="jenis_kasur"></p>
+            <p class="kapasitas"></p>
+            <p class="harga"></p>
         </div>
     </div>
 
     <script>
-        // Get the modal
+        // Get modal elements
         var modal = document.getElementById("detailModal");
-
-        // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks on <span> (x), close the modal
+        // Function to show modal with details
+        function showModal(id) {
+            var reservasi = @json($reservasi);
+            var item = reservasi.find(res => res.id === id);
+            if (item) {
+                document.querySelector('.modal-content .nama_depan').innerText = "Nama Depan: " + item.nama_depan;
+                document.querySelector('.modal-content .nama_belakang').innerText = "Nama Belakang: " + item.nama_belakang;
+                document.querySelector('.modal-content .alamat').innerText = "Alamat: " + item.alamat;
+                document.querySelector('.modal-content .tlp').innerText = "Nomor Telpon: " + item.tlp;
+                document.querySelector('.modal-content .nama_kamar').innerText = "Nama Kamar: " + item.nama_kamar;
+                document.querySelector('.modal-content .tipe_kamar').innerText = "Tipe Kamar: " + item.tipe_kamar;
+                document.querySelector('.modal-content .jenis_kasur').innerText = "Jenis Kasur: " + item.jenis_kasur +" bed";
+                document.querySelector('.modal-content .kapasitas').innerText = "Kapasitas Orang: " + item.kapasitas + " orang";
+                document.querySelector('.modal-content .harga').innerText = "Harga /malam: " + item.harga;
+            }
+            modal.style.display = "block";
+        }
+
+        // Close the modal when the user clicks on <span> (x)
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
+        // Close the modal when the user clicks anywhere outside of the modal
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
-
-        // Function to open the modal and set the details
-        function openDetailModal(details) {
-            document.getElementById('detailNamaDepan').innerText = 'Nama Depan: ' + details.namaDepan;
-            document.getElementById('detailNamaBelakang').innerText = 'Nama Belakang: ' + details.namaBelakang;
-            document.getElementById('detailTlp').innerText = 'No Telp: ' + details.tlp;
-            document.getElementById('detailAlamat').innerText = 'Alamat: ' + details.alamat;
-            document.getElementById('detailQuantity').innerText = 'Jumlah Kamar: ' + details.quantity;
-            document.getElementById('detailCheckIn').innerText = 'Check-in: ' + details.checkIn;
-            document.getElementById('detailCheckOut').innerText = 'Check-out: ' + details.checkOut;
-            document.getElementById('detailHarga').innerText = 'Harga / malam: ' + details.harga;
-            document.getElementById('detailStatus').innerText = 'Status: ' + (details.status == 1 ? 'Belum check in' : (
-                details.status == 2 ? 'Sudah check in' : 'Sudah check out'));
-            modal.style.display = "block";
-        }
-
-        // Add event listeners to detail buttons
-        document.querySelectorAll('.btn-tbl-res .detail').forEach(button => {
-            button.addEventListener('click', function() {
-                var row = this.closest('tr');
-                var details = {
-                    namaDepan: row.cells[1].innerText,
-                    namaBelakang: row.cells[2].innerText,
-                    tlp: row.cells[3].innerText,
-                    alamat: row.cells[4].innerText,
-                    quantity: row.cells[5].innerText,
-                    checkIn: row.cells[6].innerText,
-                    checkOut: row.cells[7].innerText,
-                    harga: row.cells[8].innerText,
-                    status: row.cells[9].innerText === 'Belum check in' ? 1 : (row.cells[9]
-                        .innerText === 'Sudah check in' ? 2 : 0)
-                };
-                openDetailModal(details);
-            });
-        });
     </script>
 </body>
 

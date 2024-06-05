@@ -155,6 +155,7 @@
         </div>
     @else
         <div class="container-card-reservasi">
+            @include('component.alert')
             @foreach ($reservasi as $item)
                 <div class="card-reservasi">
                     <p class="nama_kamar"><b>Nama kamar:</b> {{ $item->nama_kamar }}</p>
@@ -163,7 +164,8 @@
                     <p class="check_out">Check out: {{ $item->check_out }}</p>
                     <p class="quantity">Jumlah kamar: {{ $item->quantity }}</p>
                     <button
-                        onclick="showDetail('{{ $item->nama_depan }}','{{ $item->nama_belakang }}','{{ $item->alamat }}','{{ $item->tlp }}', '{{ $item->nama_kamar }}', 
+                        onclick="showDetail('{{ $item->nama_depan }}','{{ $item->nama_belakang }}',
+                        '{{ $item->alamat }}','{{ $item->tlp }}', '{{ $item->nama_kamar }}', 
                         '{{ $item->tipe_kamar }}', '{{ $item->check_in }}', 
                         '{{ $item->check_out }}', '{{ $item->quantity }}', 
                         '{{ number_format($item->harga, 0, ',', '.') }}')">Detail</button>
