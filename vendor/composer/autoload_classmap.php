@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\ManagementFasilitasController' => $baseDir . '/app/Http/Controllers/ManagementFasilitasController.php',
     'App\\Http\\Controllers\\ManagementKamarController' => $baseDir . '/app/Http/Controllers/ManagementKamarController.php',
     'App\\Http\\Controllers\\ManagementResepsionisController' => $baseDir . '/app/Http/Controllers/ManagementResepsionisController.php',
+    'App\\Http\\Controllers\\ResepsionisController' => $baseDir . '/app/Http/Controllers/ResepsionisController.php',
     'App\\Http\\Controllers\\ReservasiController' => $baseDir . '/app/Http/Controllers/ReservasiController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

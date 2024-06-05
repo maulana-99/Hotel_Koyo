@@ -573,6 +573,7 @@ class ComposerStaticInitf5ef17887662f132f15c3b78afc4c0aa
         'App\\Http\\Controllers\\ManagementFasilitasController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManagementFasilitasController.php',
         'App\\Http\\Controllers\\ManagementKamarController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManagementKamarController.php',
         'App\\Http\\Controllers\\ManagementResepsionisController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManagementResepsionisController.php',
+        'App\\Http\\Controllers\\ResepsionisController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResepsionisController.php',
         'App\\Http\\Controllers\\ReservasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservasiController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

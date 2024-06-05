@@ -17,10 +17,6 @@ class ReservasiController extends Controller
         return view('reservasi.index', compact('kamar'));
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -65,29 +61,15 @@ class ReservasiController extends Controller
     public function show()
     {
         $user = Auth::user();
-
         if (!$user) {
             return redirect()->route('login');
         }
-
         $reservasi = DB::table('reservasis')
             ->join('kamar', 'reservasis.kamar_id', '=', 'kamar.id')
             ->where('reservasis.user_id', $user->id)
             ->select('reservasis.*', 'kamar.tipe_kamar', 'kamar.harga', 'kamar.nama_kamar')
             ->get();
 
-        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi]);
-    }
-
-    public function edit()
-    {
-    }
-
-    public function update()
-    {
-    }
-
-    public function destroy()
-    {
+        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi, 'user' => $user]);
     }
 }

@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            width: 500px;
             margin: 0 auto;
         }
 
@@ -44,9 +44,10 @@
             display: flex;
             align-items: center;
         }
-        .form-item 
-        .form-item label {
-            width: 150px; /* Adjust as needed */
+
+        .form-item .form-item label {
+            width: 150px;
+            /* Adjust as needed */
             margin-right: 10px;
         }
 
@@ -85,12 +86,14 @@
             border: none;
             cursor: pointer;
         }
-        .label-right {
-    text-align: right;
-    margin-right: 10px; /* Adjust as needed */
-    width: 10px; /* Adjust as needed */
-}
 
+        .label-right {
+            text-align: right;
+            margin-right: 10px;
+            /* Adjust as needed */
+            width: 10px;
+            /* Adjust as needed */
+        }
     </style>
 </head>
 
@@ -129,8 +132,16 @@
                     </select>
                 </div>
                 <div class="form-item">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="editQuantity" required>
+                </div>
+                <div class="form-item">
                     <label for="editHarga">Harga:</label>
                     <input type="number" name="harga" id="editHarga" required>
+                </div>
+                <div class="form-item">
+                    <label for="deskripsi">Deskripsi:</label>
+                    <textarea type="text" name="deskripsi" id="editDeskripsi" ols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-item">
                     <label for="editFoto" class="label-right">Foto Kamar:</label>
@@ -144,6 +155,7 @@
             </form>
         </div>
     </div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const editButtons = document.querySelectorAll('.edit-btn');
@@ -158,6 +170,8 @@
                     const tipe = button.getAttribute('data-tipe');
                     const kapasitas = button.getAttribute('data-kapasitas');
                     const jenis = button.getAttribute('data-jenis');
+                    const quantity = button.getAttribute('data-quantity');
+                    const deskripsi = button.getAttribute('data-deskripsi');
                     const harga = button.getAttribute('data-harga');
                     const foto = button.getAttribute('data-foto');
 
@@ -167,6 +181,8 @@
                     document.getElementById('editTipeKamar').value = tipe;
                     document.getElementById('editKapasitas').value = kapasitas;
                     document.getElementById('editJenisKasur').value = jenis;
+                    document.getElementById('editQuantity').value = quantity;
+                    document.getElementById('editDeskripsi').value = deskripsi;
                     document.getElementById('editHarga').value = harga;
                     document.getElementById('editFotoPreview').src = foto;
 

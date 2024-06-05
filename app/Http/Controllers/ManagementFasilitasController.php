@@ -17,7 +17,7 @@ class ManagementFasilitasController extends Controller
         $fasilitas = Fasilitas::all();
 
         return view('adminPage.fasilitas.index', [
-            'fasilitas' => $fasilitas, // Pass $fasilitas variable to the view
+            'fasilitas' => $fasilitas,
             'user' => $user,
             'avatar' => $avatar,
         ]);
