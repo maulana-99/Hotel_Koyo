@@ -38,7 +38,6 @@
                     <th>Jumlah Kamar</th>
                     <th>Check-in</th>
                     <th>Check-out</th>
-                    <th>Harga / malam</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -54,7 +53,6 @@
                         <td>{{ $item->quantity }}</td>
                         <td>{{ $item->check_in }}</td>
                         <td>{{ $item->check_out }}</td>
-                        <td>{{ $item->harga }}</td>
                         <td>
                             @if ($item->status == 1)
                                 Belum check in
@@ -68,9 +66,17 @@
                             <div class="btn-tbl-res">
                                 <button class="check detail">Detail</button>
                                 @if ($item->status == 1)
-                                    <button class="check">Check in</button>
+                                    <form action="{{ route('resepsionis.checkin', $item->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        <button class="check" type="submit">Check in</button>
+                                    </form>
                                 @elseif($item->status == 2)
-                                    <button class="check">Check out</button>
+                                    <form action="{{ route('resepsionis.checkout', $item->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        <button class="check" type="submit">Check out</button>
+                                    </form>
                                 @elseif($item->status == 0)
                                     <button class="out" disabled>Sudah check out</button>
                                 @endif

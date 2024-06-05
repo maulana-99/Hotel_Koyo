@@ -98,8 +98,10 @@ class ManagementKamarController extends Controller
         $kamar = Kamar::findOrFail($id);
         $kamar->nama_kamar = $request->input('nama_kamar');
         $kamar->tipe_kamar = $request->input('tipe_kamar');
+        $kamar->deskripsi = $request->input('deskripsi');
         $kamar->kapasitas = $request->input('kapasitas');
         $kamar->jenis_kasur = $request->input('jenis_kasur');
+        $kamar->quantity = $request->input('quantity');
         $kamar->harga = $request->input('harga');
 
         if ($request->hasFile('foto_kamar')) {

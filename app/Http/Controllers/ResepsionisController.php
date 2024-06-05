@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kamar;
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,42 @@ class ResepsionisController extends Controller
         ]);
     }
 
+    public function checkIn($id)
+    {
+        $reservasi = Reservasi::find($id);
+        if ($reservasi) {
+            $reservasi->status = '2'; // Update status to 'Sudah check in'
+            $reservasi->save();
+            return redirect()->back()->with('success', 'Check-in berhasil.');
+        }
+        return redirect()->back()->with('error', 'Reservasi tidak ditemukan.');
+    }
+
+    public function checkout($id)
+    {
+        // Mendapatkan reservasi berdasarkan ID
+        $reservasi = Reservasi::find($id);
+
+        if ($reservasi) {
+            // Ubah status reservasi menjadi 0
+            $reservasi->status = '0';
+
+            // Mendapatkan kamar yang sesuai dengan reservasi
+            $kamar = Kamar::where('id', $reservasi->kamar_id)->first();
+
+            if ($kamar) {
+                // Tambahkan quantity reservasi ke quantity kamar
+                $kamar->quantity += $reservasi->quantity;
+                $kamar->save();
+            }
+
+            // Simpan perubahan reservasi
+            $reservasi->save();
+        }
+
+        // Redirect ke halaman yang diinginkan dengan pesan sukses
+        return redirect()->back()->with('success', 'Check out berhasil!');
+    }
     /**
      * Show the form for creating a new resource.
      */

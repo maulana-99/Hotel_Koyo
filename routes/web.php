@@ -94,4 +94,7 @@ Route::middleware('userAkses:tamu')->group(function () {
 // Route::resource('/reservasi', ReservasiController::class);
 
 Route::resource('/reservasi', ReservasiController::class);
+
 Route::resource('/resepsionis', ResepsionisController::class);
+Route::post('/resepsionis/check-in/{id}', [ResepsionisController::class, 'checkIn'])->name('resepsionis.checkin');
+Route::post('/resepsionis/check-out/{id}', [ResepsionisController::class, 'checkOut'])->name('resepsionis.checkout');

@@ -60,18 +60,18 @@ class ReservasiController extends Controller
     public function show()
     {
         $user = Auth::user();
-
         if (!$user) {
             return redirect()->route('login');
         }
-
         $reservasi = DB::table('reservasis')
             ->join('kamar', 'reservasis.kamar_id', '=', 'kamar.id')
             ->where('reservasis.user_id', $user->id)
             ->select('reservasis.*', 'kamar.tipe_kamar', 'kamar.harga', 'kamar.nama_kamar')
             ->get();
 
-        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi]);
+
+
+        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi,'user'=> $user]);
     }
 
 }

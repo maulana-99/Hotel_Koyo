@@ -132,6 +132,43 @@
                 }
             });
         }
+
+        function setTodayDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const dd = String(today.getDate()).padStart(2, '0');
+
+            const todayDate = `${yyyy}-${mm}-${dd}`;
+            document.getElementById('check_in').value = todayDate;
+        }
+        // Function to set the value of the check-out date input to tomorrow's date
+        function setTomorrowDate() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+
+            const tomorrowDate = `${yyyy}-${mm}-${dd}`;
+            document.getElementById('check_out').value = tomorrowDate;
+        }
+
+        // Event listener to set the dates when the document is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const checkInInput = document.getElementById('check_in');
+            const checkOutInput = document.getElementById('check_out');
+
+            if (!checkInInput.value) {
+                setTodayDate();
+            }
+
+            if (!checkOutInput.value) {
+                setTomorrowDate();
+            }
+        });
     </script>
 </body>
 
