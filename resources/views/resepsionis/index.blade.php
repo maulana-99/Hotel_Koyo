@@ -7,8 +7,8 @@
     <title>Daftar Tamu Hotel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-@include('component.navbarAdmin')
-@include('component.sidebar')
+@include('component.navbarRes')
+@include('component.sidebarRes')
 
 <body>
     <style>
