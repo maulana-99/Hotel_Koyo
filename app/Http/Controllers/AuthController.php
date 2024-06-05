@@ -6,15 +6,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Support\Facades\Storage;
-use Redirect;
+use Laravolt\Avatar\Facade as Avatar;
 
 class AuthController extends Controller
 {
     public function loginPage()
     {
-        return view("login");
+        return view('login');
     }
 
     public function login(Request $request)
@@ -27,7 +26,7 @@ class AuthController extends Controller
             [
                 'email.required' => 'Email wajib di isi',
                 'password.required' => 'Password wajib di isi',
-            ],
+            ]
         );
 
         $infologin = [
@@ -36,29 +35,37 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            if (Auth::user()->role == 'tamu') {
-                return redirect('tamu');
-            } elseif (Auth::user()->role == 'resepsionis') {
-                return redirect('resepsionis');
-            } elseif (Auth::user()->role == 'admin') {
-                return redirect('admin');
-            } else {
-                return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
+            if (Auth::user()->status == 0) {
+                Auth::logout();
+                return redirect('/login')->withErrors('Akun ini sudah di non aktifkan silakan membuat akun baru lagi!')->withInput();
+            }
+
+            switch (Auth::user()->role) {
+                case 'tamu':
+                    return redirect('/dashboard');
+                case 'resepsionis':
+                    return redirect('/resepsionis');
+                case 'admin':
+                    return redirect('/admin');
+                default:
+                    return redirect()->route('login')->withErrors('Email dan Password tidak sesuai')->withInput();
             }
         } else {
-            return redirect('')->withErrors('Email dan Password tidak sesuai')->withInput();
+            return redirect('/login')->withErrors('Email dan Password tidak sesuai')->withInput();
         }
     }
+
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/dashboard');
+
+        return redirect('/login');
     }
 
     public function registerPage()
     {
-        return view("register");
+        return view('register');
     }
 
     public function register(Request $request)
@@ -97,19 +104,8 @@ class AuthController extends Controller
         $user->avatar = $avatarPath;
         $user->save();
 
-
-
         Auth::login($user);
 
-        return view('profil');
-    }
-
-    // menapilkan avatar di halaman tertentu
-    public function show()
-    {
-        $user = auth()->user();
-        $avatar = Avatar::create($user->name)->toBase64();
-
-        return view('profil', compact('user', 'avatar'));
+        return redirect('/dashboard');
     }
 }

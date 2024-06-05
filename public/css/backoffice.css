@@ -1,0 +1,161 @@
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+   z-index: -200;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.content{
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    overflow-y: scroll;
+    
+}
+/* Content Styles */
+.content {
+    margin-left: 250px;
+    width: calc(100% - 240px);
+    position: fixed;
+}
+
+form {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    
+}
+
+form input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #c3c3c3;
+    border-radius: 4px;
+}
+
+/* Styling for the create button */
+.button_create {
+    padding: 10px;
+    align-items: center;
+    background-color: #3dd229;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto; /* Adjust width as needed */
+    border: none; /* Menghilangkan border */
+    text-decoration: none;
+    display: inline-block; /* Pastikan tombol ditampilkan sebagai elemen inline-block */
+    margin-right: 20px;;
+}
+.button_create:hover{
+    background-color:#3fe02a ;
+}
+
+/* Ensure the form elements are aligned */
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+}
+
+form input[type="text"] {
+    margin-right: 10px;
+}
+
+/* Additional styles for the search button */
+form button {
+    padding: 10px;
+    background-color: #5d91cd;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styles */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.crud-table th, .crud-table td {
+    border: 1px solid #D9D9D9;
+    padding: 8px;
+    text-align: center;
+}
+
+.crud-table td .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between buttons */
+}
+
+
+.crud-table th {
+    background-color: #D9D9D9;
+}
+
+.crud-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.crud-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.crud-table th {
+    background-color: #9a9a9a;
+    color: white;
+}
+
+.crud-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.crud-table th.password-column, .crud-table td.password-column {
+    width: 100px;
+    /* Adjust the width as needed */
+    word-break: break-all; /* Optional: Break long words */
+}
+
+/* Style for Hapus button */
+.crud-table button.delete-btn {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    text-decoration: none;
+    
+}
+
+.crud-table button.delete-btn:hover {
+    background-color: #bd2130;
+}
+input{
+    width: 300px;
+    margin-left: 20px;
+}
