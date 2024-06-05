@@ -15,9 +15,11 @@
         @foreach($fasilitas as $item)
         <div class="room-card">
             <!-- Button to Open the Modal -->
-            <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" class="room-image">
+            <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" width="200" height="100" class="room-image">
+            {{ $item->nama_fasilitas }}            
+            <p></p>
             <button type="button" class="btn btn-primary" data-target="#myModal{{ $item->id }}">
-                {{ $item->nama_fasilitas }}
+                Detail
             </button>
 
             <!-- The Modal -->
