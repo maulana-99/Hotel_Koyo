@@ -12,21 +12,21 @@
         <h1>Fasilitas</h1>
     </div>
     <div class="room-cards">
-        @foreach($fasilitas as $fasilitasItem)
+        @foreach($fasilitas as $item)
         <div class="room-card">
             <!-- Button to Open the Modal -->
-            <img src="{{ asset($fasilitasItem->foto_fasilitas) }}" alt="{{ $fasilitasItem->nama_fasilitas }}" class="room-image">
-            <button type="button" class="btn btn-primary" data-target="#myModal{{ $fasilitasItem->id }}">
-                {{ $fasilitasItem->nama_fasilitas }}
+            <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" class="room-image">
+            <button type="button" class="btn btn-primary" data-target="#myModal{{ $item->id }}">
+                {{ $item->nama_fasilitas }}
             </button>
 
             <!-- The Modal -->
-            <div id="myModal{{ $fasilitasItem->id }}" class="modal">
+            <div id="myModal{{ $item->id }}" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h4>{{ $fasilitasItem->nama_fasilitas }}</h4>
-                    <img src="{{ asset($fasilitasItem->foto_fasilitas) }}" alt="{{ $fasilitasItem->nama_fasilitas }}" class="room-image">
-                    <p>{{ $fasilitasItem->deskripsi_fasilitas }}</p>
+                    <h4>{{ $item->nama_fasilitas }}</h4>
+                    <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" class="room-image">
+                    <p>{{ $item->deskripsi_fasilitas }}</p>
                 </div>
             </div>
         </div>

@@ -169,8 +169,8 @@
     @include('component.sidebar')
     <div class="content">
         <h1>Kamar List</h1>
-        <a href="#" id="openPopupCreate" class="button_create">Create</a>
         @include('component.alert')
+        <a href="#" id="openPopupCreate" class="button_create">Create</a>
         <table class="crud-table">
             <thead>
                 <tr>

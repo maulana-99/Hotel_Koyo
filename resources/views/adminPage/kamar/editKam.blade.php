@@ -10,23 +10,24 @@
         .popup {
             display: none;
             position: fixed;
-            top: 50%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
-            width: 100%;
+            width: fit-content;
             height: 100%;
         }
-
         .popup-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            width: 500px;
-            margin: 0 auto;
-        }
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    overflow-y: auto; /* Tambahkan ini */
+    overflow-x: hidden;
+    height: 80%;
+}
 
         .popup-title {
             margin-top: 0;
@@ -39,29 +40,76 @@
             flex-direction: column;
         }
 
-        .form-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
+        .form-item1 {
+    margin-right: 200px;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+    text-align: right;
+}
+        .form-item2 {
+    margin-right: 10px;
+    display: flex;
+    width: 500px;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+    text-align: right;
+}
+        .form-item3 {
+    margin-right: 10px;
+    display: flex;
+    width: 500px;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+    text-align: right;
+}
+        .form-item4 {
+    margin-right: 10px;
+    display: flex;
+    width: 500px;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+}
+        .form-item5 {
+    margin-right: 10px;
+    display: flex;
+    width: 500px;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+}
+        .form-item6 {
+    margin-right: 10px;
+    display: flex;
+    width: 500px;
+    align-items: center;
+    overflow: hidden; /* Tambahkan ini */
+}
+.form-item8 img {
+    width: 150px;
+    margin-right: 20px;
+    text-align: center;
+    overflow: hidden;
+}
 
-        .form-item .form-item label {
-            width: 150px;
-            /* Adjust as needed */
-            margin-right: 10px;
-        }
+.form-item label {
+    width: 150px;
+    margin-right: 100px;
+    text-align: right;
+    overflow: hidden; /* Tambahkan ini */
+    white-space: nowrap; /* Tambahkan ini */
+    text-overflow: ellipsis; /* Tambahkan ini */
+}
 
         .form-item input,
         .form-item select {
             flex: 1;
-        }
-
+        }        
         .foto-preview {
             display: block;
-            margin-top: 5px;
             max-width: 100px;
         }
-
+     
         .btn-container {
             margin-top: 20px;
             text-align: right;
@@ -79,20 +127,32 @@
             border: none;
             cursor: pointer;
         }
-
+        
         .cancel-button {
             background-color: #f44336;
             color: #fff;
             border: none;
             cursor: pointer;
         }
-
-        .label-right {
-            text-align: right;
-            margin-right: 10px;
-            /* Adjust as needed */
-            width: 10px;
-            /* Adjust as needed */
+        
+   
+        select{
+            box-sizing: border-box;
+            text-align: left;
+        }
+        select{
+            margin-right: 200px;
+        }
+        input{
+            margin-right: 200px;
+        }
+        input #editfoto{
+            margin-left: 700px;
+        }
+        textarea{
+            margin-right: 200px;
+        }
+        .from-item #editkamar{
         }
     </style>
 </head>
@@ -101,54 +161,54 @@
     <div class="popup" id="editPopup">
         <div class="popup-content">
             <h2 class="popup-title">Edit Kamar</h2>
-            <form class="popup-form" id="editForm" action="{{ route('kamar.update', ['kamar' => $item->id]) }}"
+            <form class="popup-form" id="editForm" action="{{ route('kamar.update', ['kamar' => $item]) }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" id="editId">
-                <div class="form-item">
+                <div class="form-item1">
                     <label for="editNamaKamar">Nama Kamar:</label>
                     <input type="text" name="nama_kamar" id="editNamaKamar" required>
                 </div>
-                <div class="form-item">
+                <div class="form-item2">
                     <label for="editTipeKamar">Tipe Kamar:</label>
                     <select name="tipe_kamar" id="editTipeKamar" required>
                         <option value="regular">Regular</option>
                         <option value="delux">Delux</option>
                     </select>
                 </div>
-                <div class="form-item">
+                <div class="form-item3">
                     <label for="editKapasitas">Kapasitas Kamar:</label>
                     <select name="kapasitas" id="editKapasitas" required>
                         <option value="1">1 Orang</option>
                         <option value="2">2 Orang</option>
                     </select>
                 </div>
-                <div class="form-item">
+                <div class="form-item4">
                     <label for="editJenisKasur">Jenis Kasur:</label>
                     <select name="jenis_kasur" id="editJenisKasur" required>
                         <option value="twin">Twin</option>
                         <option value="king">King</option>
                     </select>
                 </div>
-                <div class="form-item">
+                <div class="form-item5">
                     <label for="quantity">Quantity:</label>
                     <input type="number" name="quantity" id="editQuantity" required>
                 </div>
-                <div class="form-item">
+                <div class="form-item6">
                     <label for="editHarga">Harga:</label>
                     <input type="number" name="harga" id="editHarga" required>
                 </div>
-                <div class="form-item">
+                <div class="form-item7">
                     <label for="deskripsi">Deskripsi:</label>
                     <textarea type="text" name="deskripsi" id="editDeskripsi" ols="30" rows="10" required></textarea>
                 </div>
-                <div class="form-item">
+                <div class="form-item8">
                     <label for="editFoto" class="label-right">Foto Kamar:</label>
                     <input type="file" name="foto_kamar" id="editFoto">
                     <img class="foto-preview" id="editFotoPreview" src="" alt="Foto Kamar">
                 </div>
-                <div class="btn-container">
+                <div class="btn-container"> 
                     <button type="submit" class="update-button">Update</button>
                     <button type="button" class="cancel-button" id="closeEditPopup">Cancel</button>
                 </div>
@@ -175,7 +235,6 @@
                     const harga = button.getAttribute('data-harga');
                     const foto = button.getAttribute('data-foto');
 
-                    editForm.action = `/kamar/${id}`;
                     document.getElementById('editId').value = id;
                     document.getElementById('editNamaKamar').value = nama;
                     document.getElementById('editTipeKamar').value = tipe;

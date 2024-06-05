@@ -1,8 +1,5 @@
 body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
     background-color: #f4f4f4;
 }
 
@@ -20,7 +17,7 @@ body {
 
 .container-table {
     max-width: 1200px;
-    margin-left: 450px;
+    margin-left: 270px;
     margin-top: 100px;
     padding: 20px;
     background-color: #fff;
@@ -42,9 +39,9 @@ td {
 }
 
 th {
-    background-color: #007bff;
+    background-color: #848484;
     color: #fff;
-    border-bottom: 2px solid #0056b3;
+    border-bottom: 2px solid #c0c0c0;
 }
 
 tr:nth-child(even) {
