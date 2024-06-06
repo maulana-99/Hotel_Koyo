@@ -42,7 +42,7 @@
 
         .button_create {
             padding: 10px;
-            background-color: #3dd229;
+            background-color: #297ed2;
             color: #fff;
             border-radius: 4px;
             cursor: pointer;
@@ -55,7 +55,7 @@
         }
 
         .button_create:hover {
-            background-color: #3fe02a;
+            background-color: #2a33e0;
         }
 
         /* Table Styles */
@@ -132,7 +132,7 @@
         form {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: left;
             margin: 20px 0;
         }
 
@@ -149,18 +149,7 @@
             margin-right: 10px;
         }
 
-        form button {
-            padding: 10px;
-            background-color: #5d91cd;
-            color: #fff;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #0056b3;
-        }
+   
     </style>
 </head>
 

@@ -90,7 +90,7 @@ class ResepsionisController extends Controller
             $reservasi->save();
         }
 
-        // Redirect ke halaman yang diinginkan dengan pesan sukses
+        // Redirect ke halaman yang diinginkan dengan pesan success
         return redirect()->back()->with('success', 'Check out berhasil!');
     }
 

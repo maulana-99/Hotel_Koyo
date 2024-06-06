@@ -36,7 +36,6 @@
             display: inline-block;
             margin-bottom: 20px;
             float: right;
-            margin-right: 20px;
             /* Tambahkan ini */
         }
 
@@ -112,6 +111,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('component.navbarAdmin')
     @include('component.sidebar')
@@ -164,11 +164,12 @@
     </div>
 
     @include('adminPage.fasilitas.createFas')
-    
+
     @if ($fasilitas->isEmpty())
         {{-- @include('adminPage.fasilitas.updateFas') --}}
     @else
         @include('adminPage.fasilitas.updateFas')
     @endif
 </body>
+
 </html>

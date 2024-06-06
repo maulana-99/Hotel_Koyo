@@ -70,7 +70,7 @@ class ManagementKamarController extends Controller
         ]);
 
         // Redirect with success message
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
+        return redirect()->route('kamar.index')->with('success', 'Kamar sukses ditambah.');
     }
 
     /**
@@ -140,6 +140,6 @@ class ManagementKamarController extends Controller
 
         $kamar->delete();
 
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
+        return redirect()->route('kamar.index')->with('success', 'Kamar sukses dihapus');
     }
 }
