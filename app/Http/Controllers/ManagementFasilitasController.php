@@ -58,10 +58,6 @@ class ManagementFasilitasController extends Controller
         $fasilitas = Fasilitas::findOrFail($id);
         $fasilitas->nama_fasilitas = $request->input('nama_fasilitas');
         $fasilitas->deskripsi_fasilitas = $request->input('deskripsi_fasilitas');
-        $fasilitas->nama_depan = $request->input('nama_depan');
-        $fasilitas->nama_belakang = $request->input('nama_belakang');
-        $fasilitas->alamat = $request->input('alamat');
-        $fasilitas->tlp = $request->input('tlp');
 
         if ($request->hasFile('foto_fasilitas')) {
             $file = $request->file('foto_fasilitas');

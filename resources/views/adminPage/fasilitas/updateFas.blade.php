@@ -126,7 +126,8 @@ margin-right: 10px; /* Jarak antara label dan input */
                 document.getElementById('deskripsi_fasilitas').value = deskripsi;
 
                 const form = document.getElementById('updateFasilitasForm');
-                form.action = `{{ url('admin/fasilitas') }}/${id}`;
+                // form.action = `{{ url('admin/fasilitas') }}/${id}`;
+                form.action = "{{ url('admin/fasilitas') }}/"+id;
 
                 document.getElementById('updateFasilitasModal').style.display = 'flex';
             });

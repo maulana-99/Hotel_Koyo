@@ -112,6 +112,7 @@
         }
     </style>
 </head>
+
 <body>
     @include('component.navbarAdmin')
     @include('component.sidebar')
@@ -131,44 +132,51 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($fasilitas as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>
-                            <div class="table_max_width">
-                                <img style="max-width: 100%" src="/images/{{ $item->foto_fasilitas }}"
-                                    alt="Foto Fasilitas">
-                            </div>
-                        </td>
-                        <td>{{ $item->nama_fasilitas }}</td>
-                        <td>{{ $item->deskripsi_fasilitas }}</td>
-                        <td>
-                            <button type="button" class="edit-button" data-id="{{ $item->id }}"
-                                data-nama="{{ $item->nama_fasilitas }}"
-                                data-deskripsi="{{ $item->deskripsi_fasilitas }}"
-                                data-foto="/images/{{ $item->foto_fasilitas }}">Edit</button>
+            @if ($fasilitas->isEmpty())
+                <tr>
+                    <td colspan="5">No Data</td>
+                </tr>
+            @else
+                <tbody>
+                    @foreach ($fasilitas as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>
+                                <div class="table_max_width">
+                                    <img style="max-width: 100%" src="/images/{{ $item->foto_fasilitas }}"
+                                        alt="Foto Fasilitas">
+                                </div>
+                            </td>
+                            <td>{{ $item->nama_fasilitas }}</td>
+                            <td>{{ $item->deskripsi_fasilitas }}</td>
+                            <td>
+                                <button type="button" class="edit-button" data-id="{{ $item->id }}"
+                                    data-nama="{{ $item->nama_fasilitas }}"
+                                    data-deskripsi="{{ $item->deskripsi_fasilitas }}"
+                                    data-foto="/images/{{ $item->foto_fasilitas }}">Edit</button>
 
-                            <form action="{{ route('fasilitas.destroy', $item->id) }}" method="POST"
-                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="delete-button">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+                                <form action="{{ route('fasilitas.destroy', $item->id) }}" method="POST"
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?');"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                @endif
         </table>
     </div>
 
     @include('adminPage.fasilitas.createFas')
-    
+
     @if ($fasilitas->isEmpty())
         {{-- @include('adminPage.fasilitas.updateFas') --}}
     @else
         @include('adminPage.fasilitas.updateFas')
     @endif
 </body>
+
 </html>

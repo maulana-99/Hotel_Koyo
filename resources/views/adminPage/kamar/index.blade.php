@@ -185,39 +185,46 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($kamar as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->nama_kamar }}</td>
-                        <td>{{ $item->tipe_kamar }}</td>
-                        <td>{{ $item->jenis_kasur }}</td>
-                        <td>{{ $item->kapasitas }}</td>
-                        <td>{{ $item->quantity }}</td>
-                        <td>{{ $item->harga }}</td>
-                        <td hidden>{{ $item->deskripsi }}</td>
-                        <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
-                        <td>
-                            <div class="action-buttons">
-                                <button type="button" class="edit-btn" data-id="{{ $item->id }}"
-                                    data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
-                                    data-kapasitas="{{ $item->kapasitas }}" data-quantity="{{ $item->quantity }}"
-                                    data-deskripsi="{{ $item->deskripsi }}" data-jenis="{{ $item->jenis_kasur }}"
-                                    data-harga="{{ $item->harga }}"
-                                    data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
+            @if ($kamar->isEmpty())
+                <tr>
+                    <td colspan="9">No Data</td>
+                </tr>
+            @else
+                <tbody>
+                    @foreach ($kamar as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->nama_kamar }}</td>
+                            <td>{{ $item->tipe_kamar }}</td>
+                            <td>{{ $item->jenis_kasur }}</td>
+                            <td>{{ $item->kapasitas }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->harga }}</td>
+                            <td hidden>{{ $item->deskripsi }}</td>
+                            <td><img src="/images/{{ $item->foto_kamar }}" width="100"></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button type="button" class="edit-btn" data-id="{{ $item->id }}"
+                                        data-nama="{{ $item->nama_kamar }}" data-tipe="{{ $item->tipe_kamar }}"
+                                        data-kapasitas="{{ $item->kapasitas }}" data-quantity="{{ $item->quantity }}"
+                                        data-deskripsi="{{ $item->deskripsi }}" data-jenis="{{ $item->jenis_kasur }}"
+                                        data-harga="{{ $item->harga }}"
+                                        data-foto="/images/{{ $item->foto_kamar }}">Edit</button>
 
-                                <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
-                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="delete-btn">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+                                    <form action="{{ route('kamar.destroy', $item->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus kamar ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="delete-btn">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            @endif
         </table>
+
         @include('adminPage.kamar.createKam')
         @if ($kamar->isEmpty())
             {{-- @include('kamar.editKam') --}}
@@ -226,5 +233,6 @@
         @endif
     </div>
 </body>
+
 
 </html>

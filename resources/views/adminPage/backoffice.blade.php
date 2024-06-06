@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +26,13 @@
         </div>
         <form method="GET" action="">
             <div>
-                <input type="text" name="search" placeholder="Search by name or email" value="{{ request('search') }}">
+                <input type="text" name="search" placeholder="Search by name or email"
+                    value="{{ request('search') }}">
                 <button type="submit">Search</button>
             </div>
             <a href="#" id="openPopupCreate" class="button_create">Create</a>
         </form>
-        
+
         @include('component.alert')
         <div class="table-container">
             <table class="crud-table" id="crud-table">
@@ -51,7 +53,8 @@
                         </tr>
                     @else
                         @foreach ($users as $index => $user)
-                            <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}">
+                            <tr class="user-row" data-id="{{ $user->id }}" data-name="{{ $user->name }}"
+                                data-email="{{ $user->email }}">
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
@@ -59,8 +62,11 @@
                                 <td>{{ $user->created_at }}</td>
                                 <td>
                                     <div class="action-buttons">
+                                        <form action="{{ route('deactivateResepsionis', $user->id) }}" method="POST"
+                                            style="display:inline;">
                                             @csrf
-                                            <button type="submit" class="delete-btn">Hapus</button>
+                                            <button type="submit" class="delete-btn"
+                                                onclick="return confirm('Apakah Anda yakin ingin menonaktifkan user ini?');"><b>Non Aktifkan</b></button>
                                         </form>
                                     </div>
                                 </td>
@@ -73,4 +79,5 @@
     </div>
     @include('component.createRes')
 </body>
+
 </html>

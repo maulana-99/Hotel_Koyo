@@ -10,16 +10,7 @@
 
 <body>
     <h1>Create Reservation</h1>
-    @if (session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+@include('component.alert')
 
     <div class="room-list">
         @foreach ($kamar as $item)

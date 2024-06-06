@@ -48,7 +48,7 @@ class ManagementKamarController extends Controller
             'quantity' => 'required|integer',
             'foto_kamar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
+    
         // Handle the image upload
         if ($request->hasFile('foto_kamar')) {
             $imageName = time().'.'.$request->foto_kamar->extension();
@@ -56,7 +56,7 @@ class ManagementKamarController extends Controller
         } else {
             $imageName = null; // Set to null if no image is uploaded
         }
-
+    
         // Create the new Kamar record
         Kamar::create([
             'nama_kamar' => $validatedData['nama_kamar'],
@@ -68,10 +68,10 @@ class ManagementKamarController extends Controller
             'quantity' => $validatedData['quantity'],
             'foto_kamar' => $imageName,
         ]);
-
+    
         // Redirect with success message
         return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
-    }
+    }    
 
     /**
      * Display the specified resource.
@@ -137,6 +137,6 @@ class ManagementKamarController extends Controller
         }
 
         $kamar->delete();
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses dihapus');
+        return redirect()->route('kamar.index')->with('success', 'Kamar sukses dihapus');
     }
 }

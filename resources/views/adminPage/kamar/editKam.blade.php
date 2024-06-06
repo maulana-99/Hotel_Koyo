@@ -175,7 +175,6 @@
                     const harga = button.getAttribute('data-harga');
                     const foto = button.getAttribute('data-foto');
 
-                    editForm.action = `/kamar/${id}`;
                     document.getElementById('editId').value = id;
                     document.getElementById('editNamaKamar').value = nama;
                     document.getElementById('editTipeKamar').value = tipe;
