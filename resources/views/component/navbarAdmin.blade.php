@@ -76,11 +76,11 @@
         }
 
         .dropdown-menu a {
+            background-color: #dbb693;
             color: #fff;
             padding: 20px 24px;
             text-decoration: none;
             display: block;
-            transition: background-color 0.3s;
             font-size: 16px;
         }
 
