@@ -27,7 +27,9 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h4>{{ $item->nama_fasilitas }}</h4>
-                    <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" class="room-image">
+                    <div class="square-container">
+                        <img src="images/{{ $item->foto_fasilitas }}" alt="{{ $item->nama_fasilitas }}" >
+                    </div>
                     <p>{{ $item->deskripsi_fasilitas }}</p>
                 </div>
             </div>
