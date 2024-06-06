@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <style>
         /* Popup Styles */
         .popup {
@@ -24,7 +23,6 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
-            width: 100%;
             overflow-y: auto;
             /* Tambahkan ini */
             overflow-x: hidden;
@@ -130,6 +128,14 @@
             justify-content: center;
             align-items: center;
         }
+
+        .form-group input{
+            max-width: 77%;
+        }
+
+        .label_width{
+            width: 80%;
+        }
     </style>
 </head>
 
@@ -143,44 +149,60 @@
                 @method('PUT')
                 <input type="hidden" name="id" id="editId">
                 <div class="form-group">
-                    <label for="editNamaKamar">Nama Kamar:</label>
+                    <div class="label_width">
+                        <label for="editNamaKamar">Nama Kamar:</label>
+                    </div>
                     <input type="text" name="nama_kamar" id="editNamaKamar" required>
                 </div>
                 <div class="form-group">
-                    <label for="editTipeKamar">Tipe Kamar:</label>
+                    <div class="label_width">
+                        <label for="editTipeKamar">Tipe Kamar:</label>
+                    </div>
                     <select name="tipe_kamar" id="editTipeKamar" required>
                         <option value="regular">Regular</option>
                         <option value="delux">Delux</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="editKapasitas">Kapasitas Kamar:</label>
+                    <div class="label_width">
+                        <label for="editKapasitas">Kapasitas Kamar:</label>
+                    </div>
                     <select name="kapasitas" id="editKapasitas" required>
                         <option value="1">1 Orang</option>
                         <option value="2">2 Orang</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="editJenisKasur">Jenis Kasur:</label>
+                    <div class="label_width">
+                        <label for="editJenisKasur">Jenis Kasur:</label>
+                    </div>
                     <select name="jenis_kasur" id="editJenisKasur" required>
                         <option value="twin">Twin</option>
                         <option value="king">King</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="quantity">Quantity:</label>
+                    <div class="label_width">
+                        <label for="quantity">Quantity:</label>
+                    </div>
                     <input type="number" name="quantity" id="editQuantity" required>
                 </div>
                 <div class="form-group">
-                    <label for="editHarga">Harga:</label>
+                    <div class="label_width">
+                        <label for="editHarga">Harga:</label>
+                    </div>
                     <input type="number" name="harga" id="editHarga" required>
                 </div>
                 <div class="form-group">
-                    <label for="deskripsi">Deskripsi:</label>
+                    <div class="label_width">
+                        <label for="deskripsi">Deskripsi:</label>
+                    </div>
                     <input type="text" name="deskripsi" id="editDeskripsi" ols="30" rows="10" required>
                 </div>
                 <div class="form-group">
-                    <label for="editFoto" class="label-right">Foto Kamar:</label>
+                    <div class="label_width">
+                        <label for="editFoto" class="label-right">Foto Kamar:</label>
+                    </div>
                     <input type="file" name="foto_kamar" id="editFoto">
                     <img class="foto-preview" id="editFotoPreview" src="" alt="Foto Kamar">
                 </div>

@@ -151,7 +151,7 @@
                     <label for="foto_fasilitas">Foto Fasilitas:</label>
                     <input type="file" id="foto_fasilitas" name="foto_fasilitas" accept="image/*">
                 </div>
-                <div class="button-container">
+                <div class="btn-container">
                     <button type="button" class="cancel-button" onclick="closeUpdateModal()">Cancel</button>
                     <button type="submit" class="submit-button">Update</button>
                 </div>

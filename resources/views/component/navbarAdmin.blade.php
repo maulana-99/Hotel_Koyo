@@ -98,11 +98,15 @@
             padding: 15px;
             width: 180px;
         }
+        .no_padding_margin{
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container no_padding_margin">
         <div class="navbar">
             <h1>Selamat Datang, Admin</h1>
             <div class="profile">

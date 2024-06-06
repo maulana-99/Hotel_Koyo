@@ -35,12 +35,11 @@
 
     .form-group {
         display: flex;
-        align-items: center;
         margin-bottom: 20px;
     }
 
     .form-group label {
-        width: 30%;
+        width: 100%;
         margin-right: 10px;
         color: #333;
     }
@@ -84,6 +83,7 @@
     .popup-content .button-container .cancel-button:hover {
         background-color: #fb3d3d;
     }
+
 </style>
 
 <body>
@@ -93,19 +93,25 @@
             @include('component.error')
             <form action="{{ route('fasilitas.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label>Nama Fasilitas</label>
+                <div class="form-group" style="flex-direction: column">
+                    <div class="label_width">
+                        <label>Nama Fasilitas</label>
+                    </div>
                     <input type="text" name="nama_fasilitas" required>
                 </div>
-                <div class="form-group">
-                    <label>Deskripsi Fasilitas</label>
-                    <textarea name="deskripsi_fasilitas" required></textarea>
+                <div class="form-group" style="flex-direction: column">
+                    <div class="label_width">
+                        <label>Deskripsi Fasilitas</label>
+                    </div>
+                    <input type="text" name="deskripsi_fasilitas" required>
                 </div>
-                <div class="form-group">
-                    <label>Foto Fasilitas</label>
+                <div class="form-group" style="flex-direction: column">
+                    <div class="label_width">
+                        <label>Foto Fasilitas</label>
+                    </div>
                     <input type="file" name="foto_fasilitas" required>
                 </div>
-                <div class="button-container">
+                <div class="btn-container">
                     <button type="button" class="cancel-button" id="closePopupCreate">Cancel</button>
                     <button type="submit" class="submit-button">Simpan</button>
                 </div>

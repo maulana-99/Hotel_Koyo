@@ -32,15 +32,15 @@
     padding: 20px;
 }
 
-.popup-content h1 {
+.popup-content h2 {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 20px;
     color: #333;
 }
 
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .form-group label {
@@ -60,10 +60,10 @@
     font-size: 14px;
 }
 
-.form-group textarea {
-    height: 100px;
-    resize: none;
+.container-form-group{
+    width: 100%
 }
+
 
 .button-group {
     display: flex;
@@ -83,6 +83,7 @@
 .button-group .cancel-button {
     background-color: #dc3545;
     color: white;
+
 }
 
 .button-group #submitButton {
@@ -96,53 +97,68 @@
     margin-top: 5px;
 }
 
+.no_padding_margin{
+    padding: 0;
+    margin: 0;
+}
+
     </style>
 
 <body>
     <div class="popup" id="popupFormCreate" style="{{ $errors->any() ? 'display:flex;' : '' }}">
         <div class="popup-content">
-            <h1>Tambah Data Kamar</h1>
-            <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data">
+            <h2>Tambah Data Kamar</h2>
+            <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data" style="justify-content: center">
                 @csrf
                 <div class="container-form-group">
                     <div class="form-group">
-                        <label for="nama_kamar">Kamar:</label>
+                        <div class="label_width">
+                            <label for="nama_kamar">Kamar:</label>
+                        </div>
                         <input type="text" id="nama_kamar" name="nama_kamar" value="{{ old('nama_kamar') }}" required>
                         @error('nama_kamar')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="tipe_kamar">Tipe Kamar:</label>
+                        <div class="label_width">
+                            <label for="tipe_kamar">Tipe Kamar:</label>
+                        </div>
                         <input type="text" id="tipe_kamar" name="tipe_kamar" value="{{ old('tipe_kamar') }}" required>
                         @error('tipe_kamar')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Deskripsi:</label>
-                        <textarea id="deskripsi" name="deskripsi" required>{{ old('deskripsi') }}</textarea>
+                        <div class="label_width">
+                            <label for="deskripsi">Deskripsi:</label>
+                        </div>
+                        <input type="text" name="deskripsi" required>{{ old('deskripsi') }}
                         @error('deskripsi')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="harga">Harga:</label>
+                        <div class="label_width">
+                            <label for="harga">Harga:</label>
+                        </div>
                         <input type="number" id="harga" name="harga" min=0 value="{{ old('harga') }}" required>
                         @error('harga')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_kamar">Foto:</label>
+                        <div class="label_width">
+                            <label for="foto_kamar">Foto:</label>
+                        </div>
                         <input type="file" id="foto_kamar" name="foto_kamar" required>
                         @error('foto_kamar')
                             <div class="error">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="button-group">
-                        <button type="button" class="cancel-button" id="closePopupCreate">Batal</button>
-                        <button type="submit" id="submitButton">Confirm</button>
+                    <div class="btn-container">
+                        <button type="button" class="cancel-button" id="closePopupCreate">Cancel</button>
+                        <button type="submit" class="update-button" id="submitButton">Simpan</button>
                     </div>
                 </div>
             </form>

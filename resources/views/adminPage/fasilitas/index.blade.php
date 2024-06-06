@@ -42,7 +42,7 @@
         #openPopupCreate {
             text-decoration: none;
             color: rgb(255, 255, 255);
-            background-color: #36b300;
+            background-color: #0003b3;
             padding: 10px 20px;
             border-radius: 3px;
             /* Menyesuaikan tombol ke kanan */
@@ -50,7 +50,7 @@
 
         #openPopupCreate:hover {
             text-decoration: none;
-            background-color: #1cd616;
+            background-color: #3b62d5;
         }
 
         /* Gaya untuk tabel */
