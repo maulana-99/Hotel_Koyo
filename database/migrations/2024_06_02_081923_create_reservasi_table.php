@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class() extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('kamar_id')->constrained('kamar')->onDelete('cascade');
             $table->integer('quantity');
-            $table->enum('status', ['0','1', '2'])->default('1');
+            $table->enum('status', ['0', '1', '2'])->default('1');
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('alamat');

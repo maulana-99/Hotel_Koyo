@@ -12,7 +12,7 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
             margin: 0;
-            padding: 20px;
+            padding:0;
         }
 
         .container-card-reservasi {
@@ -144,10 +144,25 @@
         .modal-invoice p {
             margin: 5px 0;
         }
+        .btn-container{
+            background: #007bff;
+            border: none;
+            padding: 7px 10px;
+            color: #fefefe;
+            border-radius: 3px;
+        }
+        #printButton{
+            background-color: #0040ff;
+            border:none;
+            padding: 10px;
+            color:#fff;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
 <body>
+    @include('component.navbar')
 
     @if ($reservasi->isEmpty())
         <div class="alrt-p">
@@ -168,7 +183,7 @@
                         '{{ $item->alamat }}','{{ $item->tlp }}', '{{ $item->nama_kamar }}', 
                         '{{ $item->tipe_kamar }}', '{{ $item->check_in }}', 
                         '{{ $item->check_out }}', '{{ $item->quantity }}', 
-                        '{{ number_format($item->harga, 0, ',', '.') }}')">Detail</button>
+                        '{{ number_format($item->harga, 0, ',', '.') }}')"class="btn-container">Detail</button>
                 </div>
             @endforeach
         </div>

@@ -61,7 +61,6 @@
     }
 
     .popup .form-group label {
-        flex: 1;
         text-align: center;
         margin-right: 10px;
     }
@@ -104,6 +103,16 @@
     .overlay.active {
         visibility: visible;
     }
+
+    .label_width{
+        width: 77%;
+    }
+
+    .btn-container {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <body>
@@ -114,27 +123,35 @@
             @include('component.error')
             <form action="{{ route('createResepsionis') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="name">Nama Resepsionis</label>
+                <div class="form-group" style="flex-direction: column;">
+                    <div class="label_width">
+                        <label for="name">Nama Resepsionis</label>
+                    </div>
                     <input type="name" id="name" name="name" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email Resepsionis</label>
+                <div class="form-group" style="flex-direction: column;">
+                    <div class="label_width">
+                        <label for="email">Email Resepsionis</label>
+                    </div>
                     <input type="email" id="email" name="email" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
+                <div class="form-group" style="flex-direction: column;">
+                    <div class="label_width">
+                        <label for="password">Password</label>
+                    </div>
                     <input type="password" id="password" name="password">
                 </div>
 
-                <div class="form-group">
-                    <label for="password_confirmation">Konfirmasi Password</label>
+                <div class="form-group" style="flex-direction: column;">
+                    <div class="label_width">
+                        <label for="password_confirmation">Konfirmasi Password</label>
+                    </div>
                     <input type="password" id="password_confirmation" name="password_confirmation" required>
                 </div>
 
-                <div class="form-btn">
+                <div class="btn-container">
                     <button type="button" class="close-btn" id="closePopupCreate">Cancel</button>
                     <button type="submit" class="submit-btn">Simpan</button>
                 </div>

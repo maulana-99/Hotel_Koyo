@@ -22,63 +22,109 @@
             padding: 20px;
             border-radius: 5px;
             width: 90%;
-            max-width:400px;
+            max-width: 400px;
             text-align: center;
         }
 
         .popup-content h2 {
             text-align: center;
+            padding: 20px;
         }
 
-.popup-content .input-container {
-    display: flex;
-    align-items: center; /* Mengatur input agar berada di tengah vertikal */
-    margin-bottom: 20px;
-}
-
-.popup-content label {
-    flex: 1; /* Menyebarkan label agar mengambil sebagian ruang yang tersedia */
-margin-right: 10px; /* Jarak antara label dan input */
-}
-
-
-.popup-content input,
-.popup-content textarea {
-    flex: 2; /* Menyebarkan input agar mengambil sebagian ruang yang tersedia */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar total input */
-    margin: 20px 0; /* Jarak atas dan bawah setiap input */
-    max-width: 300px; /* Lebar maksimum untuk input */
-}
-
-.button-container {
-    display: flex;
-    justify-content: center; /* Mengatur tombol agar berada di tengah secara horizontal */
-    margin-top: 20px; /* Menambahkan jarak antara input dan tombol */
-}
-
-.button-wrapper {
-    display: flex;
-    gap: 10px; /* Menambahkan jarak antara tombol */
-}
-
-.submit-button, .cancel-button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-}
-
-        .button-container .submit-button:hover {
-            background-color: #0056b3;
+        .popup-content .input-container {
+            display: flex;
+            align-items: center;
+            /* Mengatur input agar berada di tengah vertikal */
+            margin-bottom: 20px;
         }
 
+        /* Gaya CSS untuk elemen-elemen dalam struktur HTML */
+        label {
+            display: block;
+            /* Membuat label menjadi blok agar tampil di baris baru */
+            margin-bottom: 5px;
+            /* Menambahkan jarak bawah antara label dan input */
+            color: #333;
+            /* Warna teks label */
+            text-align: left;
+        }
 
-        .button-container .cancel-button:hover {
-            background-color: #aaa;
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 400px;
+            /* Mengisi lebar maksimal */
+            padding: 10px;
+            /* Padding untuk input */
+            border: 1px solid #ccc;
+            /* Garis tepi input */
+            border-radius: 5px;
+            /* Sudut input */
+            box-sizing: border-box;
+            /* Ukuran kotak total termasuk padding dan border */
+            margin-bottom: 10px;
+            /* Jarak bawah antara input */
+        }
+
+        textarea {
+            resize: vertical;
+            /* Memungkinkan pemosisian vertikal input */
+        }
+
+        .button-container {
+            display: flex;
+            /* Menampilkan tombol dalam baris */
+            justify-content: center;
+            /* Menempatkan tombol di tengah */
+            align-items: center;
+            margin-top: 20px;
+            /* Menambahkan jarak atas */
+        }
+
+        .submit-button,
+        .cancel-button {
+            padding: 10px 20px;
+            /* Padding tombol */
+            border: none;
+            /* Tanpa batas */
+            border-radius: 5px;
+            /* Sudut tombol */
+            cursor: pointer;
+            /* Mengubah kursor saat mengarah ke tombol */
+        }
+
+        .submit-button {
+            background-color: #44ff00;
+            /* Warna latar belakang tombol submit */
+            color: #fff;
+            /* Warna teks tombol submit */
+        }
+
+        .cancel-button {
+            background-color: #ff0000;
+            /* Warna latar belakang tombol cancel */
+            color: #fff;
+            /* Warna teks tombol cancel */
+        }
+
+        .submit-button:hover {
+            background-color: #15b300;
+            /* Warna latar belakang tombol submit saat dihover */
+        }
+
+        .cancel-button:hover {
+            background-color: #fb3d3d;
+            /* Warna latar belakang tombol cancel saat dihover */
+        }
+
+        .submit-button:hover {
+            background-color: #15b300;
+            /* Warna latar belakang tombol submit saat dihover */
+        }
+
+        .cancel-button:hover {
+            background-color: #fb3d3d;
+            /* Warna latar belakang tombol cancel saat dihover */
         }
     </style>
 </head>
@@ -105,9 +151,9 @@ margin-right: 10px; /* Jarak antara label dan input */
                     <label for="foto_fasilitas">Foto Fasilitas:</label>
                     <input type="file" id="foto_fasilitas" name="foto_fasilitas" accept="image/*">
                 </div>
-                <div class="button-container">
-                    <button type="submit" class="submit-button">Update</button>
+                <div class="btn-container">
                     <button type="button" class="cancel-button" onclick="closeUpdateModal()">Cancel</button>
+                    <button type="submit" class="submit-button">Update</button>
                 </div>
             </form>
         </div>
@@ -126,8 +172,8 @@ margin-right: 10px; /* Jarak antara label dan input */
                 document.getElementById('deskripsi_fasilitas').value = deskripsi;
 
                 const form = document.getElementById('updateFasilitasForm');
-                // form.action = `{{ url('admin/fasilitas') }}/${id}`;
-                form.action = "{{ url('admin/fasilitas') }}/"+id;
+                // form.action = {{ url('admin/fasilitas') }}/${id};
+                form.action = "{{ url('admin/fasilitas') }}/" + id;
 
                 document.getElementById('updateFasilitasModal').style.display = 'flex';
             });

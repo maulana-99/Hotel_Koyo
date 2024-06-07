@@ -1,14 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasDashboard;
 use App\Http\Controllers\ManagementFasilitasController;
 use App\Http\Controllers\ManagementKamarController;
 use App\Http\Controllers\ManagementResepsionisController;
-use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\ResepsionisController;
+use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,9 +43,6 @@ Route::get('/admin', function () {
     return view('adminPage.admin.admin');
 });
 
-Route::get('/resepsionis', function () {
-    return view('resepsionis.index');
-});
 
 Route::get('/resepsionis', [DashboardController::class, 'indexResepsionis']);
 // menjadi mode tamu dan hanya bisa melihat saja
@@ -86,7 +82,9 @@ Route::middleware('userAkses:admin')->group(function () {
 
 // user yang sudah login dan bisa meng akses halaman ini dengan role Resepsionis
 Route::middleware('userAkses:resepsionis')->group(function () {
-    // Route::get('/resepsionis', [AdminController::class, 'resepsionis']); ---> UBAH MENJADI URL RESEPSIONIS
+    Route::resource('/resepsionis', ResepsionisController::class);
+    Route::post('/resepsionis/check-in/{id}', [ResepsionisController::class, 'checkIn'])->name('resepsionis.checkin');
+    Route::post('/resepsionis/check-out/{id}', [ResepsionisController::class, 'checkOut'])->name('resepsionis.checkout');
 });
 
 // user yang sudah login dan bisa meng akses halaman ini dengan role tamu
@@ -94,7 +92,6 @@ Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
-Route::resource('/resepsionis', ResepsionisController::class);
-Route::post('/resepsionis/check-in/{id}', [ResepsionisController::class, 'checkIn'])->name('resepsionis.checkin');
-Route::post('/resepsionis/check-out/{id}', [ResepsionisController::class, 'checkOut'])->name('resepsionis.checkout');
+// Route::resource('/reservasi', ReservasiController::class);
 
+Route::resource('/reservasi', ReservasiController::class);

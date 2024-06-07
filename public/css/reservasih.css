@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+margin: 0;
+padding: 0;    
 }
 
 .room-list {
@@ -15,34 +16,55 @@ body {
     border-radius: 5px;
     padding: 20px;
     width: 300px;
-    margin: 20px;
+    height: 234px;
+    margin: 24px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.room-card img{
+    width: 300px;
+    height: 140px;
+}
+.room-info h2{
+    font-size: 20px;
+    margin-top: -3px;
+}
+.room-info p{
+    margin-top: -10px;
+}
 .room-name {
     font-size: 24px;
     margin-bottom: 10px;
 }
-
+.btn-primary{
+background-color: #0056b3;
+padding:6px 20px;
+color: #fff;
+border-radius: 4px;
+cursor: pointer;
+border: none;
+}
+.btn-primary:hover{
+    background-color: #1c66b5;
+}
 .room-type {
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 10px;
 }
 
-.room-price {
-    font-size: 18px;
-    color: #007bff;
+.room-price {   
+    font-size: 12px;
+    color: #ff0000;
     margin-bottom: 10px;
 }
 
 .room-availability {
-    font-size: 14px;
+    font-size: 12px;
     color: #888;
     margin-bottom: 10px;
 }
 
 .room-description {
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 20px;
 }
 

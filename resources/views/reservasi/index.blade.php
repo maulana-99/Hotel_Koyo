@@ -10,7 +10,8 @@
 
 <body>
     <h1>Create Reservation</h1>
-@include('component.alert')
+    @include('component.alert')
+    @include('component.navbar')
 
     <div class="room-list">
         @foreach ($kamar as $item)
@@ -24,7 +25,7 @@
                     @if ($item->quantity > 0)
                         <button class="btn btn-primary" onclick="openModal('modal{{ $item->id }}')">Book</button>
                     @else
-                        <button class="btn btn-primary" disabled>Out of Stock</button>
+                        <button class="btn-primary" disabled>Out of Stock</button>
                     @endif
                 </div>
             </div>

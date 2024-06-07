@@ -13,6 +13,7 @@ class ReservasiController extends Controller
     public function index()
     {
         $kamar = Kamar::all();
+
         return view('reservasi.index', compact('kamar'));
     }
 
@@ -69,9 +70,6 @@ class ReservasiController extends Controller
             ->select('reservasis.*', 'kamar.tipe_kamar', 'kamar.harga', 'kamar.nama_kamar')
             ->get();
 
-
-
-        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi,'user'=> $user]);
+        return view('reservasi.pesananReservasi', ['reservasi' => $reservasi, 'user' => $user]);
     }
-
 }

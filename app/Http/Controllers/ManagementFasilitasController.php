@@ -47,7 +47,7 @@ class ManagementFasilitasController extends Controller
         // Menghandle upload file foto fasilitas
         if ($request->hasFile('foto_fasilitas')) {
             $imageName = time() . '.' . $request->foto_fasilitas->extension();  // Membuat nama file unik
-            $request->foto_fasilitas->move(public_path('images'), $imageName);  // Memindahkan file ke direktori public/images
+            $request->foto_fasilitas->move(public_path('images'), $imageName);  // Memindahkan file ke direktori public/image
         } else {
             $imageName = null;  // Jika tidak ada file yang diupload
         }
@@ -78,9 +78,8 @@ class ManagementFasilitasController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName();  // Membuat nama file unik
             $file->move(public_path('images'), $filename);  // Memindahkan file ke direktori public/images
 
-            // Menghapus file foto lama jika ada
             if ($fasilitas->foto_fasilitas !== $filename) {
-                $imagePath = public_path('images/' . $fasilitas->foto_fasilitas);
+                $imagePath = public_path('images/'.$fasilitas->foto_fasilitas);
                 if (file_exists($imagePath)) {
                     unlink($imagePath);  // Menghapus file foto lama
                 }

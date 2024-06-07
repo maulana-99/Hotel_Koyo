@@ -70,15 +70,14 @@ class ManagementKamarController extends Controller
         ]);
     
         // Redirect with success message
-        return redirect()->route('kamar.index')->with('sukses', 'Kamar sukses ditambah.');
-    }    
+        return redirect()->route('kamar.index')->with('success', 'Kamar sukses ditambah.');
+    }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        // Show details for a specific Kamar - implement as needed
     }
 
     /**
@@ -86,16 +85,19 @@ class ManagementKamarController extends Controller
      */
     public function edit(string $id)
     {
+        dd($id);
         $kamar = Kamar::findOrFail($id);
+
         return view('kamar.index', compact('kamar'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $kamar = Kamar::findOrFail($id);
+        // $kamar = Kamar::findOrFail($id);
+        $kamar = Kamar::findOrFail($request->input('id'));
         $kamar->nama_kamar = $request->input('nama_kamar');
         $kamar->tipe_kamar = $request->input('tipe_kamar');
         $kamar->deskripsi = $request->input('deskripsi');

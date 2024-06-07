@@ -9,20 +9,32 @@ body {
     text-align: center;
     background-color: #f0f0f0; /* Ubah warna latar belakang */
     box-shadow: 0 6px 12px rgba(134, 134, 134, 0.7); /* Modifikasi efek bayangan */
+    position: relative; /* Atur posisi elemen */
+    top: -20px; /* Geser ke atas sebanyak 10px (nilai negatif) */
+    padding: 15px;
 }
 
-    
 .room-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between; /* Membuat kartu sejajar dengan jarak yang sama */
+    padding: 70px;
+    flex-direction: row; /* Menambahkan arah flex ke samping */
 }
 
 .room-card {
+    flex: 0 0 calc(33.33% - 100px); /* Mengatur lebar kartu menjadi 1/3 dari lebar container dengan jarak 100px di antara kartu */
     text-align: center;
+    margin-bottom: 15px; /* Tambahkan margin bawah agar kartu memiliki jarak */
+    box-shadow: 0 0 10px rgba(114, 114, 114, 0.5); /* Tambahkan bayangan dengan warna biru */
 }
+.room-image{
+    object-fit: cover;
+}
+.modal-content {
+    width: 50%; /* Sesuaikan lebar modal */
+}
+
 
 .btn {
     background-color: #007bff;
@@ -50,7 +62,7 @@ body {
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
     border-radius: 5px;
 }
 
@@ -73,4 +85,19 @@ body {
     max-width: 400px;
     height: auto;
     margin-bottom: 20px;
+}
+
+.square-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+.square-container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

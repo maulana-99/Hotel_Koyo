@@ -7,10 +7,14 @@
     <title>Daftar Tamu Hotel</title>
     <link rel="stylesheet" href="{{ asset('css/resepsionis.css') }}">
 </head>
+<style>
+
+    </style>
 
 <body>
-    @include('component.navbarAdmin')
-    @include('component.sidebar')
+    @include('component.navbarRes')
+    @include('component.sidebarRes')
+    @include('component.alert')
     <div class="container-table">
         <div class="table-src">
             <form action="{{ route('resepsionis.index') }}" method="get">
