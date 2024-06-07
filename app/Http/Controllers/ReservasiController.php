@@ -54,7 +54,7 @@ class ReservasiController extends Controller
         $kamar->quantity -= $request->quantity;
         $kamar->save();
 
-        return redirect()->route('reservasi.index')->with('success', 'Reservation created successfully.');
+        return redirect()->route('reservasi.pesananReservasi')->with('success', 'Reservation created successfully.');
     }
 
     public function show()
