@@ -27,23 +27,14 @@ Route::get('/fasilitas', [FasilitasDashboard::class, 'index']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/deskripsi_kamar', function () {
-    return view('deskripsi_kamar');
-});
-
 Route::resource('/reservasi', ReservasiController::class);
-
 
 Route::get('/404-not-found', function () {
     return view('peringatan');
 });//----> Hanya user yang ingin memasuki page resepsionis dan admin dan akan di tampilkan ini
 
-Route::get('/admin', function () {
-    return view('adminPage.admin.admin');
-});
-
-
 Route::get('/resepsionis', [DashboardController::class, 'indexResepsionis']);
+
 // menjadi mode tamu dan hanya bisa melihat saja
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');

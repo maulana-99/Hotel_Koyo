@@ -79,7 +79,7 @@ class ManagementFasilitasController extends Controller
             $file->move(public_path('images'), $filename);  // Memindahkan file ke direktori public/images
 
             if ($fasilitas->foto_fasilitas !== $filename) {
-                $imagePath = public_path('images/'.$fasilitas->foto_fasilitas);
+                $imagePath = public_path('images/' . $fasilitas->foto_fasilitas);
                 if (file_exists($imagePath)) {
                     unlink($imagePath);  // Menghapus file foto lama
                 }
@@ -99,16 +99,22 @@ class ManagementFasilitasController extends Controller
 
     public function destroy($id)
     {
-        $fasilitas = Fasilitas::findOrFail($id);
+        // Mencari data fasilitas berdasarkan ID yang diberikan
+        $fasilitas = Fasilitas::findOrFail($id); // Mencari data fasilitas berdasarkan ID yang diberikan
 
-        // Delete the image from storage if it exists
-        if ($fasilitas->foto_fasilitas) {
-            Storage::disk('public')->delete($fasilitas->foto_fasilitas);
+        // Memeriksa apakah fasilitas ditemukan
+        if ($fasilitas) {
+            // Memeriksa apakah ada foto fasilitas yang terkait
+            if ($fasilitas->foto_fasilitas) {
+                // Menghapus foto fasilitas dari penyimpanan
+                Storage::disk('public')->delete($fasilitas->foto_fasilitas); // Menghapus foto fasilitas dari penyimpanan publik
+            }
+
+            // Menghapus data fasilitas dari database
+            $fasilitas->delete(); // Menghapus data fasilitas dari database
         }
 
-        // Delete the fasilitas
-        $fasilitas->delete();
-
-        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus');
+        // Redirect ke halaman CRUD fasilitas dengan pesan sukses
+        return redirect()->route('adminPage.crudFasilitas')->with('success', 'Fasilitas berhasil dihapus'); // Mengalihkan pengguna kembali ke halaman CRUD fasilitas dengan pesan sukses
     }
 }

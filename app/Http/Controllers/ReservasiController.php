@@ -29,7 +29,6 @@ class ReservasiController extends Controller
         return view('reservasi.index', compact('kamar'));
     }
 
-
     public function store(Request $request)
     {
         // Memvalidasi data yang diterima dengan aturan yang telah ditentukan
