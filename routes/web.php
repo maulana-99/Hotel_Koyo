@@ -33,7 +33,6 @@ Route::get('/deskripsi_kamar', function () {
 
 Route::resource('/reservasi', ReservasiController::class);
 
-Route::get('/tamu_reservasi', [DashboardController::class, 'indexReservasi']);
 
 Route::get('/404-not-found', function () {
     return view('peringatan');
@@ -91,7 +90,3 @@ Route::middleware('userAkses:resepsionis')->group(function () {
 Route::middleware('userAkses:tamu')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
-
-// Route::resource('/reservasi', ReservasiController::class);
-
-Route::resource('/reservasi', ReservasiController::class);

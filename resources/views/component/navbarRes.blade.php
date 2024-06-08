@@ -106,7 +106,7 @@
         <div class="navbar">
             <h1>Selamat Datang, Resepsionis</h1>
             <div class="profile">
-                {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
+                <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
                 <span>{{ $user->name }}</span>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="{{ url('/logout') }}">Logout</a>

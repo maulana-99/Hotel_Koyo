@@ -159,7 +159,7 @@
         <div class="navbar-profile">
             @auth
                 <a href="#" class="profile-link" id="profileLink">
-                    {{-- <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}"> --}}
+                    <img src="{{ $avatar }}" alt="Avatar {{ $user->name }}">
                     <h2>{{ Auth::user()->name }}</h2>
                 </a>
                 <div class="dropdown-menu" id="dropdownMenu">

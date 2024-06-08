@@ -15,19 +15,24 @@ class ResepsionisController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $avatar = Avatar::create($user->name)->toBase64();
+        // Mendapatkan informasi pengguna yang sedang terautentikasi
+        $user = Auth::user(); // Mendapatkan informasi pengguna yang sedang terautentikasi
+        // Membuat avatar dari nama pengguna dan mengonversinya ke base64
+        $avatar = Avatar::create($user->name)->toBase64(); // Membuat avatar berdasarkan nama pengguna dan mengonversinya ke format base64
 
+        // Menginisialisasi query untuk mendapatkan data reservasi dengan beberapa join dan select
         $query = Reservasi::query()
             ->join('kamar', 'reservasis.kamar_id', '=', 'kamar.id')
             ->select('reservasis.*', 'kamar.harga', 'kamar.tipe_kamar', 'kamar.jenis_kasur', 'kamar.kapasitas', 'kamar.nama_kamar');
 
+        // Memeriksa apakah terdapat pencarian berdasarkan tanggal
         if ($request->has('src-date')) {
             $date = $request->input('src-date');
             $query->whereDate('check_in', $date)
                 ->orWhereDate('check_out', $date);
         }
 
+        // Memeriksa apakah terdapat pencarian berdasarkan nama depan
         if ($request->has('nama_depan')) {
             $namaDepan = $request->input('nama_depan');
             if (!empty($namaDepan)) {
@@ -35,6 +40,7 @@ class ResepsionisController extends Controller
             }
         }
 
+        // Memeriksa apakah terdapat pencarian berdasarkan nama belakang
         if ($request->has('nama_belakang')) {
             $namaBelakang = $request->input('nama_belakang');
             if (!empty($namaBelakang)) {
@@ -42,12 +48,15 @@ class ResepsionisController extends Controller
             }
         }
 
+        // Memeriksa apakah pengguna sudah terautentikasi
         if (!$user) {
-            return redirect()->route('login');
+            return redirect()->route('login'); // Jika tidak, redirect ke halaman login
         }
 
-        $reservasi = $query->get();
+        // Menjalankan query dan mendapatkan hasilnya
+        $reservasi = $query->get(); // Menjalankan query untuk mendapatkan data reservasi berdasarkan kondisi yang telah diberikan
 
+        // Mengembalikan tampilan 'resepsionis.index' dengan data reservasi, pengguna, dan avatar
         return view('resepsionis.index', [
             'reservasi' => $reservasi,
             'user' => $user,
@@ -55,44 +64,53 @@ class ResepsionisController extends Controller
         ]);
     }
 
-
-
     public function checkIn($id)
     {
-        $reservasi = Reservasi::find($id);
+        // Mencari data reservasi berdasarkan ID yang diberikan
+        $reservasi = Reservasi::find($id); // Mencari data reservasi berdasarkan ID yang diberikan
+
+        // Memeriksa apakah reservasi ditemukan
         if ($reservasi) {
-            $reservasi->status = '2'; // Update status to 'Sudah check in'
-            $reservasi->save();
+            $reservasi->status = '2'; // Mengupdate status reservasi menjadi 'Sudah check in'
+            $reservasi->save(); // Menyimpan perubahan status ke dalam database
+
+            // Redirect kembali ke halaman sebelumnya dengan pesan sukses
             return redirect()->back()->with('success', 'Check-in berhasil.');
         }
+
+        // Redirect kembali ke halaman sebelumnya dengan pesan error jika reservasi tidak ditemukan
         return redirect()->back()->with('error', 'Reservasi tidak ditemukan.');
     }
 
+
     public function checkout($id)
     {
-        // Mendapatkan reservasi berdasarkan ID
-        $reservasi = Reservasi::find($id);
-
+        // Mendapatkan data reservasi berdasarkan ID
+        $reservasi = Reservasi::find($id); // Mencari data reservasi berdasarkan ID yang diberikan
+    
+        // Memeriksa apakah reservasi ditemukan
         if ($reservasi) {
-            // Ubah status reservasi menjadi 0
+            // Mengubah status reservasi menjadi '0' (check out)
             $reservasi->status = '0';
-
-            // Mendapatkan kamar yang sesuai dengan reservasi
-            $kamar = Kamar::where('id', $reservasi->kamar_id)->first();
-
+    
+            // Mendapatkan data kamar yang sesuai dengan reservasi
+            $kamar = Kamar::where('id', $reservasi->kamar_id)->first(); // Mencari data kamar yang sesuai dengan ID kamar yang terdapat pada reservasi
+    
+            // Memeriksa apakah kamar ditemukan
             if ($kamar) {
-                // Tambahkan quantity reservasi ke quantity kamar
-                $kamar->quantity += $reservasi->quantity;
-                $kamar->save();
+                // Menambahkan kembali jumlah kamar yang tersedia dengan jumlah kamar yang telah dipesan saat reservasi
+                $kamar->quantity += $reservasi->quantity; // Menambahkan kembali quantity kamar dengan quantity reservasi
+                $kamar->save(); // Menyimpan perubahan jumlah kamar ke dalam database
             }
-
-            // Simpan perubahan reservasi
-            $reservasi->save();
+    
+            // Menyimpan perubahan status reservasi ke dalam database
+            $reservasi->save(); // Menyimpan perubahan status reservasi ke dalam database
         }
-
-        // Redirect ke halaman yang diinginkan dengan pesan success
-        return redirect()->back()->with('success', 'Check out berhasil!');
+    
+        // Redirect kembali ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Check out berhasil!'); // Mengalihkan pengguna kembali ke halaman sebelumnya dengan pesan sukses
     }
+    
 
 
     /**
