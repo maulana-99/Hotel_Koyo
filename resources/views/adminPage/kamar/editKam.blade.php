@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +24,6 @@
             padding: 20px;
             border-radius: 5px;
             overflow-y: auto;
-            /* Tambahkan ini */
             overflow-x: hidden;
             height: 80%;
         }
@@ -57,11 +56,8 @@
             margin-right: 100px;
             text-align: right;
             overflow: hidden;
-            /* Tambahkan ini */
             white-space: nowrap;
-            /* Tambahkan ini */
             text-overflow: ellipsis;
-            /* Tambahkan ini */
         }
 
         .form-item input,

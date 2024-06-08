@@ -36,7 +36,6 @@
             display: inline-block;
             margin-bottom: 20px;
             float: right;
-            /* Tambahkan ini */
         }
 
         #openPopupCreate {

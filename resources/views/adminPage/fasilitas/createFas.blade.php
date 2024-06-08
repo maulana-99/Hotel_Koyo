@@ -7,82 +7,96 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <style>
-    .popup {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-    }
+   .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: opacity 0.3s ease;
+        }
 
-    .popup-content {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        width: 90%;
-        max-width: 500px;
-        text-align: left;
-    }
+        .popup.active {
+            display: flex;
+        }
 
-    .popup-content h1 {
-        padding: 20px;
-        text-align: center;
-    }
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
 
-    .form-group {
-        display: flex;
-        margin-bottom: 20px;
-    }
+        .popup-content h1 {
+            padding: 20px;
+            text-align: center;
+        }
 
-    .form-group label {
-        width: 100%;
-        margin-right: 10px;
-        color: #333;
-    }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
 
-    .popup-content .button-container {
-        display: flex;
-        justify-content: center;
-    }
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    .popup-content .button-container button {
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 150px;
-        margin-right: 30px;
-    }
+        .btn-container {
+            text-align: center;
+        }
 
-    .popup-content .button-container .submit-button {
-        background-color: #44ff00;
-        color: #fff;
-    }
+        .btn-container button {
+            margin: 0 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-    .popup-content .button-container .submit-button:hover {
-        background-color: #15b300;
-    }
+        .submit-button {
+            background-color: #4caf50;
+            color: #fff;
+        }
 
-    .popup-content .button-container .cancel-button {
-        background-color: #ff0000;
-        color: #ffffff;
-    }
+        .submit-button:hover {
+            background-color: #388e3c;
+        }
 
-    .popup-content .button-container .cancel-button:hover {
-        background-color: #fb3d3d;
-    }
+        .cancel-button {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .cancel-button:hover {
+            background-color: #fb3d3d;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
 </style>
 

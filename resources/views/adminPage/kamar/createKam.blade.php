@@ -52,8 +52,7 @@
     .form-group input[type="text"],
     .form-group input[type="number"],
     .form-group input[type="file"],
-    .form-group textarea,
-    .form-group select {
+    .form-group textarea {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -99,11 +98,13 @@
     .no_padding_margin {
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: column;
     }
 </style>
 
 <body>
-    <div class="popup" id="popupFormCreate" style="{{ $errors->any() ? 'display:flex;' : '' }}">
+    <div class="popup" id="popupFormCreate" style="{{ $errors->any() ? 'display:flex;flex-direction: column;' : '' }}">
         <div class="popup-content">
             <h2>Tambah Data Kamar</h2>
             <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data"
@@ -122,8 +123,10 @@
                         <div class="label_width">
                             <label for="tipe_kamar">Tipe Kamar:</label>
                         </div>
-                        <input type="text" id="tipe_kamar" name="tipe_kamar" value="{{ old('tipe_kamar') }}"
-                            required>
+                        <select id="tipe_kamar" name="tipe_kamar">
+                            <option value="regular">Regular</option>
+                            <option value="delux">Delux</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <div class="label_width">
@@ -147,7 +150,8 @@
                         <div class="label_width">
                             <label for="quantity">Jumlah Kamar:</label>
                         </div>
-                        <input type="number" id="quantity" name="quantity" min=0 value="{{ old('quantity') }}" required>
+                        <input type="number" id="quantity" name="quantity" min=0 value="{{ old('quantity') }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <div class="label_width">
